@@ -34,7 +34,7 @@ $(document).ready(function () {
 
         // 1 saniyə sonra login səhifəsinə keç
         setTimeout(() => {
-            window.location.href = "login.html";
+            window.location.href = "index.html";
         }, 1000);
     });
 
