@@ -1,0 +1,238 @@
+body {
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+}
+
+.imgbox {
+  overflow: hidden;
+}
+.imgbox img {
+  width: 100%;
+}
+
+section {
+  padding: 80px 0;
+}
+
+#login {
+  background-color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#login .box {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #a8a6a6;
+  margin-bottom: 25px;
+  height: 480px;
+}
+#login .box .textbox button {
+  margin: 10px 0;
+}
+#login .box .textbox h1 {
+  margin: 50px 0 20px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 30px;
+  cursor: text;
+}
+#login .box .add {
+  display: flex;
+  flex-direction: column;
+}
+#login .box .add input {
+  border-radius: 5px;
+  margin: 10px 20px;
+  padding: 10px;
+  background-color: #000000;
+  border: 2px solid #a8a6a6;
+  color: #ffffff;
+}
+#login .box .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c14ff;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 4px 20px;
+  max-width: 220px;
+  width: 220px;
+}
+#login .box .btn h3 {
+  color: #cdcaca;
+}
+#login .box .btn h3:hover {
+  cursor: pointer;
+}
+#login .box .divider {
+  width: 220px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0 10px;
+}
+#login .box .divider span {
+  padding: 0 10px;
+  font-weight: 600;
+  color: #cdcaca;
+  cursor: text;
+}
+#login .box .divider::before, #login .box .divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #a8a6a6;
+}
+#login .box .divider::before {
+  margin-right: 10px;
+}
+#login .box .divider::after {
+  margin-left: 10px;
+}
+#login .box .fogot {
+  margin-top: 20px;
+}
+#login .box .fogot a {
+  cursor: pointer;
+}
+#login .box .fogot a:hover {
+  text-decoration: underline;
+}
+#login .minibox {
+  display: flex;
+  align-items: center;
+  border: 2px solid #a8a6a6;
+  border-radius: 5px;
+  height: 100px;
+}
+#login .minibox a {
+  color: #1c14ff;
+  cursor: pointer;
+}
+#login .minibox p {
+  color: #ffffff;
+  margin: 0 16px;
+  cursor: text;
+}
+
+body.dark-mode #login {
+  background-color: #ffffff !important;
+}
+body.dark-mode #login .box {
+  background-color: #ffffff;
+  border-color: #000000;
+}
+body.dark-mode #login .textbox h1,
+body.dark-mode #login .add input,
+body.dark-mode #login .btn h3 {
+  color: #000000;
+}
+body.dark-mode #login .add input {
+  background-color: #ffffff;
+  border-color: #040404;
+}
+body.dark-mode #login .minibox {
+  border-color: #000000;
+}
+body.dark-mode #login p {
+  color: #000000;
+}
+body.dark-mode #login a {
+  color: #000000;
+}
+
+#signup {
+  background-color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 750px;
+}
+#signup .box {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #a8a6a6;
+  margin-bottom: 25px;
+}
+#signup .box .textbox button {
+  margin: 10px 0;
+}
+#signup .box .textbox h1 {
+  margin: 50px 0 20px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 30px;
+  cursor: text;
+}
+#signup .box .add {
+  display: flex;
+  flex-direction: column;
+}
+#signup .box .add input {
+  border-radius: 5px;
+  margin: 10px 20px;
+  padding: 10px;
+  background-color: #000000;
+  border: 2px solid #a8a6a6;
+  color: #ffffff;
+}
+#signup .box .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c14ff;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 4px 20px;
+  max-width: 220px;
+  width: 220px;
+}
+#signup .box .btn h3 {
+  color: #cdcaca;
+}
+#signup .box .btn h3:hover {
+  cursor: pointer;
+}
+#signup .minibox {
+  display: flex;
+  align-items: center;
+  border: 2px solid #a8a6a6;
+  border-radius: 5px;
+  height: 100px;
+}
+#signup .minibox a {
+  color: #1c14ff;
+  cursor: pointer;
+}
+#signup .minibox p {
+  color: #ffffff;
+  margin: 0 41px;
+  cursor: text;
+}
+
+body.dark-mode #signup {
+  background-color: #ffffff !important;
+}
+body.dark-mode #signup .box {
+  background-color: #ffffff;
+  border-color: #000000;
+}
+body.dark-mode #signup .textbox h1,
+body.dark-mode #signup .add input,
+body.dark-mode #signup .btn h3 {
+  color: #000000;
+}
+body.dark-mode #signup .add input {
+  background-color: #ffffff;
+  border-color: #040404;
+}
+body.dark-mode #signup .minibox {
+  border-color: #000000;
+}
+body.dark-mode #signup p {
+  color: #000000;
+}
+body.dark-mode #signup a {
+  color: #00aaff;
+}/*# sourceMappingURL=style.css.map */

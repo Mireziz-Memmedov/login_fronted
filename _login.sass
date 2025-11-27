@@ -1,0 +1,113 @@
+#login
+    background-color: #000000
+    font-family: Arial, Helvetica, sans-serif
+    .box
+        border-radius: 5px
+        display: flex
+        align-items: center
+        flex-direction: column
+        border: 2px solid #a8a6a6
+        margin-bottom: 25px
+        height: 480px
+        .textbox
+            button
+                margin: 10px 0
+            h1
+                margin: 50px 0 20px
+                color: #ffffff
+                font-weight: 500
+                font-size: 30px
+                cursor: text
+        .add
+            display: flex
+            flex-direction: column
+            input
+                border-radius: 5px
+                margin: 10px 20px
+                padding: 10px
+                background-color: #000000
+                border: 2px solid #a8a6a6
+                color: #ffffff
+        .btn
+            display: flex
+            justify-content: center
+            align-items: center
+            background-color: #1c14ff
+            border-radius: 5px
+            margin: 20px 0
+            padding: 4px 20px
+            max-width: 220px
+            width: 220px
+            h3
+                color: #cdcaca
+                &:hover
+                    cursor: pointer
+        .divider
+            width: 220px
+            display: flex
+            align-items: center
+            text-align: center
+            margin: 20px 0 10px
+
+            span
+                padding: 0 10px
+                font-weight: 600
+                color: #cdcaca
+                cursor: text
+
+            &::before,
+            &::after
+                content: ""
+                flex: 1
+                border-bottom: 1px solid #a8a6a6
+
+            &::before
+                margin-right: 10px
+
+            &::after
+                margin-left: 10px
+        .fogot
+            margin-top: 20px
+            a
+                cursor: pointer
+                &:hover
+                    text-decoration: underline
+    .minibox
+        display: flex
+        align-items: center
+        border: 2px solid #a8a6a6
+        border-radius: 5px
+        height: 100px
+        a
+            color: #1c14ff
+            cursor: pointer
+        p
+            color: #ffffff
+            margin: 0 16px
+            cursor: text
+
+body.dark-mode
+    #login
+        background-color: #ffffff !important
+
+        .box
+            background-color: #ffffff
+            border-color: #000000
+
+        .textbox h1,
+        .add input,
+        .btn h3
+            color: #000000
+
+        .add input
+            background-color: #ffffff
+            border-color: #040404
+
+        .minibox
+            border-color: #000000
+
+        p
+            color: #000000
+
+        a
+            color: #000000
