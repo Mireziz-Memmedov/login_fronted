@@ -14,6 +14,7 @@ $(document).ready(function () {
 
         if (!storedUser || username !== storedUser.username || password !== storedUser.password) {
             errorMsg.text("İstifadəçi adı və ya şifrə yanlışdır!");
+            $('#username, #password').val('');
             return;
         }
 
