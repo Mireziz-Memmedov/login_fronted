@@ -35,6 +35,7 @@ $(document).ready(function () {
             error: function () {
                 errorMsg.css("color", "red");
                 errorMsg.html("Server xətası,<br>sonra yenidən cəhd edin!");
+                $('#username, #password').val('');
             }
         });
     }
