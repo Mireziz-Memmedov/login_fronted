@@ -5,13 +5,19 @@ $(document).ready(function () {
     });
 
     $('#toggle-password').click(function () {
-        let pass = $('#password');
-        let type = pass.attr('type') === 'password' ? 'text' : 'password';
-        pass.attr('type', type);
+        const pass = $('#password');
+        const icon = $('#toggle-password');
+
+        if (pass.attr('type') === 'password') {
+            pass.attr('type', 'text');
+            icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        } else {
+            pass.attr('type', 'password');
+            icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        }
     });
 
-    // 🟦 SIGN UP BUTTON CLICK
-    $('#login-btn').click(function () {
+    function signup() {
         let username = $('#username').val().trim();
         let password = $('#password').val().trim();
 
@@ -20,7 +26,6 @@ $(document).ready(function () {
             return;
         }
 
-        // 🔥 İstifadəçini localStorage-da saxla (backend olmayanda)
         let userData = {
             username: username,
             password: password
@@ -28,22 +33,24 @@ $(document).ready(function () {
 
         localStorage.setItem("user", JSON.stringify(userData));
 
-        // ✔ Uğurlu yazı
         $('#error-msg').css("color", "lightgreen");
         $('#error-msg').text("Account created! Redirecting...");
 
-        // 1 saniyə sonra login səhifəsinə keç
         setTimeout(() => {
             window.location.href = "index.html";
         }, 1000);
+    }
+
+    $('#login-btn').click(function (e) {
+        e.preventDefault();
+        signup();
+
     });
 
-    // ENTER düyməsi də işləsin
-    $(document).keypress(function (e) {
-        if (e.key === "Enter") {
-            $('#login-btn').click();
+    $(document).on('keypress', function (e) {
+        if (e.which === 13) {
+            signup();
         }
     });
-
 
 });

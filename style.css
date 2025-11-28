@@ -26,6 +26,7 @@ section {
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
   height: 480px;
+  width: auto;
 }
 #login .box .textbox button {
   margin: 10px 0;
@@ -105,6 +106,7 @@ section {
   border: 2px solid #a8a6a6;
   border-radius: 5px;
   height: 100px;
+  width: auto;
 }
 #login .minibox a {
   color: #1c14ff;
@@ -138,9 +140,6 @@ body.dark-mode #login .minibox {
 body.dark-mode #login p {
   color: #000000;
 }
-body.dark-mode #login a {
-  color: #000000;
-}
 
 #signup {
   background-color: #000000;
@@ -154,6 +153,7 @@ body.dark-mode #login a {
   flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
+  width: auto;
 }
 #signup .box .textbox button {
   margin: 10px 0;
@@ -200,6 +200,7 @@ body.dark-mode #login a {
   border: 2px solid #a8a6a6;
   border-radius: 5px;
   height: 100px;
+  width: auto;
 }
 #signup .minibox a {
   color: #1c14ff;
@@ -232,7 +233,4 @@ body.dark-mode #signup .minibox {
 }
 body.dark-mode #signup p {
   color: #000000;
-}
-body.dark-mode #signup a {
-  color: #00aaff;
 }/*# sourceMappingURL=style.css.map */
