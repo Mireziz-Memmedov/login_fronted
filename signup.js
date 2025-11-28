@@ -20,31 +20,44 @@ $(document).ready(function () {
     function signup() {
         let username = $('#username').val().trim();
         let password = $('#password').val().trim();
+        let errorMsg = $('#error-msg');
 
         if (username === "" || password === "") {
-            $('#error-msg').text("Please fill in all fields!");
+            errorMsg.text("Please fill in all fields!");
             return;
         }
 
-        let userData = {
-            username: username,
-            password: password
-        };
+        $.ajax({
+            url: "",
+            type: "POST",
+            data: {
+                username: username,
+                password: password,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                if (response.success) {
+                    errorMsg.css("color", "lightgreen");
+                    errorMsg.html("Account created!<br>Redirecting...");
 
-        localStorage.setItem("user", JSON.stringify(userData));
-
-        $('#error-msg').css("color", "lightgreen");
-        $('#error-msg').text("Account created! Redirecting...");
-
-        setTimeout(() => {
-            window.location.href = "index.html";
-        }, 1000);
+                    setTimeout(() => {
+                        window.location.href = "login.html";
+                    }, 1000);
+                } else {
+                    errorMsg.css("color", "red");
+                    errorMsg.text(response.error);
+                }
+            },
+            error: function() {
+                errorMsg.css("color", "red");
+                errorMsg.text("Serverlə əlaqə alınmadı!");
+            }
+        });
     }
 
     $('#login-btn').click(function (e) {
         e.preventDefault();
         signup();
-
     });
 
     $(document).on('keypress', function (e) {

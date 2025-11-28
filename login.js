@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-
     function login() {
         const username = $('#username').val().trim();
         const password = $('#password').val().trim();
@@ -12,14 +10,33 @@ $(document).ready(function () {
             return;
         }
 
-        if (!storedUser || username !== storedUser.username || password !== storedUser.password) {
-            errorMsg.text("İstifadəçi adı və ya şifrə yanlışdır!");
-            $('#username, #password').val('');
-            return;
-        }
+        $.ajax({
+            type: 'POST',
+            url: '/login/',
+            data: {
+                username: username,
+                password: password,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function (response) {
 
-        errorMsg.text("");
-        window.location.href = "https://mireziz-memmedov.github.io/task_startbootstrap/";
+                if (response.success) {
+                    errorMsg.css("color", "lightgreen");
+                    errorMsg.text("Giriş uğurlu! Yönləndirilir...");
+                    setTimeout(() => {
+                        window.location.href = "https://mireziz-memmedov.github.io/Task_JS_Chat2/";
+                    }, 1000);
+                } else {
+                    errorMsg.css("color", "red");
+                    errorMsg.text("İstifadəçi adı və ya şifrə yanlışdır!");
+                    $('#username, #password').val('');
+                }
+            },
+            error: function () {
+                errorMsg.css("color", "red");
+                errorMsg.html("Server xətası,<br>sonra yenidən cəhd edin!");
+            }
+        });
     }
 
     $('#login-btn').click(function (e) {

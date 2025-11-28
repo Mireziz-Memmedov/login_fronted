@@ -67,6 +67,9 @@ section {
 #login .box .btn h3:hover {
   cursor: pointer;
 }
+#login .box p {
+  margin-bottom: 10px;
+}
 #login .box .divider {
   width: 220px;
   display: flex;
@@ -193,6 +196,9 @@ body.dark-mode #login p {
 }
 #signup .box .btn h3:hover {
   cursor: pointer;
+}
+#signup .box p {
+  margin-bottom: 10px;
 }
 #signup .minibox {
   display: flex;
