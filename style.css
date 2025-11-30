@@ -109,9 +109,10 @@ section {
   border: 2px solid #a8a6a6;
   border-radius: 5px;
   height: 100px;
+  width: 100%;
   min-width: 264px;
-  width: 264px;
   max-width: 264px;
+  box-sizing: border-box;
 }
 #login .minibox a {
   color: #1c14ff;
@@ -212,8 +213,8 @@ body.dark-mode #login p {
   border-radius: 5px;
   height: 100px;
   min-width: 264px;
-  width: 264px;
   max-width: 264px;
+  box-sizing: border-box;
 }
 #signup .minibox a {
   color: #1c14ff;
