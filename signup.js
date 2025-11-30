@@ -40,7 +40,7 @@ $(document).ready(function () {
                     errorMsg.css("color", "lightgreen");
                     errorMsg.html("Account created!<br>Redirecting...");
                     setTimeout(() => {
-                        window.location.href = "login.html";
+                        window.location.href = "./index.html";
                     }, 1000);
                 } else {
                     errorMsg.css("color", "red");
