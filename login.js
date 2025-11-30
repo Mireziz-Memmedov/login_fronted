@@ -13,11 +13,11 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: 'https://login-db-backend-three.vercel.app/api/login/',
-            data: {
+            contentType: "application/json",  
+            data: JSON.stringify({  
                 username: username,
-                password: password,
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-            },
+                password: password
+            }),
             success: function (response) {
 
                 if (response.success) {
@@ -68,4 +68,3 @@ $(document).ready(function () {
         $('body').toggleClass('dark-mode');
     });
 });
-

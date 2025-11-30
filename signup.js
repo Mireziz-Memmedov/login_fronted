@@ -22,7 +22,7 @@ $(document).ready(function () {
         let password = $('#password').val().trim();
         let errorMsg = $('#error-msg');
 
-        if (username === "" || password === "") {
+        if (!username || !password) {
             errorMsg.text("Please fill in all fields!");
             return;
         }
@@ -30,16 +30,15 @@ $(document).ready(function () {
         $.ajax({
             url: "https://login-db-backend-three.vercel.app/api/signup/",
             type: "POST",
-            data: {
+            contentType: "application/json",
+            data: JSON.stringify({
                 username: username,
-                password: password,
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-            },
+                password: password
+            }),
             success: function (response) {
                 if (response.success) {
                     errorMsg.css("color", "lightgreen");
                     errorMsg.html("Account created!<br>Redirecting...");
-
                     setTimeout(() => {
                         window.location.href = "login.html";
                     }, 1000);
