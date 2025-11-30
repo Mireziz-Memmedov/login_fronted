@@ -28,14 +28,14 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "https://login-db-backend-three.vercel.app/api/signup/",
+            url: "",
             type: "POST",
             data: {
                 username: username,
                 password: password,
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
             },
-            success: function (response) {
+            success: function(response) {
                 if (response.success) {
                     errorMsg.css("color", "lightgreen");
                     errorMsg.html("Account created!<br>Redirecting...");
@@ -48,7 +48,7 @@ $(document).ready(function () {
                     errorMsg.text(response.error);
                 }
             },
-            error: function () {
+            error: function() {
                 errorMsg.css("color", "red");
                 errorMsg.text("Serverlə əlaqə alınmadı!");
             }
