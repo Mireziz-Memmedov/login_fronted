@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: '/login/',
+            url: 'https://login-db-backend-three.vercel.app/api/login/',
             data: {
                 username: username,
                 password: password,
@@ -68,3 +68,4 @@ $(document).ready(function () {
         $('body').toggleClass('dark-mode');
     });
 });
+
