@@ -28,7 +28,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "",
+            url: "https://login-db-backend-three.vercel.app/api/signup/",
             type: "POST",
             data: {
                 username: username,
@@ -67,3 +67,4 @@ $(document).ready(function () {
     });
 
 });
+
