@@ -150,7 +150,7 @@ body.dark-mode #login p {
   color: #000000;
 }
 @media (max-width: 360px) {
-  body.dark-mode .minibox {
+  body.dark-mode #login .minibox {
     width: 100%;
     min-width: auto;
   }
@@ -256,7 +256,7 @@ body.dark-mode #signup p {
   color: #000000;
 }
 @media (max-width: 360px) {
-  body.dark-mode .minibox {
+  body.dark-mode #signup .minibox {
     width: 100%;
     min-width: auto;
   }
