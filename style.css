@@ -110,6 +110,8 @@ section {
   border-radius: 5px;
   height: 100px;
   min-width: 264px;
+  width: 264px;
+  max-width: 264px;
 }
 #login .minibox a {
   color: #1c14ff;
@@ -168,7 +170,7 @@ body.dark-mode #login p {
   margin: 50px 0 20px;
   color: #ffffff;
   font-weight: 500;
-  font-size: 30px;
+  font-size: 25px;
   cursor: text;
 }
 #signup .box .add {
@@ -210,6 +212,8 @@ body.dark-mode #login p {
   border-radius: 5px;
   height: 100px;
   min-width: 264px;
+  width: 264px;
+  max-width: 264px;
 }
 #signup .minibox a {
   color: #1c14ff;
