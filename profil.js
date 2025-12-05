@@ -1,13 +1,7 @@
 $(document).ready(function () {
 
-    // Tema toggle
-    $('#themeToggle').click(function () {
-        $('body').toggleClass('dark-mode');
-    });
-
-    // LocalStorage-dən currentUserId və currentUsername yoxla
-    const currentUserId = localStorage.getItem('currentUserId');
-    const currentUsername = localStorage.getItem('currentUsername');
+    const currentUserId = localStorage.getItem('user_id'); // login zamanı saxlamısan
+    const currentUsername = localStorage.getItem('username');
 
     if (!currentUserId || !currentUsername) {
         alert("Zəhmət olmasa yenidən daxil olun!");
@@ -15,7 +9,8 @@ $(document).ready(function () {
         return;
     }
 
-    // Recent chats-i backend-dən yükləyir
+    $('#welcomeUser').text(`Xoş gəlmisiniz, ${currentUsername}!`);
+
     function loadRecentChats() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/recent-chats/?user_id=${currentUserId}`,
@@ -40,7 +35,7 @@ $(document).ready(function () {
 
     loadRecentChats();
 
-    // User search → yalnız mövcud istifadəçi varsa chat.html açır
+    // Search → yalnız mövcud istifadəçi varsa chat.html açır
     function searchUser() {
         let query = $('#username').val().trim();
         if (!query) return;
@@ -54,7 +49,6 @@ $(document).ready(function () {
                 if (!res.users || res.users.length === 0) {
                     alert("Belə istifadəçi mövcud deyil!");
                 } else {
-                    // Chat səhifəsinə yönləndir
                     window.location.href = `./chat.html?user=${encodeURIComponent(query)}`;
                 }
             },
@@ -64,18 +58,15 @@ $(document).ready(function () {
         });
     }
 
-    // Enter basanda search
     $('#username').keypress(function (e) {
         if (e.which === 13) searchUser();
     });
 
-    // Search button kliklənəndə
     $('#searchBtn').click(function (e) {
         e.preventDefault();
         searchUser();
     });
 
-    // Recent chats kliklənəndə chat səhifəsinə yönləndir
     $(document).on('click', '.userItem', function () {
         let username = $(this).text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;

@@ -1,37 +1,27 @@
 $(document).ready(function () {
 
     const targetUser = new URLSearchParams(window.location.search).get('user');
+    const currentUserId = localStorage.getItem('user_id');
+    const currentUsername = localStorage.getItem('username');
     const $messagesBox = $('#messages');
 
-    const currentUserId = localStorage.getItem('currentUserId');
-    const currentUsername = localStorage.getItem('currentUsername');
-
-    if (!currentUserId || !currentUsername) {
-        alert("Zəhmət olmasa yenidən daxil olun!");
-        window.location.href = "./index.html";
-        return;
-    }
-
-    if (!targetUser) {
-        alert("İstifadəçi adı tapılmadı!");
+    if (!targetUser || !currentUserId || !currentUsername) {
+        alert("İstifadəçi adı tapılmadı! Yenidən daxil olun.");
         window.location.href = "./profil.html";
         return;
     }
 
-    // Mesajları göstərmək funksiyası
     function appendMessage(sender, text) {
         if (!text) return;
-        const div = $('<div></div>');
+        const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
         div.append($('<h2></h2>').text(text));
-        div.addClass(sender === 'me' ? 'right' : 'left');
         $messagesBox.append(div);
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // Mesajları backend-dən yüklə
     function loadMessages() {
         $.ajax({
-            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${targetUser}`,
+            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
             method: "GET",
             success: function (res) {
                 $messagesBox.empty();
@@ -52,7 +42,6 @@ $(document).ready(function () {
     loadMessages();
     setInterval(loadMessages, 2000);
 
-    // Mesaj göndərmə
     $('#sendBtn').click(function () {
         const msg = $('#messageInput').val().trim();
         if (!msg) return;
@@ -80,7 +69,6 @@ $(document).ready(function () {
         });
     });
 
-    // Enter basanda mesaj göndər
     $('#messageInput').keypress(function (e) {
         if (e.which === 13) $('#sendBtn').click();
     });
