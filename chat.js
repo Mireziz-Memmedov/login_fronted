@@ -22,7 +22,7 @@ $(document).ready(function () {
     // Backend-dən mesajları çəkmək
     function loadMessages() {
         $.ajax({
-            url: `/api/get-messages/?user=${targetUser}`,
+            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user=${targetUser}`,
             method: "GET",
             success: function (res) {
                 $messagesBox.empty();
@@ -44,7 +44,7 @@ $(document).ready(function () {
         if (!msg) return;
 
         $.ajax({
-            url: "/api/send-message/",
+            url: "https://login-db-backend-three.vercel.app/api/send-message/",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({

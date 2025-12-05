@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     function loadRecentChats() {
         $.ajax({
-            url: "/api/recent-chats/",
+            url: "https://login-db-backend-three.vercel.app/api/recent-chats/",
             method: "GET",
             success: function (res) {
                 $('#recentChats').empty();
@@ -32,7 +32,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: "/api/search-user/",
+            url: "https://login-db-backend-three.vercel.app/api/search-user/",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({ username: query }),
