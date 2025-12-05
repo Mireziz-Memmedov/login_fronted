@@ -4,13 +4,14 @@ $(document).ready(function () {
         $('body').toggleClass('dark-mode');
     });
 
+    // Recent chats-i backend-dən yükləyir
     function loadRecentChats() {
         $.ajax({
             url: "https://login-db-backend-three.vercel.app/api/recent-chats/",
             method: "GET",
             success: function (res) {
                 $('#recentChats').empty();
-                if (res.users.length === 0) {
+                if (!res.users || res.users.length === 0) {
                     $('#recentChats').append("<p>Heç bir sohbet yoxdur</p>");
                 } else {
                     res.users.forEach(user => {
@@ -18,12 +19,17 @@ $(document).ready(function () {
                         $('#recentChats').append(p);
                     });
                 }
+            },
+            error: function () {
+                $('#recentChats').empty();
+                $('#recentChats').append("<p>Server ilə əlaqə alınmadı</p>");
             }
         });
     }
 
     loadRecentChats();
 
+    // İstifadəçi axtarışı
     function searchUser() {
         let query = $('#username').val().trim();
         if (query.length < 1) {
@@ -38,7 +44,7 @@ $(document).ready(function () {
             data: JSON.stringify({ username: query }),
             success: function (res) {
                 $('#recentChats').empty();
-                if (res.users.length === 0) {
+                if (!res.users || res.users.length === 0) {
                     $('#recentChats').append("<p>❌ Tapılmadı</p>");
                 } else {
                     res.users.forEach(user => {
@@ -46,22 +52,29 @@ $(document).ready(function () {
                         $('#recentChats').append(p);
                     });
                 }
+            },
+            error: function () {
+                $('#recentChats').empty();
+                $('#recentChats').append("<p>Server ilə əlaqə alınmadı</p>");
             }
         });
     }
 
+    // Enter basanda axtarış
     $('#username').on('keypress', function (e) {
         if (e.which === 13) searchUser();
     });
 
+    // Search button klik
     $('#searchBtn').click(function (e) {
         e.preventDefault();
         searchUser();
     });
 
+    // İstifadəçi adını klikləyəndə chat səhifəsinə yönləndir
     $(document).on('click', '.userItem', function () {
         let username = $(this).text();
-        window.location.href = `/chat?user=${username}`;
+        window.location.href = `/chat?user=${encodeURIComponent(username)}`;
     });
 
 });
