@@ -3,15 +3,8 @@ $(document).ready(function () {
     const targetUser = new URLSearchParams(window.location.search).get('user');
     const $messagesBox = $('#messages');
 
-    // Current user login zamanı localStorage-dən
     const currentUserId = localStorage.getItem('currentUserId');
     const currentUsername = localStorage.getItem('currentUsername');
-
-    if (!targetUser) {
-        alert("İstifadəçi adı tapılmadı!");
-        window.location.href = "./profil.html";
-        return;
-    }
 
     if (!currentUserId || !currentUsername) {
         alert("Zəhmət olmasa yenidən daxil olun!");
@@ -19,7 +12,13 @@ $(document).ready(function () {
         return;
     }
 
-    // Mesajları DOM-a əlavə edən funksiya
+    if (!targetUser) {
+        alert("İstifadəçi adı tapılmadı!");
+        window.location.href = "./profil.html";
+        return;
+    }
+
+    // Mesajları göstərmək funksiyası
     function appendMessage(sender, text) {
         if (!text) return;
         const div = $('<div></div>');
@@ -29,10 +28,10 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // Mesajları backend-dən yükləyir
+    // Mesajları backend-dən yüklə
     function loadMessages() {
         $.ajax({
-            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
+            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${targetUser}`,
             method: "GET",
             success: function (res) {
                 $messagesBox.empty();
@@ -53,7 +52,7 @@ $(document).ready(function () {
     loadMessages();
     setInterval(loadMessages, 2000);
 
-    // Mesaj göndərmək
+    // Mesaj göndərmə
     $('#sendBtn').click(function () {
         const msg = $('#messageInput').val().trim();
         if (!msg) return;
