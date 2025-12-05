@@ -1,35 +1,23 @@
 $(document).ready(function () {
+
+    // Dark mode toggle
     $('#themeToggle').click(function () {
         $('body').toggleClass('dark-mode');
     });
 
-    const currentUserId = $('#user_id').val(); // HTML-də hidden input kimi olacaq
+    const currentUserId = $('#user_id').val();
+    const currentUsername = $('#username').val();
     const welcomeEl = $('#welcomeUser');
     const recentChatsEl = $('#recentChats');
 
-    if (!currentUserId) {
+    if (!currentUserId || !currentUsername) {
         alert("Zəhmət olmasa yenidən daxil olun!");
         window.location.href = "./index.html";
         return;
     }
 
-    // Cari istifadəçi məlumatını backend-dən alır
-    $.ajax({
-        url: `https://login-db-backend-three.vercel.app/api/get-user/?user_id=${currentUserId}`,
-        method: "GET",
-        success: function (res) {
-            if (!res.user) {
-                alert("Zəhmət olmasa yenidən daxil olun!");
-                window.location.href = "./index.html";
-                return;
-            }
-            welcomeEl.text(`Xoş gəlmisiniz, ${res.user.username}!`);
-        },
-        error: function () {
-            alert("Server ilə əlaqə alınmadı!");
-            window.location.href = "./index.html";
-        }
-    });
+    // Xoş gəlmisiniz mesajı
+    welcomeEl.text(`Xoş gəlmisiniz, ${currentUsername}!`);
 
     // Son mesajlaşılan istifadəçiləri backend-dən alır
     function loadRecentChats() {
@@ -58,7 +46,7 @@ $(document).ready(function () {
 
     // İstifadəçi axtarışı
     function searchUser() {
-        const query = $('#username').val().trim();
+        const query = $('#usernameSearch').val().trim();
         if (!query) return;
 
         $.ajax({
@@ -79,7 +67,7 @@ $(document).ready(function () {
         });
     }
 
-    $('#username').keypress(function (e) {
+    $('#usernameSearch').keypress(function (e) {
         if (e.which === 13) searchUser();
     });
 
