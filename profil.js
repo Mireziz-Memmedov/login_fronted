@@ -10,11 +10,6 @@ $(document).ready(function () {
             url: "https://login-db-backend-three.vercel.app/api/current-user/",
             method: "GET",
             success: function (res) {
-                if (!res.user) {
-                    alert("Zəhmət olmasa yenidən daxil olun!");
-                    window.location.href = "./index.html";
-                    return;
-                }
                 currentUser = res.user;
                 $('#welcomeUser').text(`Xoş gəlmisiniz, ${currentUser.username}!`);
                 loadRecentChats();
