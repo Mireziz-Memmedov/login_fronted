@@ -1,44 +1,59 @@
 $(document).ready(function () {
 
-    const currentUserId = localStorage.getItem('user_id'); // login zamanı saxlamısan
-    const currentUsername = localStorage.getItem('username');
+    const $recentChats = $('#recentChats');
 
-    if (!currentUserId || !currentUsername) {
-        alert("Zəhmət olmasa yenidən daxil olun!");
-        window.location.href = "./index.html";
-        return;
-    }
+    let currentUser = null; // Backenddən alacağıq
 
-    $('#welcomeUser').text(`Xoş gəlmisiniz, ${currentUsername}!`);
-
-    function loadRecentChats() {
-        $.ajax({
-            url: `https://login-db-backend-three.vercel.app/api/recent-chats/?user_id=${currentUserId}`,
+    // Backenddən cari istifadəçi məlumatını alır
+    function fetchCurrentUser() {
+        return $.ajax({
+            url: "https://login-db-backend-three.vercel.app/api/current-user/",
             method: "GET",
             success: function (res) {
-                $('#recentChats').empty();
-                if (!res.users || res.users.length === 0) {
-                    $('#recentChats').append("<p>Heç bir sohbet yoxdur</p>");
-                } else {
-                    res.users.forEach(user => {
-                        let p = $(`<p class="userItem">${user}</p>`);
-                        $('#recentChats').append(p);
-                    });
+                if (!res.user) {
+                    alert("Zəhmət olmasa yenidən daxil olun!");
+                    window.location.href = "./index.html";
+                    return;
                 }
+                currentUser = res.user;
+                $('#welcomeUser').text(`Xoş gəlmisiniz, ${currentUser.username}!`);
+                loadRecentChats();
             },
             error: function () {
-                $('#recentChats').empty();
-                $('#recentChats').append("<p>Server ilə əlaqə alınmadı</p>");
+                alert("Server ilə əlaqə alınmadı!");
             }
         });
     }
 
-    loadRecentChats();
+    // Backenddən recent chats-i yükləyir
+    function loadRecentChats() {
+        if (!currentUser) return;
 
-    // Search → yalnız mövcud istifadəçi varsa chat.html açır
+        $.ajax({
+            url: `https://login-db-backend-three.vercel.app/api/recent-chats/?user_id=${currentUser.id}`,
+            method: "GET",
+            success: function (res) {
+                $recentChats.empty();
+                if (!res.users || res.users.length === 0) {
+                    $recentChats.append("<p>Heç bir sohbet yoxdur</p>");
+                } else {
+                    res.users.forEach(user => {
+                        let p = $(`<p class="userItem">${user}</p>`);
+                        $recentChats.append(p);
+                    });
+                }
+            },
+            error: function () {
+                $recentChats.empty();
+                $recentChats.append("<p>Server ilə əlaqə alınmadı</p>");
+            }
+        });
+    }
+
+    // İstifadəçi axtarışı → yalnız mövcud istifadəçi varsa chat.html açır
     function searchUser() {
         let query = $('#username').val().trim();
-        if (!query) return;
+        if (!query || !currentUser) return;
 
         $.ajax({
             url: "https://login-db-backend-three.vercel.app/api/search-user/",
@@ -58,18 +73,24 @@ $(document).ready(function () {
         });
     }
 
+    // Enter basanda search
     $('#username').keypress(function (e) {
         if (e.which === 13) searchUser();
     });
 
+    // Search button kliklənəndə
     $('#searchBtn').click(function (e) {
         e.preventDefault();
         searchUser();
     });
 
+    // Recent chats kliklənəndə chat səhifəsinə yönləndir
     $(document).on('click', '.userItem', function () {
         let username = $(this).text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
     });
+
+    // Cari istifadəçini backenddən çək
+    fetchCurrentUser();
 
 });
