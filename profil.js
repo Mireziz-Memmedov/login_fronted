@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $('#themeToggle').click(function () {
         $('body').toggleClass('dark-mode');
     });
@@ -28,17 +29,31 @@ $(document).ready(function () {
 
     loadRecentChats();
 
-    // Axtarış funksiyası → birbaşa chat.html-ə yönləndirir
+    // Search → yalnız mövcud istifadəçi varsa chat.html açır
     function searchUser() {
         let query = $('#username').val().trim();
-        if (query.length < 1) return;
+        if (!query) return;
 
-        // Birbaşa chat səhifəsinə yönləndir
-        window.location.href = `./chat.html?user=${encodeURIComponent(query)}`;
+        $.ajax({
+            url: "https://login-db-backend-three.vercel.app/api/search-user/",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ username: query }),
+            success: function (res) {
+                if (!res.users || res.users.length === 0) {
+                    alert("Belə istifadəçi mövcud deyil!");
+                } else {
+                    window.location.href = `./chat.html?user=${encodeURIComponent(query)}`;
+                }
+            },
+            error: function () {
+                alert("Server ilə əlaqə alınmadı!");
+            }
+        });
     }
 
-    // Enter basanda axtarış
-    $('#username').on('keypress', function (e) {
+    // Enter basanda search
+    $('#username').keypress(function (e) {
         if (e.which === 13) searchUser();
     });
 
@@ -48,9 +63,10 @@ $(document).ready(function () {
         searchUser();
     });
 
-    // Recent chats siyahısında klikləyəndə
+    // Recent chats kliklənəndə chat səhifəsinə yönləndir
     $(document).on('click', '.userItem', function () {
         let username = $(this).text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
     });
+
 });
