@@ -24,7 +24,7 @@ $(document).ready(function () {
                     errorMsg.css("color", "lightgreen");
                     errorMsg.text("Giriş uğurlu! Yönləndirilir...");
                     setTimeout(() => {
-                        window.location.href = "https://mireziz-memmedov.github.io/Task_JS_Chat2/";
+                        window.location.href = "./profil.html";
                     }, 1000);
                 } else {
                     errorMsg.css("color", "red");
