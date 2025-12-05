@@ -73,7 +73,7 @@ $(document).ready(function () {
     // İstifadəçi adını klikləyəndə chat səhifəsinə yönləndir
     $(document).on('click', '.userItem', function () {
         let username = $(this).text();
-        window.location.href = `/chat?user=${encodeURIComponent(username)}`;
+        window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
     });
 
 });
