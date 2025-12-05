@@ -3,12 +3,23 @@ $(document).ready(function () {
     const targetUser = new URLSearchParams(window.location.search).get('user');
     const $messagesBox = $('#messages');
 
+    // Current user login zamanı localStorage-dən
+    const currentUserId = localStorage.getItem('currentUserId');
+    const currentUsername = localStorage.getItem('currentUsername');
+
     if (!targetUser) {
         alert("İstifadəçi adı tapılmadı!");
         window.location.href = "./profil.html";
         return;
     }
 
+    if (!currentUserId || !currentUsername) {
+        alert("Zəhmət olmasa yenidən daxil olun!");
+        window.location.href = "./index.html";
+        return;
+    }
+
+    // Mesajları DOM-a əlavə edən funksiya
     function appendMessage(sender, text) {
         if (!text) return;
         const div = $('<div></div>');
@@ -18,15 +29,15 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
+    // Mesajları backend-dən yükləyir
     function loadMessages() {
         $.ajax({
-            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user=${targetUser}`,
+            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
             method: "GET",
             success: function (res) {
                 $messagesBox.empty();
                 if (res.messages && res.messages.length > 0) {
                     res.messages.forEach(msg => {
-                        // sender = "me" və ya digər
                         const sender = msg.sender === currentUsername ? 'me' : 'other';
                         appendMessage(sender, msg.text);
                     });
@@ -42,6 +53,7 @@ $(document).ready(function () {
     loadMessages();
     setInterval(loadMessages, 2000);
 
+    // Mesaj göndərmək
     $('#sendBtn').click(function () {
         const msg = $('#messageInput').val().trim();
         if (!msg) return;
@@ -51,15 +63,16 @@ $(document).ready(function () {
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                receiver: targetUser,
+                sender_id: currentUserId,
+                to: targetUser,
                 text: msg
             }),
             success: function (res) {
-                if (res.id) { // serializer göndərirsə yeni mesaj id-si
+                if (res.success) {
                     appendMessage('me', msg);
                     $('#messageInput').val('');
                 } else {
-                    alert("Mesaj göndərilə bilmədi!");
+                    alert(res.error || "Mesaj göndərilə bilmədi!");
                 }
             },
             error: function () {
@@ -68,6 +81,7 @@ $(document).ready(function () {
         });
     });
 
+    // Enter basanda mesaj göndər
     $('#messageInput').keypress(function (e) {
         if (e.which === 13) $('#sendBtn').click();
     });
