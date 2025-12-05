@@ -29,7 +29,10 @@ section {
   width: auto;
 }
 #login .box .textbox button {
-  margin: 10px 0;
+  margin: 11px 0;
+  border: none;
+  background-color: #000000;
+  font-size: 20px;
 }
 #login .box .textbox h1 {
   margin: 50px 0 20px;
@@ -137,6 +140,9 @@ body.dark-mode #login .add input,
 body.dark-mode #login .btn h3 {
   color: #000000;
 }
+body.dark-mode #login #themeToggle {
+  background-color: #ffffff;
+}
 body.dark-mode #login .add input {
   background-color: #ffffff;
   border-color: #040404;
@@ -167,6 +173,9 @@ body.dark-mode #login p {
 }
 #signup .box .textbox button {
   margin: 10px 0;
+  border: none;
+  background-color: #000000;
+  font-size: 20px;
 }
 #signup .box .textbox h1 {
   margin: 50px 0 20px;
@@ -241,6 +250,9 @@ body.dark-mode #signup .add input,
 body.dark-mode #signup .btn h3 {
   color: #000000;
 }
+body.dark-mode #signup #themeToggle {
+  background-color: #ffffff;
+}
 body.dark-mode #signup .add input {
   background-color: #ffffff;
   border-color: #040404;
@@ -279,7 +291,7 @@ body.dark-mode #signup p {
   font-size: 20px;
 }
 #profil .box .textbox h1 {
-  color: #fff;
+  color: #ffffff;
   font-weight: 500;
   font-size: 30px;
   cursor: default;
@@ -295,7 +307,7 @@ body.dark-mode #signup p {
   flex: 1;
   border: 2px solid #a8a6a6;
   background-color: #000;
-  color: #fff;
+  color: #ffffff;
 }
 #profil .box .add button {
   border-radius: 5px;
