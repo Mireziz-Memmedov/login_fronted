@@ -14,9 +14,11 @@
 </head>
 
 <body>
-    <header>
+    <!-- Hidden inputlər backend-dən JS üçün -->
+    <input type="hidden" id="user_id" value="{{ current_user_id }}">
+    <input type="hidden" id="username" value="{{ current_username }}">
 
-    </header>
+    <header></header>
 
     <main>
         <section id="profil">
@@ -29,11 +31,11 @@
                                 <button id="themeToggle">🌙</button>
                             </div>
                             <div class="add">
-                                <input type="text" id="username" placeholder="Axtarın...">
+                                <input type="text" id="usernameSearch" placeholder="Axtarın...">
                                 <button id="searchBtn">🔍</button>
                             </div>
                             <div id="recentChats">
-
+                                <!-- Recent chats burada JS ilə yüklənəcək -->
                             </div>
                         </div>
                     </div>
@@ -41,6 +43,7 @@
             </div>
         </section>
     </main>
+
     <footer></footer>
 </body>
 

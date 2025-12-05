@@ -1,31 +1,17 @@
 $(document).ready(function () {
+    $('#themeToggle').click(function () {
+        $('body').toggleClass('dark-mode');
+    });
 
-    // Chat üçün istifadəçi adı URL-dən götürülür
-    const targetUser = new URLSearchParams(window.location.search).get('user');
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetUser = urlParams.get('user');
+    const currentUserId = urlParams.get('user_id');
     const $messagesBox = $('#messages');
 
-    if (!targetUser) {
-        alert("İstifadəçi adı tapılmadı!");
+    if (!targetUser || !currentUserId) {
+        alert("İstifadəçi tapılmadı! Yenidən daxil olun.");
         window.location.href = "./profil.html";
         return;
-    }
-
-    let currentUser = null; // Backenddən çəkəcəyik
-
-    // Backenddən cari user məlumatını al
-    function fetchCurrentUser() {
-        return $.ajax({
-            url: "https://login-db-backend-three.vercel.app/api/current-user/",
-            method: "GET",
-            success: function (res) {
-                currentUser = res.user;
-                $('#welcomeUser').text(`Xoş gəlmisiniz, ${currentUser.username}!`);
-                loadMessages();
-            },
-            error: function () {
-                alert("Server ilə əlaqə alınmadı!");
-            }
-        });
     }
 
     function appendMessage(sender, text) {
@@ -36,17 +22,16 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
+    // Mesajları backend-dən alır
     function loadMessages() {
-        if (!currentUser) return;
-
         $.ajax({
-            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUser.id}&user=${encodeURIComponent(targetUser)}`,
+            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
             method: "GET",
             success: function (res) {
                 $messagesBox.empty();
                 if (res.messages && res.messages.length > 0) {
                     res.messages.forEach(msg => {
-                        const sender = msg.sender === currentUser.username ? 'me' : 'other';
+                        const sender = msg.sender_id == currentUserId ? 'me' : 'other';
                         appendMessage(sender, msg.text);
                     });
                 }
@@ -58,18 +43,20 @@ $(document).ready(function () {
         });
     }
 
-    setInterval(loadMessages, 2000); // 2 saniyədə bir yenilə
+    loadMessages();
+    setInterval(loadMessages, 2000);
 
+    // Mesaj göndərmək
     $('#sendBtn').click(function () {
         const msg = $('#messageInput').val().trim();
-        if (!msg || !currentUser) return;
+        if (!msg) return;
 
         $.ajax({
             url: "https://login-db-backend-three.vercel.app/api/send-message/",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                sender_id: currentUser.id,
+                sender_id: currentUserId,
                 to: targetUser,
                 text: msg
             }),
@@ -90,7 +77,4 @@ $(document).ready(function () {
     $('#messageInput').keypress(function (e) {
         if (e.which === 13) $('#sendBtn').click();
     });
-
-    // Cari istifadəçini backenddən çəkmək
-    fetchCurrentUser();
 });
