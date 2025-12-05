@@ -29,7 +29,6 @@ $(document).ready(function () {
 
     loadRecentChats();
 
-    // İstifadəçi axtarışı
     function searchUser() {
         let query = $('#username').val().trim();
         if (query.length < 1) {
