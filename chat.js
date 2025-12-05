@@ -9,7 +9,6 @@ $(document).ready(function () {
         return;
     }
 
-    // Mesaj əlavə edən funksiya
     function appendMessage(sender, text) {
         if (!text) return;
         const div = $('<div></div>');
@@ -19,7 +18,6 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // Backend-dən mesajları çəkmək
     function loadMessages() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/get-messages/?user=${targetUser}`,
@@ -27,7 +25,11 @@ $(document).ready(function () {
             success: function (res) {
                 $messagesBox.empty();
                 if (res.messages && res.messages.length > 0) {
-                    res.messages.forEach(msg => appendMessage(msg.sender, msg.text));
+                    res.messages.forEach(msg => {
+                        // sender = "me" və ya digər
+                        const sender = msg.sender === currentUsername ? 'me' : 'other';
+                        appendMessage(sender, msg.text);
+                    });
                 }
             },
             error: function () {
@@ -38,9 +40,8 @@ $(document).ready(function () {
     }
 
     loadMessages();
-    setInterval(loadMessages, 2000); // real-time polling
+    setInterval(loadMessages, 2000);
 
-    // Mesaj göndərmə
     $('#sendBtn').click(function () {
         const msg = $('#messageInput').val().trim();
         if (!msg) return;
@@ -49,9 +50,12 @@ $(document).ready(function () {
             url: "https://login-db-backend-three.vercel.app/api/send-message/",
             method: "POST",
             contentType: "application/json",
-            data: JSON.stringify({ to: targetUser, text: msg }),
+            data: JSON.stringify({
+                receiver: targetUser,
+                text: msg
+            }),
             success: function (res) {
-                if (res.success) {
+                if (res.id) { // serializer göndərirsə yeni mesaj id-si
                     appendMessage('me', msg);
                     $('#messageInput').val('');
                 } else {
@@ -64,7 +68,6 @@ $(document).ready(function () {
         });
     });
 
-    // Enter basanda göndər
     $('#messageInput').keypress(function (e) {
         if (e.which === 13) $('#sendBtn').click();
     });
