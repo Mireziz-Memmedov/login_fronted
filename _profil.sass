@@ -1,0 +1,81 @@
+#profil
+    background-color: #000000
+    font-family: Arial, Helvetica, sans-serif
+    display: flex
+    justify-content: center
+    .box
+        border-radius: 5px
+        display: flex
+        align-items: center
+        flex-direction: column
+        border: 2px solid #a8a6a6
+        margin-bottom: 25px
+        height: 480px
+        .textbox
+            display: flex
+            margin-bottom: 25px
+            justify-content: space-between
+            width: 100%
+            button
+                border: none
+                background-color: #000000
+                font-size: 20px
+            h1
+                color: #fff
+                font-weight: 500
+                font-size: 30px
+                cursor: default
+                margin: 10px 0 0 5px
+        .add
+            display: flex
+            margin: 0 5px 15px
+            input
+                border-radius: 5px
+                padding: 10px
+                flex: 1
+                border: 2px solid #a8a6a6
+                background-color: #000
+                color: #fff
+            button
+                border-radius: 5px
+                border: none
+                background-color: #94a6e6
+                color: #fff
+                padding: 0 15px
+                margin-left: 5px
+                cursor: pointer
+        #recentChats
+            margin-top: 10px
+            width: 100%
+            max-height: 250px
+            overflow-y: auto
+            p
+                background-color: #1a1a1a
+                color: #fff
+                padding: 10px
+                border-radius: 5px
+                margin-bottom: 5px
+                cursor: pointer
+                &:hover
+                    background-color: #333
+body.dark-mode
+    #profil
+        background-color: #ffffff
+        .box
+            background-color: #ffffff
+            border-color: #000000
+            .textbox h1
+                color: #000000
+            #themeToggle
+                background-color: #ffffff
+            .add input
+                background-color: #ffffff
+                border-color: #000000
+            .add button
+                background-color: #94a6e6
+                color: #ffffff
+        #recentChats p
+            background-color: #f0f0f0
+            color: #000000
+            &:hover
+                background-color: #cccccc
