@@ -13,14 +13,18 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             url: 'https://login-db-backend-three.vercel.app/api/login/',
-            contentType: "application/json",  
-            data: JSON.stringify({  
+            contentType: "application/json",
+            data: JSON.stringify({
                 username: username,
                 password: password
             }),
             success: function (response) {
 
                 if (response.success) {
+                    // ✅ Buraya əlavə etdik: localStorage-a yazır
+                    localStorage.setItem('currentUserId', response.user.id);
+                    localStorage.setItem('currentUsername', response.user.username);
+
                     errorMsg.css("color", "lightgreen");
                     errorMsg.text("Giriş uğurlu! Yönləndirilir...");
                     setTimeout(() => {
