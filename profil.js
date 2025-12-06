@@ -1,16 +1,10 @@
 $(document).ready(function () {
-    // Dark mode toggle
-    $('#themeToggle').click(function () {
-        $('body').toggleClass('dark-mode');
-    });
-
-    // localStorage-dan istifadəçi məlumatlarını oxu
     const currentUserId = localStorage.getItem('currentUserId');
     const currentUsername = localStorage.getItem('currentUsername');
     const welcomeEl = $('#welcomeUser');
     const recentChatsEl = $('#recentChats');
 
-    if (!currentUserId || !currentUsername) {
+    if (!currentUserId || !currentUsername || isNaN(currentUserId)) {
         alert("Zəhmət olmasa yenidən daxil olun!");
         window.location.href = "./index.html";
         return;
@@ -78,5 +72,10 @@ $(document).ready(function () {
     $(document).on('click', '.userItem', function () {
         const username = $(this).text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
+    });
+
+    // Dark mode toggle
+    $('#themeToggle').click(function () {
+        $('body').toggleClass('dark-mode');
     });
 });

@@ -6,13 +6,13 @@ $(document).ready(function () {
     const currentUsername = localStorage.getItem('currentUsername');
     const $messagesBox = $('#messages');
 
-    if (!targetUser || !currentUserId || !currentUsername) {
+    if (!targetUser || !currentUserId || !currentUsername || isNaN(currentUserId)) {
         alert("İstifadəçi tapılmadı! Yenidən daxil olun.");
         window.location.href = "./profil.html";
         return;
     }
 
-    // Mesajları chat pəncərəsinə əlavə edən funksiya
+    // Mesaj əlavə edən funksiya
     function appendMessage(sender, text) {
         if (!text) return;
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
@@ -33,6 +33,8 @@ $(document).ready(function () {
                         const sender = msg.sender === currentUsername ? 'me' : 'other';
                         appendMessage(sender, msg.text);
                     });
+                } else {
+                    $messagesBox.append("<p>Heç bir mesaj yoxdur</p>");
                 }
             },
             error: function () {
@@ -55,7 +57,7 @@ $(document).ready(function () {
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                sender_id: currentUserId,
+                sender_id: Number(currentUserId),
                 to: targetUser,
                 text: msg
             }),
