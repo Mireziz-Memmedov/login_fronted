@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     // Dark mode toggle
     $('#themeToggle').click(function () {
         $('body').toggleClass('dark-mode');
@@ -22,7 +21,7 @@ $(document).ready(function () {
     // Son mesajlaşılan istifadəçiləri backend-dən alır
     function loadRecentChats() {
         $.ajax({
-            url: `https://login-db-backend-three.vercel.app/recent-chats/?user_id=${currentUserId}`,
+            url: `http://127.0.0.1:8000/api/recent-chats/?user_id=${currentUserId}`,
             method: "GET",
             success: function (res) {
                 recentChatsEl.empty();
@@ -50,7 +49,7 @@ $(document).ready(function () {
         if (!query) return;
 
         $.ajax({
-            url: "https://login-db-backend-three.vercel.app/search-user/",
+            url: "http://127.0.0.1:8000/api/search-user/",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({ username: query }),
@@ -58,7 +57,7 @@ $(document).ready(function () {
                 if (!res.users || res.users.length === 0) {
                     alert("Belə istifadəçi mövcud deyil!");
                 } else {
-                    window.location.href = `./chat.html?user=${encodeURIComponent(query)}&user_id=${currentUserId}`;
+                    window.location.href = `./chat.html?user=${encodeURIComponent(query)}&user_id=${currentUserId}&username=${encodeURIComponent(currentUsername)}`;
                 }
             },
             error: function () {
@@ -78,6 +77,6 @@ $(document).ready(function () {
 
     $(document).on('click', '.userItem', function () {
         const username = $(this).text();
-        window.location.href = `./chat.html?user=${encodeURIComponent(username)}&user_id=${currentUserId}`;
+        window.location.href = `./chat.html?user=${encodeURIComponent(username)}&user_id=${currentUserId}&username=${encodeURIComponent(currentUsername)}`;
     });
 });
