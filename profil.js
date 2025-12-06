@@ -5,7 +5,7 @@ $(document).ready(function () {
     });
 
     // localStorage-dan istifadəçi məlumatlarını oxu
-    const currentUserId = localStorage.getItem('currentUserId');
+    const currentUserId = parseInt(localStorage.getItem('currentUserId')); // int format
     const currentUsername = localStorage.getItem('currentUsername');
     const welcomeEl = $('#welcomeUser');
     const recentChatsEl = $('#recentChats');
