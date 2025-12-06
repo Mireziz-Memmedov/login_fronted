@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    // Dark mode toggle
+    // Dark mode
     $('#themeToggle').click(function () {
         $('body').toggleClass('dark-mode');
     });
@@ -10,16 +10,17 @@ $(document).ready(function () {
     const welcomeEl = $('#welcomeUser');
     const recentChatsEl = $('#recentChats');
 
+    // Login yoxlaması
     if (!currentUserId || !currentUsername) {
         alert("Zəhmət olmasa yenidən daxil olun!");
         window.location.href = "./index.html";
         return;
     }
 
-    // Xoş gəlmisiniz mesajı
+    // Xoş gəlmisiniz
     welcomeEl.text(`Xoş gəlmisiniz, ${currentUsername}!`);
 
-    // Son mesajlaşılan istifadəçiləri backend-dən alır
+    // Son mesajlaşılan istifadəçilər
     function loadRecentChats() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/recent-chats/?user_id=${currentUserId}`,
@@ -27,17 +28,19 @@ $(document).ready(function () {
             success: function (res) {
                 recentChatsEl.empty();
                 if (!res.users || res.users.length === 0) {
-                    recentChatsEl.append("<p>Heç bir sohbet yoxdur</p>");
+                    recentChatsEl.append("<p>Heç bir söhbət yoxdur</p>");
                 } else {
                     res.users.forEach(user => {
-                        const p = $(`<p class="userItem">${user}</p>`);
-                        recentChatsEl.append(p);
+                        recentChatsEl.append(`
+                            <p class="userItem" data-username="${user}">
+                                ${user}
+                            </p>
+                        `);
                     });
                 }
             },
             error: function () {
-                recentChatsEl.empty();
-                recentChatsEl.append("<p>Server ilə əlaqə alınmadı</p>");
+                recentChatsEl.html("<p>Server ilə əlaqə alınmadı</p>");
             }
         });
     }
@@ -56,9 +59,10 @@ $(document).ready(function () {
             data: JSON.stringify({ username: query }),
             success: function (res) {
                 if (!res.users || res.users.length === 0) {
-                    alert("Belə istifadəçi mövcud deyil!");
+                    alert("Belə istifadəçi yoxdur!");
                 } else {
-                    window.location.href = `./chat.html?user=${encodeURIComponent(query)}&user_id=${currentUserId}`;
+                    window.location.href =
+                        `./chat.html?user=${encodeURIComponent(query)}&user_id=${currentUserId}&username=${currentUsername}`;
                 }
             },
             error: function () {
@@ -67,17 +71,21 @@ $(document).ready(function () {
         });
     }
 
-    $('#usernameSearch').keypress(function (e) {
+    $('#usernameSearch').keypress(e => {
         if (e.which === 13) searchUser();
     });
 
-    $('#searchBtn').click(function (e) {
+    $('#searchBtn').click(e => {
         e.preventDefault();
         searchUser();
     });
 
+    // Recent chat klikləmə
     $(document).on('click', '.userItem', function () {
-        const username = $(this).text();
-        window.location.href = `./chat.html?user=${encodeURIComponent(username)}&user_id=${currentUserId}`;
+        const username = $(this).data('username');
+
+        window.location.href =
+            `./chat.html?user=${encodeURIComponent(username)}&user_id=${currentUserId}&username=${currentUsername}`;
     });
+
 });
