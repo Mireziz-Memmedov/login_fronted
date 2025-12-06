@@ -4,6 +4,7 @@ $(document).ready(function () {
         $('body').toggleClass('dark-mode');
     });
 
+    // Cari istifadəçi məlumatları
     const currentUserId = $('#user_id').val();
     const currentUsername = $('#username').val();
     const welcomeEl = $('#welcomeUser');
@@ -57,6 +58,7 @@ $(document).ready(function () {
                 if (!res.users || res.users.length === 0) {
                     alert("Belə istifadəçi mövcud deyil!");
                 } else {
+                    // chat.html-ə yönləndirmə
                     window.location.href = `./chat.html?user=${encodeURIComponent(query)}&user_id=${currentUserId}&username=${encodeURIComponent(currentUsername)}`;
                 }
             },
@@ -75,6 +77,7 @@ $(document).ready(function () {
         searchUser();
     });
 
+    // Recent chat istifadəçisinə klikləyəndə chat-a yönləndir
     $(document).on('click', '.userItem', function () {
         const username = $(this).text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}&user_id=${currentUserId}&username=${encodeURIComponent(currentUsername)}`;
