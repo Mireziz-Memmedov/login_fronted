@@ -2,7 +2,7 @@ $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
     const targetUser = urlParams.get('user');
 
-    const currentUserId = parseInt(localStorage.getItem('currentUserId')); // <-- int-ə çevirdik
+    const currentUserId = localStorage.getItem('currentUserId');
     const currentUsername = localStorage.getItem('currentUsername');
     const $messagesBox = $('#messages');
 
@@ -55,7 +55,7 @@ $(document).ready(function () {
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                sender_id: currentUserId, // artıq int formatında
+                sender_id: currentUserId,
                 to: targetUser,
                 text: msg
             }),
