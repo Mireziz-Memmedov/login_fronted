@@ -4,10 +4,9 @@ $(document).ready(function () {
         $('body').toggleClass('dark-mode');
     });
 
-    const currentUserId = $('#user_id').val();
-    const currentUsername = $('#username').val();
-    const welcomeEl = $('#welcomeUser');
-    const recentChatsEl = $('#recentChats');
+    // Cari istifadəçi məlumatları localStorage və ya hidden input-dan götürülür
+    let currentUserId = localStorage.getItem('currentUserId') || $('#user_id').val();
+    let currentUsername = localStorage.getItem('currentUsername') || $('#username').val();
 
     if (!currentUserId || !currentUsername) {
         alert("Zəhmət olmasa yenidən daxil olun!");
@@ -15,8 +14,16 @@ $(document).ready(function () {
         return;
     }
 
+    // localStorage-yə yaz
+    localStorage.setItem('currentUserId', currentUserId);
+    localStorage.setItem('currentUsername', currentUsername);
+
+    const welcomeEl = $('#welcomeUser');
+    const recentChatsEl = $('#recentChats');
+
     welcomeEl.text(`Xoş gəlmisiniz, ${currentUsername}!`);
 
+    // Son mesajlaşılan istifadəçiləri backend-dən alır
     function loadRecentChats() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/recent-chats/?user_id=${currentUserId}`,
@@ -41,6 +48,7 @@ $(document).ready(function () {
 
     loadRecentChats();
 
+    // İstifadəçi axtarışı
     function searchUser() {
         const query = $('#usernameSearch').val().trim();
         if (!query) return;
@@ -54,7 +62,7 @@ $(document).ready(function () {
                 if (!res.users || res.users.length === 0) {
                     alert("Belə istifadəçi mövcud deyil!");
                 } else {
-                    window.location.href = `./chat.html?user=${encodeURIComponent(query)}&user_id=${currentUserId}&username=${encodeURIComponent(currentUsername)}`;
+                    window.location.href = `./chat.html?user=${encodeURIComponent(query)}`;
                 }
             },
             error: function () {
@@ -72,8 +80,9 @@ $(document).ready(function () {
         searchUser();
     });
 
+    // Recent chats kliklənəndə chat-a yönləndir
     $(document).on('click', '.userItem', function () {
         const username = $(this).text();
-        window.location.href = `./chat.html?user=${encodeURIComponent(username)}&user_id=${currentUserId}&username=${encodeURIComponent(currentUsername)}`;
+        window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
     });
 });

@@ -1,8 +1,12 @@
 $(document).ready(function () {
+    // URL-dən target user
     const urlParams = new URLSearchParams(window.location.search);
     const targetUser = urlParams.get('user');
-    const currentUserId = $('#user_id').val();
-    const currentUsername = $('#username').val();
+
+    // Cari istifadəçi məlumatlarını localStorage-dan götür
+    const currentUserId = localStorage.getItem('currentUserId');
+    const currentUsername = localStorage.getItem('currentUsername');
+
     const $messagesBox = $('#messages');
 
     if (!targetUser || !currentUserId || !currentUsername) {
