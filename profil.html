@@ -1,10 +1,13 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="profil.js" defer></script>
+    <script src="https://kit.fontawesome.com/51d2f8b0de.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <title>Profil</title>
@@ -15,26 +18,34 @@
     <input type="hidden" id="user_id" value="{{ current_user_id }}">
     <input type="hidden" id="username" value="{{ current_username }}">
 
+    <header></header>
+
     <main>
         <section id="profil">
             <div class="container">
-                <div class="box text-center">
-                    <h1>AstroPing</h1>
-                    <button id="themeToggle">🌙</button>
-                    <h2 id="welcomeUser"></h2>
-
-                    <div class="add">
-                        <input type="text" id="usernameSearch" placeholder="Axtarın...">
-                        <button id="searchBtn">🔍</button>
-                    </div>
-
-                    <div id="recentChats">
-                        <!-- Son söhbətlər buraya JS ilə yüklənəcək -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box text-center">
+                            <div class="textbox">
+                                <h1>AstroPing</h1>
+                                <button id="themeToggle">🌙</button>
+                            </div>
+                            <h2 id="welcomeUser"></h2>
+                            <div class="add">
+                                <input type="text" id="usernameSearch" placeholder="Axtarın...">
+                                <button id="searchBtn">🔍</button>
+                            </div>
+                            <div id="recentChats">
+                                <!-- Recent chats burada JS ilə yüklənəcək -->
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer></footer>
 </body>
 
 </html>
