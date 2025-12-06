@@ -1,11 +1,9 @@
 $(document).ready(function () {
-    // Dark mode toggle
     $('#themeToggle').click(function () {
         $('body').toggleClass('dark-mode');
     });
 
-    // localStorage-dan istifadəçi məlumatlarını oxu
-    const currentUserId = parseInt(localStorage.getItem('currentUserId')); // string -> int
+    const currentUserId = parseInt(localStorage.getItem('currentUserId'));
     const currentUsername = localStorage.getItem('currentUsername');
     const welcomeEl = $('#welcomeUser');
     const recentChatsEl = $('#recentChats');
@@ -18,7 +16,6 @@ $(document).ready(function () {
 
     welcomeEl.text(`Xoş gəlmisiniz, ${currentUsername}!`);
 
-    // Son mesajlaşılan istifadəçiləri backend-dən alır
     function loadRecentChats() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/recent-chats/?user_id=${currentUserId}`,
@@ -43,7 +40,6 @@ $(document).ready(function () {
 
     loadRecentChats();
 
-    // İstifadəçi axtarışı
     function searchUser() {
         const query = $('#usernameSearch').val().trim();
         if (!query) return;

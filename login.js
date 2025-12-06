@@ -21,7 +21,7 @@ $(document).ready(function () {
             success: function (response) {
 
                 if (response.success) {
-                    // ✅ Buraya əlavə etdik: localStorage-a yazır
+                    // ✅ localStorage-a yazırıq
                     localStorage.setItem('currentUserId', response.user.id);
                     localStorage.setItem('currentUsername', response.user.username);
 
@@ -50,9 +50,7 @@ $(document).ready(function () {
     });
 
     $(document).on('keypress', function (e) {
-        if (e.which === 13) {
-            login();
-        };
+        if (e.which === 13) login();
     });
 
     $('#toggle-password').click(function () {
