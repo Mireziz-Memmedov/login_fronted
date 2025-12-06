@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const targetUser = urlParams.get('user'); // mesajlaşılacaq istifadəçi
+    const targetUser = urlParams.get('user');
     const currentUserId = $('#user_id').val();
     const currentUsername = $('#username').val();
     const $messagesBox = $('#messages');
@@ -11,7 +11,6 @@ $(document).ready(function () {
         return;
     }
 
-    // Mesaj əlavə edən funksiya
     function appendMessage(sender, text) {
         if (!text) return;
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
@@ -20,7 +19,6 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // Backend-dən mesajları yükləyir
     function loadMessages() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
@@ -42,9 +40,8 @@ $(document).ready(function () {
     }
 
     loadMessages();
-    setInterval(loadMessages, 2000); // hər 2 saniyədən bir yenilə
+    setInterval(loadMessages, 2000);
 
-    // Mesaj göndərmək
     $('#sendBtn').click(function () {
         const msg = $('#messageInput').val().trim();
         if (!msg) return;
@@ -72,7 +69,6 @@ $(document).ready(function () {
         });
     });
 
-    // Enter basanda göndərmək
     $('#messageInput').keypress(function (e) {
         if (e.which === 13) $('#sendBtn').click();
     });

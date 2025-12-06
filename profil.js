@@ -4,7 +4,6 @@ $(document).ready(function () {
         $('body').toggleClass('dark-mode');
     });
 
-    // Cari istifadəçi məlumatları
     const currentUserId = $('#user_id').val();
     const currentUsername = $('#username').val();
     const welcomeEl = $('#welcomeUser');
@@ -16,10 +15,8 @@ $(document).ready(function () {
         return;
     }
 
-    // Xoş gəlmisiniz mesajı
     welcomeEl.text(`Xoş gəlmisiniz, ${currentUsername}!`);
 
-    // Son mesajlaşılan istifadəçiləri backend-dən alır
     function loadRecentChats() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/recent-chats/?user_id=${currentUserId}`,
@@ -44,7 +41,6 @@ $(document).ready(function () {
 
     loadRecentChats();
 
-    // İstifadəçi axtarışı
     function searchUser() {
         const query = $('#usernameSearch').val().trim();
         if (!query) return;
@@ -58,7 +54,6 @@ $(document).ready(function () {
                 if (!res.users || res.users.length === 0) {
                     alert("Belə istifadəçi mövcud deyil!");
                 } else {
-                    // chat.html-ə yönləndirmə
                     window.location.href = `./chat.html?user=${encodeURIComponent(query)}&user_id=${currentUserId}&username=${encodeURIComponent(currentUsername)}`;
                 }
             },
@@ -77,7 +72,6 @@ $(document).ready(function () {
         searchUser();
     });
 
-    // Recent chat istifadəçisinə klikləyəndə chat-a yönləndir
     $(document).on('click', '.userItem', function () {
         const username = $(this).text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}&user_id=${currentUserId}&username=${encodeURIComponent(currentUsername)}`;
