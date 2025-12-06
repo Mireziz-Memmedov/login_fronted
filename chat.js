@@ -34,7 +34,7 @@ $(document).ready(function () {
             },
             error: function () {
                 $messagesBox.empty();
-                $messagesBox.append("<p>Mesajlar yüklənmədi</p>");
+                $messagesBox.append("<p>Server ilə əlaqə alınmadı</p>");
             }
         });
     }
@@ -64,7 +64,7 @@ $(document).ready(function () {
                 }
             },
             error: function () {
-                alert("Server ilə əlaqə alınmadı!");
+                $messagesBox.append("<p>Server ilə əlaqə alınmadı</p>");
             }
         });
     });
