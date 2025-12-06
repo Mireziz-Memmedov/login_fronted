@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     function loadMessages() {
         $.ajax({
-            url: `http://127.0.0.1:8000/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
+            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
             method: "GET",
             success: function (res) {
                 $messagesBox.empty();
@@ -47,7 +47,7 @@ $(document).ready(function () {
         if (!msg) return;
 
         $.ajax({
-            url: "http://127.0.0.1:8000/api/send-message/",
+            url: "https://login-db-backend-three.vercel.app/api/send-message/",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({

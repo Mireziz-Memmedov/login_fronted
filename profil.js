@@ -21,7 +21,7 @@ $(document).ready(function () {
     // Son mesajlaşılan istifadəçiləri backend-dən alır
     function loadRecentChats() {
         $.ajax({
-            url: `http://127.0.0.1:8000/api/recent-chats/?user_id=${currentUserId}`,
+            url: `https://login-db-backend-three.vercel.app/api/recent-chats/?user_id=${currentUserId}`,
             method: "GET",
             success: function (res) {
                 recentChatsEl.empty();
@@ -49,7 +49,7 @@ $(document).ready(function () {
         if (!query) return;
 
         $.ajax({
-            url: "http://127.0.0.1:8000/api/search-user/",
+            url: "https://login-db-backend-three.vercel.app/api/search-user/",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({ username: query }),
