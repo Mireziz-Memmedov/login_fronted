@@ -4,22 +4,17 @@ $(document).ready(function () {
         $('body').toggleClass('dark-mode');
     });
 
-    // Cari istifadəçi məlumatları localStorage və ya hidden input-dan götürülür
-    let currentUserId = localStorage.getItem('currentUserId') || $('#user_id').val();
-    let currentUsername = localStorage.getItem('currentUsername') || $('#username').val();
+    // localStorage-dan istifadəçi məlumatlarını oxu
+    const currentUserId = localStorage.getItem('currentUserId');
+    const currentUsername = localStorage.getItem('currentUsername');
+    const welcomeEl = $('#welcomeUser');
+    const recentChatsEl = $('#recentChats');
 
     if (!currentUserId || !currentUsername) {
         alert("Zəhmət olmasa yenidən daxil olun!");
         window.location.href = "./index.html";
         return;
     }
-
-    // localStorage-yə yaz
-    localStorage.setItem('currentUserId', currentUserId);
-    localStorage.setItem('currentUsername', currentUsername);
-
-    const welcomeEl = $('#welcomeUser');
-    const recentChatsEl = $('#recentChats');
 
     welcomeEl.text(`Xoş gəlmisiniz, ${currentUsername}!`);
 
@@ -80,7 +75,6 @@ $(document).ready(function () {
         searchUser();
     });
 
-    // Recent chats kliklənəndə chat-a yönləndir
     $(document).on('click', '.userItem', function () {
         const username = $(this).text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
