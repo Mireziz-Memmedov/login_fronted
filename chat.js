@@ -12,7 +12,6 @@ $(document).ready(function () {
         return;
     }
 
-    // Mesajları chat pəncərəsinə əlavə edən funksiya
     function appendMessage(sender, text) {
         if (!text) return;
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
@@ -21,7 +20,6 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // Backend-dən mesajları yükləyir
     function loadMessages() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
@@ -45,7 +43,6 @@ $(document).ready(function () {
     loadMessages();
     setInterval(loadMessages, 2000);
 
-    // Mesaj göndərmək
     $('#sendBtn').click(function () {
         const msg = $('#messageInput').val().trim();
         if (!msg) return;
@@ -55,7 +52,7 @@ $(document).ready(function () {
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
-                sender_id: currentUserId, // artıq int formatında
+                sender_id: currentUserId, // int format
                 to: targetUser,
                 text: msg
             }),
@@ -73,7 +70,6 @@ $(document).ready(function () {
         });
     });
 
-    // Enter ilə mesaj göndərmək
     $('#messageInput').keypress(function (e) {
         if (e.which === 13) $('#sendBtn').click();
     });
