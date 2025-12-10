@@ -297,6 +297,10 @@ body.dark-mode #signup p {
   cursor: default;
   margin: 10px 0 0 5px;
 }
+#profil .box h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+}
 #profil .box .add {
   display: flex;
   margin: 0 5px 15px;
@@ -344,6 +348,9 @@ body.dark-mode #profil .box {
   border-color: #000000;
 }
 body.dark-mode #profil .box .textbox h1 {
+  color: #000000;
+}
+body.dark-mode #profil .box h2 {
   color: #000000;
 }
 body.dark-mode #profil .box #themeToggle {
