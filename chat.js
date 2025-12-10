@@ -14,13 +14,18 @@ $(document).ready(function () {
 
     function appendMessage(sender, text) {
         if (!text) return;
+        const atBottom = $messagesBox[0].scrollHeight - $messagesBox.scrollTop() <= $messagesBox.outerHeight() + 5;
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
         div.append($('<h2></h2>').text(text));
         $messagesBox.append(div);
-        $messagesBox.scrollTop($messagesBox[0].scrollHeight);
+        if (atBottom) {
+            $messagesBox.scrollTop($messagesBox[0].scrollHeight);
+        }
     }
 
     function loadMessages() {
+
+        const scrollAtBottom = $messagesBox[0].scrollHeight - $messagesBox.scrollTop() <= $messagesBox.outerHeight() + 5;
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
             method: "GET",
@@ -31,6 +36,9 @@ $(document).ready(function () {
                         const sender = msg.sender === currentUsername ? 'me' : 'other';
                         appendMessage(sender, msg.text);
                     });
+                }
+                if (scrollAtBottom) {
+                    $messagesBox.scrollTop($messagesBox[0].scrollHeight);
                 }
             },
             error: function () {
