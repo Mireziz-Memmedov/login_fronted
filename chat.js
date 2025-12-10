@@ -20,21 +20,24 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
+    let lastMessageId = 0; // serverdən gələn ən son mesajın id-si
+
     function loadMessages() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
             method: "GET",
             success: function (res) {
-                $messagesBox.empty();
                 if (res.messages && res.messages.length > 0) {
                     res.messages.forEach(msg => {
-                        const sender = msg.sender === currentUsername ? 'me' : 'other';
-                        appendMessage(sender, msg.text);
+                        if (msg.id > lastMessageId) { // yalnız yeni mesajları əlavə et
+                            const sender = msg.sender === currentUsername ? 'me' : 'other';
+                            appendMessage(sender, msg.text);
+                            lastMessageId = msg.id;
+                        }
                     });
                 }
             },
             error: function () {
-                $messagesBox.empty();
                 $messagesBox.append("<p>Server ilə əlaqə alınmadı</p>");
             }
         });
@@ -58,7 +61,9 @@ $(document).ready(function () {
             }),
             success: function (res) {
                 if (res.success) {
+                    const newMessageId = res.messageId;
                     appendMessage('me', msg);
+                    lastMessageId = newMessageId;
                     $('#messageInput').val('');
                 } else {
                     alert(res.error || "Mesaj göndərilə bilmədi!");
