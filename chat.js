@@ -17,8 +17,7 @@ $(document).ready(function () {
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
         div.append($('<h2></h2>').text(text));
         $messagesBox.append(div);
-        // $messagesBox.scrollTop($messagesBox[0].scrollHeight);
-        document.querySelector('#messageBox').scrollTo(0, document.querySelector('#messageBox').scrollHeight);
+        $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
     function loadMessages() {
