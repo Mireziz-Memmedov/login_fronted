@@ -6,7 +6,6 @@ body {
 .imgbox {
   overflow: hidden;
 }
-
 .imgbox img {
   width: 100%;
 }
@@ -19,7 +18,6 @@ section {
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 #login .box {
   border-radius: 5px;
   display: flex;
@@ -30,14 +28,12 @@ section {
   height: 480px;
   width: auto;
 }
-
 #login .box .textbox button {
   margin: 11px 0;
   border: none;
   background-color: #000000;
   font-size: 20px;
 }
-
 #login .box .textbox h1 {
   margin: 50px 0 20px;
   color: #ffffff;
@@ -45,12 +41,10 @@ section {
   font-size: 30px;
   cursor: text;
 }
-
 #login .box .add {
   display: flex;
   flex-direction: column;
 }
-
 #login .box .add input {
   border-radius: 5px;
   margin: 10px 20px;
@@ -59,7 +53,6 @@ section {
   border: 2px solid #a8a6a6;
   color: #ffffff;
 }
-
 #login .box .btn {
   display: flex;
   justify-content: center;
@@ -71,19 +64,15 @@ section {
   max-width: 220px;
   width: 220px;
 }
-
 #login .box .btn h3 {
   color: #cdcaca;
 }
-
 #login .box .btn h3:hover {
   cursor: pointer;
 }
-
 #login .box p {
   margin-bottom: 10px;
 }
-
 #login .box .divider {
   width: 220px;
   display: flex;
@@ -91,41 +80,32 @@ section {
   text-align: center;
   margin: 20px 0 10px;
 }
-
 #login .box .divider span {
   padding: 0 10px;
   font-weight: 600;
   color: #cdcaca;
   cursor: text;
 }
-
-#login .box .divider::before,
-#login .box .divider::after {
+#login .box .divider::before, #login .box .divider::after {
   content: "";
   flex: 1;
   border-bottom: 1px solid #a8a6a6;
 }
-
 #login .box .divider::before {
   margin-right: 10px;
 }
-
 #login .box .divider::after {
   margin-left: 10px;
 }
-
 #login .box .fogot {
   margin-top: 20px;
 }
-
 #login .box .fogot a {
   cursor: pointer;
 }
-
 #login .box .fogot a:hover {
   text-decoration: underline;
 }
-
 #login .minibox {
   display: flex;
   align-items: center;
@@ -138,12 +118,10 @@ section {
   box-sizing: border-box;
   flex-shrink: 0;
 }
-
 #login .minibox a {
   color: #1c14ff;
   cursor: pointer;
 }
-
 #login .minibox p {
   color: #ffffff;
   margin: 0 16px;
@@ -153,35 +131,28 @@ section {
 body.dark-mode #login {
   background-color: #ffffff !important;
 }
-
 body.dark-mode #login .box {
   background-color: #ffffff;
   border-color: #000000;
 }
-
 body.dark-mode #login .textbox h1,
 body.dark-mode #login .add input,
 body.dark-mode #login .btn h3 {
   color: #000000;
 }
-
 body.dark-mode #login #themeToggle {
   background-color: #ffffff;
 }
-
 body.dark-mode #login .add input {
   background-color: #ffffff;
   border-color: #040404;
 }
-
 body.dark-mode #login .fogot a {
   color: #000000;
 }
-
 body.dark-mode #login .minibox {
   border-color: #000000;
 }
-
 body.dark-mode #login p {
   color: #000000;
 }
@@ -191,7 +162,6 @@ body.dark-mode #login p {
   font-family: Arial, Helvetica, sans-serif;
   height: 750px;
 }
-
 #signup .box {
   border-radius: 5px;
   display: flex;
@@ -201,14 +171,12 @@ body.dark-mode #login p {
   margin-bottom: 25px;
   width: auto;
 }
-
 #signup .box .textbox button {
   margin: 10px 0;
   border: none;
   background-color: #000000;
   font-size: 20px;
 }
-
 #signup .box .textbox h1 {
   margin: 50px 0 20px;
   color: #ffffff;
@@ -216,12 +184,10 @@ body.dark-mode #login p {
   font-size: 25px;
   cursor: text;
 }
-
 #signup .box .add {
   display: flex;
   flex-direction: column;
 }
-
 #signup .box .add input {
   border-radius: 5px;
   margin: 10px 20px;
@@ -230,7 +196,6 @@ body.dark-mode #login p {
   border: 2px solid #a8a6a6;
   color: #ffffff;
 }
-
 #signup .box .btn {
   display: flex;
   justify-content: center;
@@ -242,19 +207,15 @@ body.dark-mode #login p {
   max-width: 220px;
   width: 220px;
 }
-
 #signup .box .btn h3 {
   color: #cdcaca;
 }
-
 #signup .box .btn h3:hover {
   cursor: pointer;
 }
-
 #signup .box p {
   margin-bottom: 10px;
 }
-
 #signup .minibox {
   display: flex;
   align-items: center;
@@ -267,12 +228,10 @@ body.dark-mode #login p {
   box-sizing: border-box;
   flex-shrink: 0;
 }
-
 #signup .minibox a {
   color: #1c14ff;
   cursor: pointer;
 }
-
 #signup .minibox p {
   color: #ffffff;
   margin: 0 41px;
@@ -282,31 +241,25 @@ body.dark-mode #login p {
 body.dark-mode #signup {
   background-color: #ffffff !important;
 }
-
 body.dark-mode #signup .box {
   background-color: #ffffff;
   border-color: #000000;
 }
-
 body.dark-mode #signup .textbox h1,
 body.dark-mode #signup .add input,
 body.dark-mode #signup .btn h3 {
   color: #000000;
 }
-
 body.dark-mode #signup #themeToggle {
   background-color: #ffffff;
 }
-
 body.dark-mode #signup .add input {
   background-color: #ffffff;
   border-color: #040404;
 }
-
 body.dark-mode #signup .minibox {
   border-color: #000000;
 }
-
 body.dark-mode #signup p {
   color: #000000;
 }
@@ -317,7 +270,6 @@ body.dark-mode #signup p {
   display: flex;
   justify-content: center;
 }
-
 #profil .box {
   border-radius: 5px;
   display: flex;
@@ -327,20 +279,17 @@ body.dark-mode #signup p {
   margin-bottom: 25px;
   height: 480px;
 }
-
 #profil .box .textbox {
   display: flex;
   margin-bottom: 25px;
   justify-content: space-between;
   width: 100%;
 }
-
 #profil .box .textbox button {
   border: none;
   background-color: #000000;
   font-size: 20px;
 }
-
 #profil .box .textbox h1 {
   color: #ffffff;
   font-weight: 500;
@@ -348,16 +297,10 @@ body.dark-mode #signup p {
   cursor: default;
   margin: 10px 0 0 5px;
 }
-
-#profil .box #welcomeUser {
-  color: #ffffff;
-}
-
 #profil .box .add {
   display: flex;
   margin: 0 5px 15px;
 }
-
 #profil .box .add input {
   border-radius: 5px;
   padding: 10px;
@@ -366,7 +309,6 @@ body.dark-mode #signup p {
   background-color: #000;
   color: #ffffff;
 }
-
 #profil .box .add button {
   border-radius: 5px;
   border: none;
@@ -376,14 +318,12 @@ body.dark-mode #signup p {
   margin-left: 5px;
   cursor: pointer;
 }
-
 #profil .box #recentChats {
   margin-top: 10px;
   width: 100%;
   max-height: 250px;
   overflow-y: auto;
 }
-
 #profil .box #recentChats p {
   background-color: #1a1a1a;
   color: #fff;
@@ -392,7 +332,6 @@ body.dark-mode #signup p {
   margin-bottom: 5px;
   cursor: pointer;
 }
-
 #profil .box #recentChats p:hover {
   background-color: #333;
 }
@@ -400,39 +339,28 @@ body.dark-mode #signup p {
 body.dark-mode #profil {
   background-color: #ffffff;
 }
-
 body.dark-mode #profil .box {
   background-color: #ffffff;
   border-color: #000000;
 }
-
 body.dark-mode #profil .box .textbox h1 {
   color: #000000;
 }
-
-body.dark-mode #profil .box #welcomeUser {
-  color: #000000;
-}
-
 body.dark-mode #profil .box #themeToggle {
   background-color: #ffffff;
 }
-
 body.dark-mode #profil .box .add input {
   background-color: #ffffff;
   border-color: #000000;
 }
-
 body.dark-mode #profil .box .add button {
   background-color: #94a6e6;
   color: #ffffff;
 }
-
 body.dark-mode #profil #recentChats p {
   background-color: #f0f0f0;
   color: #000000;
 }
-
 body.dark-mode #profil #recentChats p:hover {
   background-color: #cccccc;
 }
@@ -442,7 +370,6 @@ body.dark-mode #profil #recentChats p:hover {
   justify-content: center;
   margin-top: 50px;
 }
-
 #chat .messageBox {
   background-color: #e8edff;
   border-radius: 15px;
@@ -452,19 +379,25 @@ body.dark-mode #profil #recentChats p:hover {
   flex-direction: column;
   height: 400px;
 }
-
 #chat .messageBox .minibox {
   flex: 1;
   overflow-y: auto;
   padding: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
-
+#chat .messageBox .minibox::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+#chat .messageBox .minibox::-webkit-scrollbar-thumb {
+  background: transparent;
+}
 #chat .messageBox .minibox div {
   margin: 5px 0;
   display: flex;
   flex-direction: column;
 }
-
 #chat .messageBox .minibox div h2 {
   padding: 5px 10px;
   border-radius: 20px;
@@ -472,31 +405,26 @@ body.dark-mode #profil #recentChats p:hover {
   max-width: 70%;
   word-break: break-word;
 }
-
 #chat .messageBox .minibox div.right h2 {
   background-color: #94a6e6;
   color: #fff;
   align-self: flex-end;
 }
-
 #chat .messageBox .minibox div.left h2 {
   background-color: #ccc;
   color: #000;
   align-self: flex-start;
 }
-
 #chat .messageBox .text {
   display: flex;
   margin: 10px;
 }
-
 #chat .messageBox .text input {
   flex: 1;
   border-radius: 20px;
   padding: 7px 15px;
   border: 2px solid #94a6e6;
 }
-
 #chat .messageBox .text button {
   border: none;
   background-color: #94a6e6;
@@ -510,121 +438,20 @@ body.dark-mode #profil #recentChats p:hover {
 body.dark-mode #chat .messageBox {
   background-color: #fff;
 }
-
 body.dark-mode #chat .messageBox .minibox div h2.right {
   background-color: #4a90e2;
   color: #fff;
 }
-
 body.dark-mode #chat .messageBox .minibox div h2.left {
   background-color: #ddd;
   color: #000;
 }
-
 body.dark-mode #chat .messageBox .text input {
   background-color: #fff;
   color: #000;
   border-color: #000;
 }
-
 body.dark-mode #chat .messageBox .text button {
   background-color: #4a90e2;
   color: #fff;
-}
-
-#chat {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-#chat .messageBox {
-  background-color: #e8edff;
-  border-radius: 15px;
-  max-width: 600px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 400px;
-}
-
-#chat .messageBox .minibox {
-  flex: 1;
-  overflow-y: auto;
-  padding: 10px;
-}
-
-#chat .messageBox .minibox div {
-  margin: 5px 0;
-  display: flex;
-  flex-direction: column;
-}
-
-#chat .messageBox .minibox div h2 {
-  padding: 5px 10px;
-  border-radius: 20px;
-  display: inline-block;
-  max-width: 70%;
-  word-break: break-word;
-}
-
-#chat .messageBox .minibox div.right h2 {
-  background-color: #94a6e6;
-  color: #fff;
-  align-self: flex-end;
-}
-
-#chat .messageBox .minibox div.left h2 {
-  background-color: #ccc;
-  color: #000;
-  align-self: flex-start;
-}
-
-#chat .messageBox .text {
-  display: flex;
-  margin: 10px;
-}
-
-#chat .messageBox .text input {
-  flex: 1;
-  border-radius: 20px;
-  padding: 7px 15px;
-  border: 2px solid #94a6e6;
-}
-
-#chat .messageBox .text button {
-  border: none;
-  background-color: #94a6e6;
-  color: #fff;
-  border-radius: 20px;
-  padding: 0 20px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-body.dark-mode #chat .messageBox {
-  background-color: #fff;
-}
-
-body.dark-mode #chat .messageBox .minibox div h2.right {
-  background-color: #4a90e2;
-  color: #fff;
-}
-
-body.dark-mode #chat .messageBox .minibox div h2.left {
-  background-color: #ddd;
-  color: #000;
-}
-
-body.dark-mode #chat .messageBox .text input {
-  background-color: #fff;
-  color: #000;
-  border-color: #000;
-}
-
-body.dark-mode #chat .messageBox .text button {
-  background-color: #4a90e2;
-  color: #fff;
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
