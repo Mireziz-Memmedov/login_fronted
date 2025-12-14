@@ -3,7 +3,7 @@ $(document).ready(function () {
     const targetUser = urlParams.get('user');
 
     const currentUserId = parseInt(localStorage.getItem('currentUserId'));
-    const currentUsername = localStorage.getItem('currentUsername'); // <-- buradakı səhv düzəldildi
+    const currentUsername = localStorage.getItem('currentUsername');
     const $messagesBox = $('#messages');
 
     if (!targetUser || !currentUserId || !currentUsername) {
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
     // --- WebSocket bağlantısı ---
     const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
-    const chatSocket = new WebSocket(`${wsScheme}://${window.location.host}/ws/chat/${currentUserId}/`);
+    const chatSocket = new WebSocket(`${wsScheme}://${window.location.hostname}:8000/ws/chat/${currentUserId}/`);
 
     chatSocket.onopen = function () {
         console.log("WebSocket bağlantısı açıldı.");
@@ -83,6 +83,7 @@ $(document).ready(function () {
         if (e.which === 13) $('#sendBtn').click();
     });
 });
+
 
 
 
