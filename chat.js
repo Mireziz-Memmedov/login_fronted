@@ -3,7 +3,7 @@ $(document).ready(function () {
     const targetUser = urlParams.get('user');
 
     const currentUserId = parseInt(localStorage.getItem('currentUserId'));
-    const currentUsername = localStorage.getItem('currentUsername');
+    const currentUsername = localStorage.getItem('currentUsername'); // <-- buradakı səhv düzəldildi
     const $messagesBox = $('#messages');
 
     if (!targetUser || !currentUserId || !currentUsername) {
@@ -19,27 +19,24 @@ $(document).ready(function () {
     function appendMessage(sender, text) {
         if (!text) return;
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
-        div.append($('<h2></h2>').text(text));
+        div.text(text);
         $messagesBox.append(div);
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
     // --- WebSocket bağlantısı ---
     const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
-    const chatSocket = new WebSocket(`${wsScheme}://login-db-backend-three.vercel.app/ws/chat/${currentUserId}/`);
+    const chatSocket = new WebSocket(`${wsScheme}://${window.location.host}/ws/chat/${currentUserId}/`);
 
     chatSocket.onopen = function () {
         console.log("WebSocket bağlantısı açıldı.");
-
-        // Göndərmə düyməsini aktiv et
         $('#sendBtn').prop('disabled', false);
 
         // Köhnə mesajları backend-dən soruşuruq
-        const initPayload = JSON.stringify({
+        chatSocket.send(JSON.stringify({
             type: "load_messages",
             target_user: targetUser
-        });
-        chatSocket.send(initPayload);
+        }));
     };
 
     chatSocket.onmessage = function (e) {
@@ -48,13 +45,11 @@ $(document).ready(function () {
         if (data.type === "chat_message") {
             const sender = data.sender === currentUsername ? 'me' : 'other';
             appendMessage(sender, data.message);
-        } else if (data.type === "load_messages") {
-            if (data.messages && data.messages.length > 0) {
-                data.messages.forEach(msg => {
-                    const sender = msg.sender === currentUsername ? 'me' : 'other';
-                    appendMessage(sender, msg.text);
-                });
-            }
+        } else if (data.type === "load_messages" && Array.isArray(data.messages)) {
+            data.messages.forEach(msg => {
+                const sender = msg.sender === currentUsername ? 'me' : 'other';
+                appendMessage(sender, msg.text);
+            });
         }
     };
 
@@ -70,21 +65,17 @@ $(document).ready(function () {
     // Mesaj göndərmək
     $('#sendBtn').click(function () {
         const msg = $('#messageInput').val().trim();
-        if (!msg) return;
+        if (!msg || chatSocket.readyState !== WebSocket.OPEN) return;
 
-        const payload = JSON.stringify({
+        const payload = {
             type: "chat_message",
             message: msg,
             receiver_name: targetUser
-        });
+        };
 
-        if (chatSocket.readyState === WebSocket.OPEN) {
-            chatSocket.send(payload);
-            appendMessage('me', msg); // Göndərilən mesajı dərhal göstər
-            $('#messageInput').val('');
-        } else {
-            console.log("Socket bağlıdır, mesaj göndərilə bilmir.");
-        }
+        chatSocket.send(JSON.stringify(payload));
+        appendMessage('me', msg);
+        $('#messageInput').val('');
     });
 
     // Enter düyməsi ilə göndərmək
