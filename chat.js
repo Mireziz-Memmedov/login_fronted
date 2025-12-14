@@ -12,6 +12,7 @@ $(document).ready(function () {
         return;
     }
 
+    // Mesaj əlavə etmək funksiyası
     function appendMessage(sender, text) {
         if (!text) return;
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
@@ -20,16 +21,15 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // --- WebSocket yarat ---
+    // --- WebSocket bağlantısı --- 
     const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
-    const chatSocket = new WebSocket(
-        `${wsScheme}://login-db-backend-three.vercel.app/ws/chat/${currentUserId}/`
-    );
+    const chatSocket = new WebSocket(`${wsScheme}://127.0.0.1:8000/ws/chat/${currentUserId}/`);
 
+    // WebSocket açıldıqda
     chatSocket.onopen = function () {
         console.log("WebSocket bağlantısı açıldı.");
 
-        // Köhnə mesajları backend WebSocket vasitəsilə soruşuruq
+        // Köhnə mesajları backend vasitəsilə soruşuruq
         const initPayload = JSON.stringify({
             type: "load_messages",
             target_user: targetUser
@@ -37,7 +37,7 @@ $(document).ready(function () {
         chatSocket.send(initPayload);
     };
 
-    // Serverdən mesaj gələndə
+    // WebSocket-dən mesaj gələndə
     chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);
 
@@ -45,11 +45,13 @@ $(document).ready(function () {
             const sender = data.sender === currentUsername ? 'me' : 'other';
             appendMessage(sender, data.message);
         } else if (data.type === "load_messages") {
-            // Köhnə mesajları əlavə edirik
-            data.messages.forEach(msg => {
-                const sender = msg.sender === currentUsername ? 'me' : 'other';
-                appendMessage(sender, msg.text);
-            });
+            // Köhnə mesajları göstər
+            if (data.messages && data.messages.length > 0) {
+                data.messages.forEach(msg => {
+                    const sender = msg.sender === currentUsername ? 'me' : 'other';
+                    appendMessage(sender, msg.text);
+                });
+            }
         }
     };
 
@@ -72,10 +74,12 @@ $(document).ready(function () {
         $('#messageInput').val('');
     });
 
+    // Enter düyməsi ilə göndərmək
     $('#messageInput').keypress(function (e) {
         if (e.which === 13) $('#sendBtn').click();
     });
 });
+
 
 
 
