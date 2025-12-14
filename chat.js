@@ -21,8 +21,7 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // --- WebSocket bağlantısı --- 
-    // Backend URL-i real serverə uyğun olmalıdır
+    // --- WebSocket bağlantısı ---
     const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
     const chatSocket = new WebSocket(`${wsScheme}://login-db-backend-three.vercel.app/ws/chat/${currentUserId}/`);
 
@@ -77,7 +76,6 @@ $(document).ready(function () {
         if (e.which === 13) $('#sendBtn').click();
     });
 });
-
 
 
 
