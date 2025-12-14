@@ -24,9 +24,8 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // --- WebSocket bağlantısı ---
-    const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
-    const chatSocket = new WebSocket(`${wsScheme}://${window.location.hostname}:8000/ws/chat/${currentUserId}/`);
+    // --- WebSocket bağlantısı (lokal server üçün) ---
+    const chatSocket = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${currentUserId}/`);
 
     chatSocket.onopen = function () {
         console.log("WebSocket bağlantısı açıldı.");
@@ -83,6 +82,7 @@ $(document).ready(function () {
         if (e.which === 13) $('#sendBtn').click();
     });
 });
+
 
 
 
