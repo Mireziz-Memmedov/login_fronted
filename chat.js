@@ -23,18 +23,34 @@ $(document).ready(function () {
     // --- WebSocket yarat ---
     const wsScheme = window.location.protocol === "https:" ? "wss" : "ws";
     const chatSocket = new WebSocket(
-        `${wsScheme}://${window.location.host}/ws/chat/${currentUserId}/`
+        `${wsScheme}://login-db-backend-three.vercel.app/ws/chat/${currentUserId}/`
     );
+
+    chatSocket.onopen = function () {
+        console.log("WebSocket bağlantısı açıldı.");
+
+        // Köhnə mesajları backend WebSocket vasitəsilə soruşuruq
+        const initPayload = JSON.stringify({
+            type: "load_messages",
+            target_user: targetUser
+        });
+        chatSocket.send(initPayload);
+    };
 
     // Serverdən mesaj gələndə
     chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);
-        const sender = data.sender === currentUsername ? 'me' : 'other';
-        appendMessage(sender, data.message);
-    };
 
-    chatSocket.onopen = function () {
-        console.log("WebSocket bağlantısı açıldı.");
+        if (data.type === "chat_message") {
+            const sender = data.sender === currentUsername ? 'me' : 'other';
+            appendMessage(sender, data.message);
+        } else if (data.type === "load_messages") {
+            // Köhnə mesajları əlavə edirik
+            data.messages.forEach(msg => {
+                const sender = msg.sender === currentUsername ? 'me' : 'other';
+                appendMessage(sender, msg.text);
+            });
+        }
     };
 
     chatSocket.onclose = function () {
@@ -47,6 +63,7 @@ $(document).ready(function () {
         if (!msg) return;
 
         const payload = JSON.stringify({
+            type: "chat_message",
             message: msg,
             receiver_name: targetUser
         });
@@ -59,6 +76,7 @@ $(document).ready(function () {
         if (e.which === 13) $('#sendBtn').click();
     });
 });
+
 
 
 
