@@ -12,6 +12,9 @@ $(document).ready(function () {
         return;
     }
 
+    // Başlanğıcda göndərmə düyməsini deaktiv et
+    $('#sendBtn').prop('disabled', true);
+
     // Mesaj əlavə etmək funksiyası
     function appendMessage(sender, text) {
         if (!text) return;
@@ -27,6 +30,9 @@ $(document).ready(function () {
 
     chatSocket.onopen = function () {
         console.log("WebSocket bağlantısı açıldı.");
+
+        // Göndərmə düyməsini aktiv et
+        $('#sendBtn').prop('disabled', false);
 
         // Köhnə mesajları backend-dən soruşuruq
         const initPayload = JSON.stringify({
@@ -54,6 +60,11 @@ $(document).ready(function () {
 
     chatSocket.onclose = function () {
         console.log("WebSocket bağlantısı bağlandı.");
+        $('#sendBtn').prop('disabled', true);
+    };
+
+    chatSocket.onerror = function (err) {
+        console.error("WebSocket error:", err);
     };
 
     // Mesaj göndərmək
@@ -67,8 +78,13 @@ $(document).ready(function () {
             receiver_name: targetUser
         });
 
-        chatSocket.send(payload);
-        $('#messageInput').val('');
+        if (chatSocket.readyState === WebSocket.OPEN) {
+            chatSocket.send(payload);
+            appendMessage('me', msg); // Göndərilən mesajı dərhal göstər
+            $('#messageInput').val('');
+        } else {
+            console.log("Socket bağlıdır, mesaj göndərilə bilmir.");
+        }
     });
 
     // Enter düyməsi ilə göndərmək
@@ -76,6 +92,7 @@ $(document).ready(function () {
         if (e.which === 13) $('#sendBtn').click();
     });
 });
+
 
 
 
