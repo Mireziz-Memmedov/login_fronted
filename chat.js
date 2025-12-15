@@ -12,26 +12,24 @@ $(document).ready(function () {
         return;
     }
 
-    // Başlanğıcda göndərmə düyməsini deaktiv et
     $('#sendBtn').prop('disabled', true);
 
-    // Mesaj əlavə etmək funksiyası
     function appendMessage(sender, text) {
         if (!text) return;
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
-        div.text(text);
+        div.append($('<h2></h2>').text(text));
         $messagesBox.append(div);
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // --- WebSocket bağlantısı (lokal server üçün) ---
+    // WebSocket bağlantısı
     const chatSocket = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${currentUserId}/`);
 
     chatSocket.onopen = function () {
         console.log("WebSocket bağlantısı açıldı.");
         $('#sendBtn').prop('disabled', false);
 
-        // Köhnə mesajları backend-dən soruşuruq
+        // Köhnə mesajları soruş
         chatSocket.send(JSON.stringify({
             type: "load_messages",
             target_user: targetUser
@@ -77,15 +75,10 @@ $(document).ready(function () {
         $('#messageInput').val('');
     });
 
-    // Enter düyməsi ilə göndərmək
     $('#messageInput').keypress(function (e) {
         if (e.which === 13) $('#sendBtn').click();
     });
 });
-
-
-
-
 
 
 
