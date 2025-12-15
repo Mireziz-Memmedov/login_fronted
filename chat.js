@@ -22,14 +22,14 @@ $(document).ready(function () {
         $messagesBox.scrollTop($messagesBox[0].scrollHeight);
     }
 
-    // WebSocket bağlantısı
-    const chatSocket = new WebSocket(`ws://127.0.0.1:8000/ws/chat/${currentUserId}/`);
+    // --- WebSocket URL (Vercel host) ---
+    const backendHost = "wss://login-db-backend-three.vercel.app"; // <- Sənin host-un
+    const chatSocket = new WebSocket(`${backendHost}/ws/chat/${currentUserId}/`);
 
     chatSocket.onopen = function () {
         console.log("WebSocket bağlantısı açıldı.");
         $('#sendBtn').prop('disabled', false);
 
-        // Köhnə mesajları soruş
         chatSocket.send(JSON.stringify({
             type: "load_messages",
             target_user: targetUser
@@ -79,6 +79,7 @@ $(document).ready(function () {
         if (e.which === 13) $('#sendBtn').click();
     });
 });
+
 
 
 
