@@ -44,7 +44,7 @@ $(document).ready(function () {
     }
 
     loadMessages();
-    setInterval(loadMessages, 1500);
+    setInterval(loadMessages, 2000);
 
     $('#sendBtn').click(function () {
         const msg = $('#messageInput').val().trim();
