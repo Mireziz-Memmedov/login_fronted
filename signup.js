@@ -20,9 +20,10 @@ $(document).ready(function () {
     function signup() {
         let username = $('#username').val().trim();
         let password = $('#password').val().trim();
+        let email = $('#email').val().trim();
         let errorMsg = $('#error-msg');
 
-        if (!username || !password) {
+        if (!username || !password || !email) {
             errorMsg.text("Please fill in all fields!");
             return;
         }
@@ -33,7 +34,8 @@ $(document).ready(function () {
             contentType: "application/json",
             data: JSON.stringify({
                 username: username,
-                password: password
+                password: password,
+                email: email
             }),
             success: function (response) {
                 if (response.success) {
@@ -61,6 +63,7 @@ $(document).ready(function () {
 
     $(document).on('keypress', function (e) {
         if (e.which === 13) {
+            e.preventDefault();
             signup();
         }
     });
