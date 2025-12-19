@@ -22,46 +22,54 @@ $(document).ready(function () {
             method: "GET",
             success: function (res) {
                 recentChatsEl.empty();
+
                 if (!res.users || res.users.length === 0) {
                     recentChatsEl.append("<p>Heç bir sohbet yoxdur</p>");
-                } else {
-                    res.users.forEach(user => {
-                        // User status üçün AJAX
-                        $.ajax({
-                            url: `https://login-db-backend-three.vercel.app/api/user_status/?username=${encodeURIComponent(user)}`,
-                            method: "GET",
-                            success: function (statusRes) {
-                                let iconColor, lastSeenText;
-                                if (statusRes.is_online) {
-                                    iconColor = "green";
-                                    lastSeenText = ""; // Online olanlarda tarix göstərilməyəcək
-                                } else {
-                                    iconColor = "red";
-                                    lastSeenText = statusRes.last_seen ? new Date(statusRes.last_seen).toLocaleDateString() : "";
-                                }
-
-                                const p = $(`
-                                    <p class="userItem" style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                                        <span class="username">${user}</span>
-                                        <span class="statusIcon" style="background-color:${iconColor}; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
-                                        <span class="lastSeen">${lastSeenText}</span>
-                                    </p>
-                                `);
-                                recentChatsEl.append(p);
-                            },
-                            error: function () {
-                                const p = $(`
-                                    <p class="userItem" style="display:flex; align-items:center; gap:10px; cursor:pointer;">
-                                        <span class="username">${user}</span>
-                                        <span class="statusIcon" style="background-color:red; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
-                                        <span class="lastSeen"></span>
-                                    </p>
-                                `);
-                                recentChatsEl.append(p);
-                            }
-                        });
-                    });
+                    return;
                 }
+
+                res.users.forEach(user => {
+                    $.ajax({
+                        url: `https://login-db-backend-three.vercel.app/api/user_status/?username=${encodeURIComponent(user)}`,
+                        method: "GET",
+                        success: function (statusRes) {
+                            let isOnline = statusRes.is_online === true || statusRes.is_online === "true";
+                            let iconColor = isOnline ? "green" : "red";
+
+                            let lastSeenText = "";
+                            if (!isOnline && statusRes.last_seen) {
+                                const lastSeenDate = new Date(statusRes.last_seen);
+                                const day = String(lastSeenDate.getDate()).padStart(2, '0');
+                                const month = String(lastSeenDate.getMonth() + 1).padStart(2, '0');
+                                const year = lastSeenDate.getFullYear();
+                                const hours = String(lastSeenDate.getHours()).padStart(2, '0');
+                                const minutes = String(lastSeenDate.getMinutes()).padStart(2, '0');
+                                const seconds = String(lastSeenDate.getSeconds()).padStart(2, '0');
+                                lastSeenText = `${day}.${month}.${year}, ${hours}:${minutes}:${seconds}`;
+                            }
+
+                            const p = $(`
+                                <p class="userItem" style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                    <span class="username">${user}</span>
+                                    <span class="statusIcon" style="background-color:${iconColor}; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
+                                    <span class="lastSeen">${lastSeenText}</span>
+                                </p>
+                            `);
+
+                            recentChatsEl.append(p);
+                        },
+                        error: function () {
+                            const p = $(`
+                                <p class="userItem" style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                    <span class="username">${user}</span>
+                                    <span class="statusIcon" style="background-color:red; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
+                                    <span class="lastSeen"></span>
+                                </p>
+                            `);
+                            recentChatsEl.append(p);
+                        }
+                    });
+                });
             },
             error: function () {
                 recentChatsEl.empty();
@@ -103,7 +111,6 @@ $(document).ready(function () {
         searchUser();
     });
 
-    // Click event üçün username span-dən düzgün alınır
     $(document).on('click', '.userItem', function () {
         const username = $(this).find('.username').text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
