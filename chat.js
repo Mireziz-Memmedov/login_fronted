@@ -21,7 +21,6 @@ $(document).ready(function () {
         const h2 = $('<h2></h2>').text(msg.text);
         div.append(h2);
 
-        // Mesajın oxunduğu zaman Seen altına əlavə olunur (yalnız sender üçün)
         if (sender === 'me') {
             const seenSpan = $('<div></div>').addClass('seenText').css({
                 'font-size': '12px',
@@ -49,14 +48,12 @@ $(document).ready(function () {
             success: function (res) {
                 if (res.messages && res.messages.length > 0) {
                     res.messages.forEach(msg => {
-                        // Yeni mesaj əlavə et
                         if (msg.id > lastMessageId) {
                             appendMessage(msg);
                             lastMessageId = msg.id;
-                        } 
-                        // Mövcud mesajın oxunduğunu yenilə
+                        }
                         else if (msg.sender === currentUsername) {
-                            const $div = $messagesBox.find('div.right').filter(function() {
+                            const $div = $messagesBox.find('div.right').filter(function () {
                                 return $(this).data('msg-id') === msg.id;
                             });
                             const $seenSpan = $div.find('.seenText');
@@ -70,9 +67,7 @@ $(document).ready(function () {
         });
     }
 
-    // İlk yükləmə
     updateMessages();
-    // Hər 2 saniyədə yenilə
     setInterval(updateMessages, 2000);
 
     $('#sendBtn').click(function () {
@@ -90,7 +85,6 @@ $(document).ready(function () {
             }),
             success: function (res) {
                 $('#messageInput').val('');
-                // Mesaj backend-də saxlanır, Seen statusu avtomatik yenilənəcək
             }
         });
     });
