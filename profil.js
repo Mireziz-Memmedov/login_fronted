@@ -82,6 +82,10 @@ $(document).ready(function () {
 
     function searchUser() {
         const query = $('#usernameSearch').val().trim();
+        const resultsBox = $('#searchResults');
+
+        resultsBox.empty();
+
         if (!query) return;
 
         $.ajax({
@@ -89,18 +93,30 @@ $(document).ready(function () {
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({ username: query }),
+
             success: function (res) {
                 if (!res.users || res.users.length === 0) {
-                    alert("Belə istifadəçi mövcud deyil!");
-                } else {
-                    window.location.href = `./chat.html?user=${encodeURIComponent(query)}`;
+                    resultsBox.append(
+                        '<li class="no-result">İstifadəçi tapılmadı</li>'
+                    );
+                    return;
                 }
+
+                res.users.forEach(user => {
+                    resultsBox.append(`
+                    <li class="user-item" data-id="${user.id}">
+                        ${user.username}
+                    </li>
+                `);
+                });
             },
+
             error: function () {
                 alert("Server ilə əlaqə alınmadı!");
             }
         });
     }
+
 
     $('#usernameSearch').keypress(function (e) {
         if (e.which === 13) searchUser();
