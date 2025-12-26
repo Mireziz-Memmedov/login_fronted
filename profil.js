@@ -115,4 +115,9 @@ $(document).ready(function () {
         const username = $(this).find('.username').text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
     });
+
+    $('.btn').click(function (e) { 
+        e.preventDefault();
+        window.location.href = "./index.html";
+    });
 });

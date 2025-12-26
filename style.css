@@ -281,7 +281,7 @@ body {
   flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
-  height: 480px;
+  height: 400px;
 }
 #profil .box .textbox {
   display: flex;
@@ -293,6 +293,9 @@ body {
   border: none;
   background-color: #000000;
   font-size: 20px;
+}
+#profil .box .textbox button:hover {
+  cursor: pointer;
 }
 #profil .box .textbox h1 {
   color: #ffffff;
@@ -332,6 +335,9 @@ body {
   max-height: 250px;
   overflow-y: auto;
 }
+#profil .box #recentChats::-webkit-scrollbar {
+  display: none;
+}
 #profil .box #recentChats p {
   font-size: 14px;
   background-color: #1a1a1a;
@@ -347,8 +353,24 @@ body {
 #profil .box #recentChats p .lastSeen {
   font-size: 10px;
 }
+#profil .box .btnbox {
+  color: #ffffff;
+  margin: 10px;
+}
+#profil .box .btnbox .btn {
+  border: 1px solid #a8a6a6;
+  padding: 5px;
+  background-color: #f70000;
+}
+#profil .box .btnbox .btn:hover {
+  cursor: pointer;
+  background-color: #6d0404;
+}
+#profil .box .btnbox .btn h3:hover {
+  cursor: pointer;
+}
 
-body.dark-mode body {
+body.dark-mode {
   background-color: #ffffff;
 }
 body.dark-mode #profil {
@@ -381,6 +403,12 @@ body.dark-mode #profil #recentChats p {
 }
 body.dark-mode #profil #recentChats p:hover {
   background-color: #cccccc;
+}
+body.dark-mode #profil .btnbox {
+  color: #000000;
+}
+body.dark-mode #profil .btnbox .btn {
+  border: 1px solid #000000;
 }
 
 #chat {
