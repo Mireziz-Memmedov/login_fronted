@@ -97,13 +97,13 @@ section {
 #login .box .divider::after {
   margin-left: 10px;
 }
-#login .box .fogot {
+#login .box .forgot {
   margin-top: 20px;
 }
-#login .box .fogot a {
+#login .box .forgot a {
   cursor: pointer;
 }
-#login .box .fogot a:hover {
+#login .box .forgot a:hover {
   text-decoration: underline;
 }
 #login .minibox {
@@ -147,7 +147,7 @@ body.dark-mode #login .add input {
   background-color: #ffffff;
   border-color: #040404;
 }
-body.dark-mode #login .fogot a {
+body.dark-mode #login .forgot a {
   color: #000000;
 }
 body.dark-mode #login .minibox {
