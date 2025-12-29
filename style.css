@@ -515,6 +515,13 @@ body.dark-mode #chat .messageBox .text button {
   background-color: #000000;
   font-size: 20px;
 }
+#forgot .box .textbox h2 {
+  margin: 20px 0;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 25px;
+  cursor: text;
+}
 #forgot .box .add {
   display: flex;
   flex-direction: column;
@@ -526,6 +533,9 @@ body.dark-mode #chat .messageBox .text button {
   background-color: #000000;
   border: 2px solid #a8a6a6;
   color: #ffffff;
+}
+#forgot .box p {
+  margin: 10px 0;
 }
 #forgot .box .btn {
   display: flex;
@@ -552,7 +562,7 @@ body.dark-mode #forgot .box {
   background-color: #ffffff;
   border-color: #000000;
 }
-body.dark-mode #forgot .textbox,
+body.dark-mode #forgot .textbox h2,
 body.dark-mode #forgot .add input,
 body.dark-mode #forgot .btn h3 {
   color: #000000;
