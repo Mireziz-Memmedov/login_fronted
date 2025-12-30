@@ -24,7 +24,7 @@ $(document).ready(function () {
             success: function (response) {
 
                 if (response.success) {
-                    window.location.href = "./index.html";
+                    window.location.href = "./verify-code.html";
                 } else {
                     errorMsg.css("color", "red");
                     errorMsg.html("İstifadəçi adı və ya<br>email yanlışdır!");

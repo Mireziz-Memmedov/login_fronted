@@ -573,4 +573,83 @@ body.dark-mode #forgot #themeToggle {
 body.dark-mode #forgot .add input {
   background-color: #ffffff;
   border-color: #040404;
+}
+
+#verify-code {
+  background-color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#verify-code .box {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #a8a6a6;
+  margin-bottom: 25px;
+  width: auto;
+}
+#verify-code .box .textbox button {
+  margin: 11px 0;
+  border: none;
+  background-color: #000000;
+  font-size: 20px;
+}
+#verify-code .box .textbox h2 {
+  margin: 20px 0;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 25px;
+  cursor: text;
+}
+#verify-code .box .add {
+  display: flex;
+  flex-direction: column;
+}
+#verify-code .box .add input {
+  border-radius: 5px;
+  margin: 10px 20px;
+  padding: 10px;
+  background-color: #000000;
+  border: 2px solid #a8a6a6;
+  color: #ffffff;
+}
+#verify-code .box p {
+  margin: 10px 0;
+}
+#verify-code .box .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c14ff;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 4px 20px;
+  max-width: 220px;
+  width: 220px;
+}
+#verify-code .box .btn h3 {
+  color: #cdcaca;
+}
+#verify-code .box .btn h3:hover {
+  cursor: pointer;
+}
+
+body.dark-mode #verify-code {
+  background-color: #ffffff !important;
+}
+body.dark-mode #verify-code .box {
+  background-color: #ffffff;
+  border-color: #000000;
+}
+body.dark-mode #verify-code .textbox h2,
+body.dark-mode #verify-code .add input,
+body.dark-mode #verify-code .btn h3 {
+  color: #000000;
+}
+body.dark-mode #verify-code #themeToggle {
+  background-color: #ffffff;
+}
+body.dark-mode #verify-code .add input {
+  background-color: #ffffff;
+  border-color: #040404;
 }/*# sourceMappingURL=style.css.map */

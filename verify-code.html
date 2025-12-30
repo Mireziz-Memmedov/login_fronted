@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="verify-code.js" defer></script>
+    <script src="https://kit.fontawesome.com/51d2f8b0de.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Verifiy Code</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        <section id="verify-code">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="box text-center">
+                            <div class="textbox">
+                                <button id="themeToggle">🌙</button>
+                                <h2>Enter the code<br>sent to your email</h2>
+                            </div>
+                            <div class="add">
+                                <input type="text" id="verify-code" placeholder="xxxx" inputmode="numeric" maxlength="4"
+                                    autocomplete="one-time-code">
+                            </div>
+                            <p id="error-msg" style="color:red; font-weight:bold;"></p>
+                            <div id="login-btn" class="btn">
+                                <h3>Continue</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+</body>
+
+</html>
