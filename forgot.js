@@ -23,13 +23,7 @@ $(document).ready(function () {
             }),
             success: function (response) {
 
-                if (response.success) {
-                    window.location.href = "./verify-code.html";
-                } else {
-                    errorMsg.css("color", "red");
-                    errorMsg.html("İstifadəçi adı və ya<br>email yanlışdır!");
-                    $('#username_or_email').val('');
-                }
+                c
             },
             error: function () {
                 errorMsg.css("color", "red");
