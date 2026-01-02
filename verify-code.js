@@ -10,7 +10,7 @@ $(document).ready(function () {
         const errorMsg = $('#error-msg');
 
         if (!verify_code) {
-            errorMsg.html("Zəhmət olmasa emaila<br>göndərilmiş kodu daxil edin");
+            errorMsg.html("Email-ə göndərilmiş 4<br>rəqəmli kodu daxil edin");
             return;
         }
 
@@ -30,6 +30,11 @@ $(document).ready(function () {
                     $('#verify_code').val('');
                 }
 
+            },
+            error: function () {
+                errorMsg.css("color", "red");
+                errorMsg.html("Server xətası,<br>sonra yenidən cəhd edin!");
+                $('#verify_code').val('');
             }
         });
 
