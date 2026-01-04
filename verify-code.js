@@ -23,7 +23,7 @@ $(document).ready(function () {
             }),
             success: function (response) {
                 if (response.success) {
-                    window.location.href = "./signup.html";
+                    window.location.href = "./reset_password.html";
                 } else {
                     errorMsg.css("color", "red");
                     errorMsg.html("Kod yanlışdır!");
