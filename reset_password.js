@@ -31,6 +31,9 @@ $(document).ready(function () {
             type: "POST",
             url: "https://login-db-backend-three.vercel.app/api/reset-password/",
             contentType: "application/json",
+            xhrFields: {
+                withCredentials: true
+            },
             data: JSON.stringify({
                 password: password
             }),
