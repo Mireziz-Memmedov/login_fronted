@@ -23,6 +23,7 @@ $(document).ready(function () {
             }),
             success: function (response) {
                 if (response.success) {
+                    localStorage.setItem('verify_code', verify_code);
                     window.location.href = "./reset_password.html";
                 } else {
                     errorMsg.css("color", "red");

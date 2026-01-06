@@ -21,6 +21,7 @@ $(document).ready(function () {
 
         const password = $('#password').val().trim();
         const errorMsg = $('#error-msg');
+        const verify_code = localStorage.getItem('verify_code');
 
         if (!password) {
             errorMsg.html('Yeni şifrə təyin edin!');
@@ -32,10 +33,13 @@ $(document).ready(function () {
             url: "https://login-db-backend-three.vercel.app/api/reset-password/",
             contentType: "application/json",
             data: JSON.stringify({
-                password: password
+                password: password,
+                verify_code: verify_code
             }),
             success: function (response) {
                 if (response.success) {
+                    alert('Şifrə dəyişdirildi!');
+                    localStorage.removeItem('verify_code')
                     window.location.href = "./profil.html";
                 } else {
                     errorMsg.css("color", "red");
