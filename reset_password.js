@@ -19,7 +19,6 @@ $(document).ready(function () {
 
     function reset_password() {
 
-        const username = $('#username').val();
         const password = $('#password').val().trim();
         const errorMsg = $('#error-msg');
 
@@ -33,8 +32,7 @@ $(document).ready(function () {
             url: "https://login-db-backend-three.vercel.app/api/reset-password/",
             contentType: "application/json",
             data: JSON.stringify({
-                password: password,
-                username: username
+                password: password
             }),
             success: function (response) {
                 if (response.success) {
