@@ -416,6 +416,21 @@ body.dark-mode #profil .btnbox .btn {
   justify-content: center;
   margin-top: 50px;
 }
+#chat .header {
+  margin: 10px 5px;
+  display: flex;
+}
+#chat .header .btn {
+  width: 25px;
+  font-size: 25px;
+  color: #000000;
+}
+#chat .header .btn:hover {
+  cursor: pointer;
+}
+#chat .header .targetuser {
+  margin-left: 110px;
+}
 #chat .messageBox {
   background-color: #e8edff;
   border-radius: 15px;

@@ -92,4 +92,12 @@ $(document).ready(function () {
     $('#messageInput').keypress(function (e) {
         if (e.which === 13) $('#sendBtn').click();
     });
+
+    $('.btn').click(function (e) {
+        e.preventDefault();
+        window.history.back();
+
+    });
+
+    $('.targetuser').text(targetUser);
 });
