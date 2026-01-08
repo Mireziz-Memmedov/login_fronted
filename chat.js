@@ -12,9 +12,12 @@ $(document).ready(function () {
         return;
     }
 
+    let offset = 0;
+    const limit = 10;
     let lastMessageId = 0;
 
-    function appendMessage(msg) {
+    // Mesaj əlavə etmək funksiyası (append = aşağı, prepend = yuxarı)
+    function addMessage(msg, prepend = false, scroll = false) {
         const sender = msg.sender === currentUsername ? 'me' : 'other';
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
 
@@ -28,48 +31,109 @@ $(document).ready(function () {
                 'text-align': 'right',
                 'margin-top': '2px'
             });
-
-            if (msg.is_read) {
-                seenSpan.text('✔ Seen');
-            }
-
+            if (msg.is_read) seenSpan.text('✔ Seen');
             div.append(seenSpan);
         }
 
         div.data('msg-id', msg.id);
-        $messagesBox.append(div);
-        $messagesBox.scrollTop($messagesBox[0].scrollHeight);
+
+        if (prepend) {
+            // Yuxarıdan əlavə edəndə scroll mövqeyini saxla
+            const oldScroll = $messagesBox[0].scrollHeight;
+            $messagesBox.prepend(div);
+            const newScroll = $messagesBox[0].scrollHeight;
+            $messagesBox.scrollTop(newScroll - oldScroll);
+        } else {
+            $messagesBox.append(div);
+            if (scroll) $messagesBox.scrollTop($messagesBox[0].scrollHeight);
+        }
     }
 
-    function updateMessages() {
+    // İlk load → son mesajları göstər
+    function loadInitialMessages() {
         $.ajax({
-            url: `https://login-db-backend-three.vercel.app/api/get-messages/?user_id=${currentUserId}&user=${encodeURIComponent(targetUser)}`,
+            url: "https://login-db-backend-three.vercel.app/api/get-messages/",
             method: "GET",
+            data: {
+                user_id: currentUserId,
+                user: targetUser,
+                limit: limit,
+                offset: offset
+            },
             success: function (res) {
-                if (res.messages && res.messages.length > 0) {
-                    res.messages.forEach(msg => {
-                        if (msg.id > lastMessageId) {
-                            appendMessage(msg);
-                            lastMessageId = msg.id;
-                        }
-                        else if (msg.sender === currentUsername) {
-                            const $div = $messagesBox.find('div.right').filter(function () {
-                                return $(this).data('msg-id') === msg.id;
-                            });
-                            const $seenSpan = $div.find('.seenText');
-                            if (msg.is_read && $seenSpan.text() === '') {
-                                $seenSpan.text('✔ Seen');
-                            }
-                        }
-                    });
-                }
+                if (!res.messages || res.messages.length === 0) return;
+
+                res.messages.forEach(msg => {
+                    addMessage(msg, false, true); // scroll aşağı
+                    lastMessageId = Math.max(lastMessageId, msg.id);
+                });
+
+                offset += limit;
             }
         });
     }
 
-    updateMessages();
-    setInterval(updateMessages, 2000);
+    // Yeni mesajları poll
+    function checkNewMessages() {
+        $.ajax({
+            url: "https://login-db-backend-three.vercel.app/api/get-messages/",
+            method: "GET",
+            data: {
+                user_id: currentUserId,
+                user: targetUser,
+                limit: 5,
+                offset: 0
+            },
+            success: function (res) {
+                if (!res.messages || res.messages.length === 0) return;
 
+                res.messages.forEach(msg => {
+                    if (msg.id > lastMessageId) {
+                        addMessage(msg, false, true); // append aşağı
+                        lastMessageId = msg.id;
+                    }
+                });
+            }
+        });
+    }
+
+    // Köhnə mesajları yüklə (yuxarıdan)
+    function loadOldMessages() {
+        $.ajax({
+            url: "https://login-db-backend-three.vercel.app/api/get-messages/",
+            method: "GET",
+            data: {
+                user_id: currentUserId,
+                user: targetUser,
+                limit: limit,
+                offset: offset
+            },
+            success: function (res) {
+                if (!res.messages || res.messages.length === 0) return;
+
+                res.messages.reverse().forEach(msg => {
+                    addMessage(msg, true, false); // prepend yuxarı
+                    lastMessageId = Math.max(lastMessageId, msg.id);
+                });
+
+                offset += limit;
+            }
+        });
+    }
+
+    // Scroll yuxarı → load more
+    $messagesBox.on('scroll', function () {
+        if ($messagesBox.scrollTop() === 0) {
+            loadOldMessages();
+        }
+    });
+
+    // İlk load
+    loadInitialMessages();
+    // Polling yeni mesajlar üçün
+    setInterval(checkNewMessages, 2000);
+
+    // Mesaj göndər
     $('#sendBtn').click(function () {
         const msgText = $('#messageInput').val().trim();
         if (!msgText) return;
@@ -83,7 +147,7 @@ $(document).ready(function () {
                 to: targetUser,
                 text: msgText
             }),
-            success: function (res) {
+            success: function () {
                 $('#messageInput').val('');
             }
         });
@@ -96,7 +160,6 @@ $(document).ready(function () {
     $('.btn').click(function (e) {
         e.preventDefault();
         window.history.back();
-
     });
 
     $('.targetuser').text(targetUser);
