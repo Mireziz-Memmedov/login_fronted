@@ -157,6 +157,37 @@ body.dark-mode #login p {
   color: #000000;
 }
 
+@media (max-width: 480px) {
+  #login {
+    width: 100vw;
+    height: 100vh;
+  }
+  #login .box {
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+  }
+  #login .box .add input {
+    width: 90%;
+    margin: 10px auto;
+  }
+  #login .box .btn {
+    width: 90%;
+    max-width: none;
+  }
+  #login .box .textbox h1 {
+    font-size: 24px;
+    margin: 30px 0 15px;
+  }
+  #login .box .divider span {
+    font-size: 14px;
+  }
+  #login .box .minibox {
+    width: 90%;
+    min-width: 0;
+    max-width: none;
+  }
+}
 #signup {
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
