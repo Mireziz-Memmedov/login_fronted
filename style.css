@@ -471,6 +471,12 @@ body.dark-mode #profil .btnbox .btn {
   color: #000;
   align-self: flex-start;
 }
+#chat .messageBox .minibox div.right .menu {
+  align-items: flex-end;
+}
+#chat .messageBox .minibox div.right .delete {
+  margin-right: 9px;
+}
 #chat .messageBox .text {
   display: flex;
   margin: 10px;
