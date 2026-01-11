@@ -163,4 +163,28 @@ $(document).ready(function () {
     });
 
     $('.targetuser').text(targetUser);
+
+    function remove(h2) {
+
+        $('.menu').remove();
+
+        const menu = $('<div>').addClass('menu');
+        const del = $('<div>').addClass('delete').text('Delete');
+        const unsend = $('<div>').addClass('unsend').text('Unsend');
+
+        menu.append(del);
+
+        if ($(h2).parent().hasClass('right')) {
+            menu.append(unsend);
+        }
+
+        $(h2).parent().append(menu);
+    }
+
+    $(document).on('click', 'h2', function (e) {
+        e.preventDefault();
+        remove(this);
+    });
+
+
 });
