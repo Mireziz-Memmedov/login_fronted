@@ -186,5 +186,20 @@ $(document).ready(function () {
         remove(this);
     });
 
+    $(document).click(function (e) {
+        if (!$(e.target).closest('.menu, h2').length) {
+            $('.menu').slideUp();
+        }
+    });
+
+    let scrollTimer;
+
+    $(document).on('wheel', function () {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+            $('.menu').stop(true, true).slideUp();
+        }, 100);
+    });
+
 
 });
