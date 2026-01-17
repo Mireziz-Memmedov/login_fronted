@@ -35,7 +35,7 @@ $(document).ready(function () {
             div.append(seenSpan);
         }
 
-        div.data('msg-id', msg.id);
+        div.attr('data-msg-id', msg.id);
 
         if (prepend) {
             // Yuxarıdan əlavə edəndə scroll mövqeyini saxla
@@ -201,8 +201,9 @@ $(document).ready(function () {
         }, 100);
     });
 
+    // delete funksiyası
     function del(msg_id) {
-        const currentUserId = parseInt(localStorage.getItem('currentUserId'));
+        if (!msg_id) return;
         $.ajax({
             type: "POST",
             url: "https://login-db-backend-three.vercel.app/api/delete-chat/",
@@ -216,15 +217,23 @@ $(document).ready(function () {
                 if (response.success) {
                     $(`[data-msg-id='${msg_id}']`).remove();
                 } else {
-                    alert('Mesaj silinə bilmədi!');
+                    alert(response.error || 'Mesaj silinə bilmədi!');
                 }
+            },
+            error: function (xhr, status, error) {
+                console.error("Delete error:", status, error);
+                alert('Server xətası baş verdi!');
             }
         });
     }
 
+    // Delete click handler
     $(document).on('click', '.delete', function (e) {
         e.preventDefault();
-        let msg_id = $(this).closest('div').data('msg-id');
-        del(msg_id);
+        const msg_id = $(this).closest('.right, .left').attr('data-msg-id'); // attr() istifadə et
+        console.log("Deleting msg_id:", msg_id);
+        if (msg_id) del(msg_id);
     });
+
+
 });
