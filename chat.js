@@ -164,7 +164,7 @@ $(document).ready(function () {
 
     $('.targetuser').text(targetUser);
 
-    function remove(h2) {
+    function new_slide_box(h2) {
 
         $('.menu').remove();
 
@@ -183,7 +183,7 @@ $(document).ready(function () {
 
     $(document).on('click', 'h2', function (e) {
         e.preventDefault();
-        remove(this);
+        new_slide_box(this);
     });
 
     $(document).click(function (e) {
@@ -201,5 +201,30 @@ $(document).ready(function () {
         }, 100);
     });
 
+    function del(msg_id) {
+        const currentUserId = parseInt(localStorage.getItem('currentUserId'));
+        $.ajax({
+            type: "POST",
+            url: "https://login-db-backend-three.vercel.app/api/delete-chat/",
+            contentType: "application/json",
+            data: JSON.stringify({
+                user_id: currentUserId,
+                msg_id: msg_id
+            }),
+            dataType: "json",
+            success: function (response) {
+                if (response.success) {
+                    $(`[data-msg-id='${msg_id}']`).remove();
+                } else {
+                    alert('Mesaj silinə bilmədi!');
+                }
+            }
+        });
+    }
 
+    $(document).on('click', '.delete', function (e) {
+        e.preventDefault();
+        let msg_id = $(this).closest('div').data('msg-id');
+        del(msg_id);
+    });
 });
