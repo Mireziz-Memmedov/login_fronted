@@ -25,14 +25,17 @@ $(document).ready(function () {
         div.append(h2);
 
         if (sender === 'me') {
-            const seenSpan = $('<div></div>').addClass('seenText').css({
-                'font-size': '12px',
-                'color': 'gray',
-                'text-align': 'right',
-                'margin-top': '2px'
-            });
-            if (msg.is_read) seenSpan.text('✔ Seen');
-            div.append(seenSpan);
+            if (msg.is_read) {
+                $messagesBox.find('.right .seenText').remove();
+                const seenSpan = $('<div></div>').addClass('seenText').css({
+                    'font-size': '12px',
+                    'color': 'gray',
+                    'text-align': 'right',
+                    'margin-top': '2px'
+                });
+                if (msg.is_read) seenSpan.text('✔ Seen');
+                div.append(seenSpan);
+            }
         }
 
         div.attr('data-msg-id', msg.id);
@@ -230,9 +233,43 @@ $(document).ready(function () {
     // Delete click handler
     $(document).on('click', '.delete', function (e) {
         e.preventDefault();
-        const msg_id = $(this).closest('.right, .left').attr('data-msg-id'); // attr() istifadə et
+        const msg_id = $(this).closest('.right, .left').attr('data-msg-id');
         console.log("Deleting msg_id:", msg_id);
         if (msg_id) del(msg_id);
+    });
+
+    // Unsend funksiyası
+    function unsend(msg_id) {
+        if (!msg_id) return;
+        $.ajax({
+            type: "POST",
+            url: "https://login-db-backend-three.vercel.app/api/unsend-chat/",
+            contentType: "application/json",
+            data: JSON.stringify({
+                user_id: currentUserId,
+                msg_id: msg_id
+            }),
+            dataType: "json",
+            success: function (response) {
+                if (response.success) {
+                    $(`[data-msg-id='${msg_id}']`).remove();
+                } else {
+                    alert(response.error || 'Mesaj silinə bilmədi!');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Delete error:", status, error);
+                alert('Server xətası baş verdi!');
+            }
+        });
+    }
+
+    // Unsend click handler
+    $(document).on('click', '.unsend', function (e) {
+        e.preventDefault();
+        const msg_id = $(this).closest('.right, .left').attr('data-msg-id');
+        console.log("Deleting msg_id:", msg_id);
+        if (msg_id) unsend(msg_id);
     });
 
 
