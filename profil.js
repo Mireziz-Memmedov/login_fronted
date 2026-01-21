@@ -61,7 +61,7 @@ $(document).ready(function () {
                         },
                         error: function () {
                             const p = $(`
-                                <p class="userItem" style="display:flex; align-items:center; gap:10px;">
+                                <p class="userItem" data-username="${user}" style="display:flex; align-items:center; gap:10px;">
                                     <span class="username">${user}</span>
                                     <span class="statusIcon" style="background-color:red; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
                                     <span class="lastSeen"></span>
@@ -126,7 +126,7 @@ $(document).ready(function () {
     $(document).on('click', '.remove', function (e) {
         e.preventDefault();
         const chatElement = $(this).closest('.userItem');
-        const username = chatElement.data('username');
+        const username = chatElement.find('.username').text();
 
         $.ajax({
             type: "POST",
