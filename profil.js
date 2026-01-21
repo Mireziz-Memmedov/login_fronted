@@ -65,7 +65,7 @@ $(document).ready(function () {
                                     <span class="username">${user}</span>
                                     <span class="statusIcon" style="background-color:red; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
                                     <span class="lastSeen"></span>
-                                    <span class="remove">❌</span>
+                                    <span class="remove">🗑️</span>
                                 </p>
                             `);
                             recentChatsEl.append(p);
