@@ -49,10 +49,11 @@ $(document).ready(function () {
                             }
 
                             const p = $(`
-                                <p class="userItem" style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                <p class="userItem" style="display:flex; align-items:center; gap:10px;">
                                     <span class="username">${user}</span>
                                     <span class="statusIcon" style="background-color:${iconColor}; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
                                     <span class="lastSeen">${lastSeenText}</span>
+                                    <span class="remove">🗑️</span>
                                 </p>
                             `);
 
@@ -60,10 +61,11 @@ $(document).ready(function () {
                         },
                         error: function () {
                             const p = $(`
-                                <p class="userItem" style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+                                <p class="userItem" style="display:flex; align-items:center; gap:10px;">
                                     <span class="username">${user}</span>
                                     <span class="statusIcon" style="background-color:red; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
                                     <span class="lastSeen"></span>
+                                    <span class="remove">❌</span>
                                 </p>
                             `);
                             recentChatsEl.append(p);
@@ -111,12 +113,12 @@ $(document).ready(function () {
         searchUser();
     });
 
-    $(document).on('click', '.userItem', function () {
-        const username = $(this).find('.username').text();
+    $(document).on('click', '.username', function () {
+        const username = $(this).text();
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
     });
 
-    $('.btn').click(function (e) { 
+    $('.btn').click(function (e) {
         e.preventDefault();
         window.location.href = "./index.html";
     });

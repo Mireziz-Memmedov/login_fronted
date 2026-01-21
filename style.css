@@ -346,13 +346,20 @@ body {
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 5px;
-  cursor: pointer;
 }
 #profil .box #recentChats p:hover {
   background-color: #333;
 }
+#profil .box #recentChats p .username {
+  cursor: pointer;
+}
 #profil .box #recentChats p .lastSeen {
-  font-size: 10px;
+  font-size: 8px;
+}
+#profil .box #recentChats p .remove {
+  margin-left: auto;
+  cursor: pointer;
+  color: #f70000;
 }
 #profil .box .btnbox {
   color: #ffffff;
