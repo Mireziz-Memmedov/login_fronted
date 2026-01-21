@@ -122,4 +122,32 @@ $(document).ready(function () {
         e.preventDefault();
         window.location.href = "./index.html";
     });
+
+    $(document).on('click', '.remove', function (e) {
+        e.preventDefault();
+        const chatElement = $(this).closest('.userItem');
+        const username = chatElement.data('username');
+
+        $.ajax({
+            type: "POST",
+            url: "https://login-db-backend-three.vercel.app/api/delete-profile-chats/",
+            contentType: "application/json",
+            data: JSON.stringify({
+                user_id: currentUserId,
+                target_username: username
+            }),
+            success: function (response) {
+                if (response.success) {
+                    chatElement.remove();
+                } else {
+                    console.warn("Delete failed:", response.error);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Server error:", error);
+            }
+        });
+
+    });
+
 });
