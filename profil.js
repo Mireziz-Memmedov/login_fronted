@@ -96,6 +96,7 @@ $(document).ready(function () {
                     alert("Belə istifadəçi mövcud deyil!");
                 } else {
                     window.location.href = `./chat.html?user=${encodeURIComponent(query)}`;
+                    $('#usernameSearch').val('');
                 }
             },
             error: function () {
