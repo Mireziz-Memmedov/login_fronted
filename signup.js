@@ -1,7 +1,17 @@
 $(document).ready(function () {
 
+    if (localStorage.getItem('darkModeSignup') === 'true') {
+        $('body').addClass('dark-mode');
+    }
+
     $('#themeToggle').click(function () {
         $('body').toggleClass('dark-mode');
+
+        if ($('body').hasClass('dark-mode')) {
+            localStorage.setItem('darkModeSignup', 'true');
+        } else {
+            localStorage.setItem('darkModeSignup', 'false');
+        }
     });
 
     $('#toggle-password').click(function () {

@@ -1,8 +1,18 @@
 $(document).ready(function () {
 
+    if (localStorage.getItem('darkModeForgot') === 'true') {
+        $('body').addClass('dark-mode');
+    }
+
     $('#themeToggle').click(function (e) {
         e.preventDefault();
         $('body').toggleClass('dark-mode');
+
+        if ($('body').hasClass('dark-mode')) {
+            localStorage.setItem('darkModeForgot', 'true')
+        } else {
+            localStorage.setItem('darkModeForgot', 'false')
+        }
     });
 
     function forgot_check() {

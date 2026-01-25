@@ -97,7 +97,17 @@ $(document).ready(function () {
         }
     });
 
+    if (localStorage.getItem('darkModeLogin') === 'true') {
+        $('body').addClass('dark-mode');
+    }
+
     $('#themeToggle').click(function () {
         $('body').toggleClass('dark-mode');
+
+        if ($('body').hasClass('dark-mode')) {
+            localStorage.setItem('darkModeLogin', 'true')
+        } else {
+            localStorage.setItem('darkModeLogin', 'false')
+        }
     });
 });

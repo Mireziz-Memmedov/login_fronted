@@ -1,8 +1,18 @@
 $(document).ready(function () {
 
+    if (localStorage.getItem('darkModeVerify') === 'true') {
+        $('body').addClass('dark-mode');
+    }
+
     $('#themeToggle').click(function (e) {
         e.preventDefault();
         $('body').toggleClass('dark-mode');
+
+        if ($('body').hasClass('dark-mode')) {
+            localStorage.setItem('darkModeVerify', 'true')
+        } else {
+            localStorage.setItem('darkModeVerify', 'false')
+        }
     });
 
     function verify_code() {

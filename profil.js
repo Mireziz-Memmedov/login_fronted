@@ -1,6 +1,16 @@
 $(document).ready(function () {
+
+    if (localStorage.getItem('darkModeProfil') === 'true') {
+        $('body').addClass('dark-mode');
+    }
     $('#themeToggle').click(function () {
         $('body').toggleClass('dark-mode');
+
+        if ($('body').hasClass('dark-mode')) {
+            localStorage.setItem('darkModeProfil', 'true')
+        } else {
+            localStorage.setItem('darkModeProfil', 'false')
+        }
     });
 
     const currentUserId = parseInt(localStorage.getItem('currentUserId'));
