@@ -489,7 +489,7 @@ body.dark-mode #profil .btnbox .btn {
   padding: 5px 10px;
   border-radius: 20px;
   display: inline-block;
-  max-width: 70%;
+  max-width: 250px;
   word-break: break-word;
 }
 #chat .messageBox .minibox div.right h2 {

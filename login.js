@@ -6,6 +6,7 @@ $(document).ready(function () {
         const errorMsg = $('#error-msg');
 
         if (!username || !password) {
+            errorMsg.css("color", "red");
             errorMsg.html("Zəhmət olmasa istifadəçi<br>adını və şifrəni daxil edin");
             return;
         }
@@ -21,19 +22,49 @@ $(document).ready(function () {
             success: function (response) {
 
                 if (response.success) {
-                    // ✅ localStorage-a yazırıq
+                    // localStorage-a yazırıq
                     localStorage.setItem('currentUserId', response.user.id);
                     localStorage.setItem('currentUsername', response.user.username);
 
                     errorMsg.css("color", "lightgreen");
                     errorMsg.text("Giriş uğurlu! Yönləndirilir...");
+                    $('#username, #password').val('');
                     setTimeout(() => {
                         window.location.href = "./profil.html";
                     }, 1000);
                 } else {
                     errorMsg.css("color", "red");
-                    errorMsg.text("İstifadəçi adı və ya şifrə yanlışdır!");
-                    $('#username, #password').val('');
+
+                    // əgər backend blok vaxtını göndəribsə
+                    if (response.user) {
+                        const attempts = parseInt(response.user.failed_attempts || 0);
+                        const blockedUntil = response.user.blocked_until
+                            ? new Date(response.user.blocked_until).getTime()
+                            : null;
+
+                        const now = Date.now();
+
+                        // Blok YOXDUR
+                        if (attempts < 3 || !blockedUntil) {
+                            errorMsg.text("İstifadəçi adı və ya şifrə yanlışdır!");
+                            $('#username, #password').val('');
+                            return;
+                        }
+
+                        // BLOK VAR
+                        let secondsLeft = Math.ceil((blockedUntil - now) / 1000);
+                        secondsLeft = Math.max(secondsLeft, 30);
+                        $('#username, #password').val('');
+                        alert(`${secondsLeft} saniyə sonra cəhd edin`);
+                        $('#username, #password, #login-btn').prop('disabled', true);
+
+                        // Vaxt bitəndə avtomatik açılır
+                        setTimeout(() => {
+                            $('#username, #password, #login-btn').prop('disabled', false);
+                            errorMsg.css("color", "lightgreen");
+                            errorMsg.text("İndi yenidən cəhd edə bilərsiniz!");
+                        }, secondsLeft * 1000);
+                    }
                 }
             },
             error: function () {
