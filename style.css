@@ -412,9 +412,6 @@ body.dark-mode #profil #recentChats p {
 body.dark-mode #profil #recentChats p:hover {
   background-color: #cccccc;
 }
-body.dark-mode #profil .btnbox {
-  color: #000000;
-}
 body.dark-mode #profil .btnbox .btn {
   border: 1px solid #000000;
 }
