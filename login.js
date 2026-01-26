@@ -46,7 +46,7 @@ $(document).ready(function () {
 
                         // Blok YOXDUR
                         if (attempts < 3 || !blockedUntil) {
-                            errorMsg.text("İstifadəçi adı və ya şifrə yanlışdır!");
+                            errorMsg.html("İstifadəçi adı və ya<br>şifrə yanlışdır!");
                             $('#username, #password').val('');
                             return;
                         }

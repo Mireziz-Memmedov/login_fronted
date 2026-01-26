@@ -25,8 +25,6 @@ section {
   flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
-  height: 480px;
-  width: auto;
 }
 #login .box .textbox button {
   margin: 11px 0;
@@ -73,32 +71,8 @@ section {
 #login .box p {
   margin-bottom: 10px;
 }
-#login .box .divider {
-  width: 220px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 20px 0 10px;
-}
-#login .box .divider span {
-  padding: 0 10px;
-  font-weight: 600;
-  color: #cdcaca;
-  cursor: text;
-}
-#login .box .divider::before, #login .box .divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #a8a6a6;
-}
-#login .box .divider::before {
-  margin-right: 10px;
-}
-#login .box .divider::after {
-  margin-left: 10px;
-}
 #login .box .forgot {
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 #login .box .forgot a {
   cursor: pointer;
@@ -107,13 +81,11 @@ section {
   text-decoration: underline;
 }
 #login .minibox {
-  display: flex;
-  align-items: center;
   border: 2px solid #a8a6a6;
   border-radius: 5px;
-  height: 100px;
   box-sizing: border-box;
   flex-shrink: 0;
+  padding: 30px 17.3px;
 }
 #login .minibox a {
   color: #1c14ff;
@@ -121,9 +93,7 @@ section {
 }
 #login .minibox p {
   color: #ffffff;
-  margin: 0 16px;
   cursor: text;
-  margin: 0 17.5px;
 }
 
 body.dark-mode #login {
