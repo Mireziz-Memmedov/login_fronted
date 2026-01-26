@@ -34,7 +34,7 @@ $(document).ready(function () {
         let errorMsg = $('#error-msg');
 
         if (!username || !password || !email) {
-            errorMsg.text("Please fill in all fields!");
+            errorMsg.text("Zəhmət olmasa, bütün xanaları doldurun!");
             return;
         }
 
@@ -50,7 +50,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success) {
                     errorMsg.css("color", "lightgreen");
-                    errorMsg.html("Account created!<br>Redirecting...");
+                    errorMsg.html("Hesab yaradıldı!<br>Yönləndirilirsiniz…");
                     setTimeout(() => {
                         window.location.href = "./index.html";
                     }, 1000);
