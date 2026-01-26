@@ -143,7 +143,9 @@ body.dark-mode #login p {
   flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
-  width: auto;
+  width: 90%;
+  max-width: 264px;
+  min-width: 264px;
 }
 #signup .box .textbox button {
   margin: 10px 0;
@@ -191,16 +193,14 @@ body.dark-mode #login p {
   margin-bottom: 10px;
 }
 #signup .minibox {
-  display: flex;
-  align-items: center;
   border: 2px solid #a8a6a6;
   border-radius: 5px;
-  height: 100px;
-  width: 264px;
+  width: 100%;
   min-width: 264px;
   max-width: 264px;
   box-sizing: border-box;
   flex-shrink: 0;
+  padding: 30px 40.9px;
 }
 #signup .minibox a {
   color: #1c14ff;
@@ -208,7 +208,6 @@ body.dark-mode #login p {
 }
 #signup .minibox p {
   color: #ffffff;
-  margin: 0 41px;
   cursor: text;
 }
 
