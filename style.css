@@ -200,13 +200,14 @@ body.dark-mode #login p {
   max-width: 264px;
   box-sizing: border-box;
   flex-shrink: 0;
-  padding: 30px 40.9px;
+  padding: 30px 0;
 }
 #signup .minibox a {
   color: #1c14ff;
   cursor: pointer;
 }
 #signup .minibox p {
+  text-align: center;
   color: #ffffff;
   cursor: text;
 }
