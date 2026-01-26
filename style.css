@@ -112,7 +112,6 @@ section {
   border: 2px solid #a8a6a6;
   border-radius: 5px;
   height: 100px;
-  width: auto;
   box-sizing: border-box;
   flex-shrink: 0;
 }
@@ -124,6 +123,7 @@ section {
   color: #ffffff;
   margin: 0 16px;
   cursor: text;
+  margin: 0 17.5px;
 }
 
 body.dark-mode #login {
