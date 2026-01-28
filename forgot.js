@@ -18,6 +18,8 @@ $(document).ready(function () {
     function forgot_check() {
         const username_or_email = $('#username_or_email').val().trim();
         const errorMsg = $('#error-msg');
+        const dual = 'forgot'
+        localStorage.setItem('dual', dual)
 
         if (!username_or_email) {
             errorMsg.html("Zəhmət olmasa istifadəçi<br>adını və ya email daxil edin");
@@ -29,7 +31,8 @@ $(document).ready(function () {
             url: "https://login-db-backend-three.vercel.app/api/forgot-check/",
             contentType: "application/json",
             data: JSON.stringify({
-                username_or_email: username_or_email
+                username_or_email: username_or_email,
+                dual: dual
             }),
             success: function (response) {
 

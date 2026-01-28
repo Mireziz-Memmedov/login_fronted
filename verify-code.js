@@ -18,9 +18,10 @@ $(document).ready(function () {
     function verify_code() {
         const verify_code = $('#verify_code').val().trim();
         const errorMsg = $('#error-msg');
+        const dual = localStorage.getItem('dual')
 
         if (!verify_code) {
-            errorMsg.html("Email-ə göndərilmiş 4<br>rəqəmli kodu daxil edin");
+            errorMsg.html("Email-ə göndərilmiş 6<br>rəqəmli kodu daxil edin");
             return;
         }
 
@@ -29,15 +30,20 @@ $(document).ready(function () {
             url: "https://login-db-backend-three.vercel.app/api/verify-code/",
             contentType: "application/json",
             data: JSON.stringify({
-                verify_code: verify_code
+                verify_code: verify_code,
+                dual: dual
             }),
             success: function (response) {
                 if (response.success) {
                     localStorage.setItem('verify_code', verify_code);
-                    window.location.href = "./reset_password.html";
+                    if (response.dual === 'signup') {
+                        window.location.href = "./index.html";
+                    } else if (response.dual === 'forgot') {
+                        window.location.href = "./reset_password.html";
+                    }
                 } else {
                     errorMsg.css("color", "red");
-                    errorMsg.html("Kod yanlışdır!");
+                    errorMsg.html(response.error);
                     $('#verify_code').val('');
                 }
 
@@ -50,6 +56,7 @@ $(document).ready(function () {
         });
 
     }
+
     $('#login-btn').click(function (e) {
         e.preventDefault();
         verify_code();

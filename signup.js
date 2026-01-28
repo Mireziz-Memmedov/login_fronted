@@ -28,10 +28,12 @@ $(document).ready(function () {
     });
 
     function signup() {
-        let username = $('#username').val().trim();
-        let password = $('#password').val().trim();
-        let email = $('#email').val().trim();
-        let errorMsg = $('#error-msg');
+        const username = $('#username').val().trim();
+        const password = $('#password').val().trim();
+        const email = $('#email').val().trim();
+        const errorMsg = $('#error-msg');
+        const dual = 'signup'
+        localStorage.setItem('dual', dual)
 
         if (!username || !password || !email) {
             errorMsg.text("Zəhmət olmasa, bütün xanaları doldurun!");
@@ -45,14 +47,15 @@ $(document).ready(function () {
             data: JSON.stringify({
                 username: username,
                 password: password,
-                email: email
+                email: email,
+                dual: dual
             }),
             success: function (response) {
                 if (response.success) {
                     errorMsg.css("color", "lightgreen");
-                    errorMsg.html("Hesab yaradıldı!<br>Yönləndirilirsiniz…");
+                    errorMsg.html("Təsdiq kodu email-ə göndərildi");
                     setTimeout(() => {
-                        window.location.href = "./index.html";
+                        window.location.href = "./verify-code.html";
                     }, 1000);
                 } else {
                     errorMsg.css("color", "red");
