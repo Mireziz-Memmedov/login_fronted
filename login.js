@@ -35,6 +35,10 @@ $(document).ready(function () {
                 } else {
                     errorMsg.css("color", "red");
 
+                    if (response.user && !response.user.is_active) {
+                        errorMsg.text("Hesab təsdiqlənməyib!<br>Zəhmət olmasa email-dən<br>təsdiq kodunu daxil edin.");
+                        return window.location.href = "./verify-code.html";
+                    }
                     // əgər backend blok vaxtını göndəribsə
                     if (response.user) {
                         const attempts = parseInt(response.user.failed_attempts || 0);
