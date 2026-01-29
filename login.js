@@ -36,7 +36,7 @@ $(document).ready(function () {
                     errorMsg.css("color", "red");
 
                     if (response.user && !response.user.is_active) {
-                        errorMsg.html("Hesab təsdiqlənməyib!<br>Zəhmət olmasa email-dən<br>təsdiq kodunu daxil edin.");
+                        alert("Hesab təsdiqlənməyib! Zəhmət olmasa email-dən təsdiq kodunu daxil edin.");
                         window.location.href = "./verify-code.html";
                         return;
                     }
