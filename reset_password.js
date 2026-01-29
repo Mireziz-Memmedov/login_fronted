@@ -50,7 +50,7 @@ $(document).ready(function () {
                 if (response.success) {
                     alert('Şifrə dəyişdirildi!');
                     localStorage.removeItem('verify_code')
-                    window.location.href = "./profil.html";
+                    window.location.href = "./index.html";
                 } else {
                     errorMsg.css("color", "red");
                     errorMsg.html("Kod yanlışdır!");
