@@ -36,8 +36,9 @@ $(document).ready(function () {
                     errorMsg.css("color", "red");
 
                     if (response.user && !response.user.is_active) {
-                        errorMsg.text("Hesab təsdiqlənməyib!<br>Zəhmət olmasa email-dən<br>təsdiq kodunu daxil edin.");
-                        return window.location.href = "./verify-code.html";
+                        errorMsg.html("Hesab təsdiqlənməyib!<br>Zəhmət olmasa email-dən<br>təsdiq kodunu daxil edin.");
+                        window.location.href = "./verify-code.html";
+                        return;
                     }
                     // əgər backend blok vaxtını göndəribsə
                     if (response.user) {
