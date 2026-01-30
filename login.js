@@ -35,6 +35,12 @@ $(document).ready(function () {
                 } else {
                     errorMsg.css("color", "red");
 
+                    if (response.error && !response.user) {
+                        errorMsg.html(response.error);
+                        $('#username, #password').val('');
+                        return;
+                    }
+
                     if (response.user && !response.user.is_active) {
                         alert("Hesab təsdiqlənməyib! Zəhmət olmasa email-dən təsdiq kodunu daxil edin.");
                         window.location.href = "./verify-code.html";
@@ -51,8 +57,8 @@ $(document).ready(function () {
 
                         // Blok YOXDUR
                         if (attempts < 3 || !blockedUntil) {
-                            errorMsg.html("İstifadəçi adı və ya<br>şifrə yanlışdır!");
-                            $('#username, #password').val('');
+                            errorMsg.html("Şifrə yanlışdır!");
+                            $('#password').val('');
                             return;
                         }
 
