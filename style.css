@@ -374,6 +374,7 @@ body.dark-mode #profil .box #themeToggle {
 body.dark-mode #profil .box .add input {
   background-color: #ffffff;
   border-color: #000000;
+  color: #000000;
 }
 body.dark-mode #profil .box .add button {
   background-color: #94a6e6;
