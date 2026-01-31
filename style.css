@@ -295,13 +295,25 @@ body {
   color: #ffffff;
 }
 #profil .box .add button {
+  position: relative;
   border-radius: 5px;
   border: none;
   background-color: #94a6e6;
-  color: #fff;
   padding: 0 15px;
   margin-left: 5px;
   cursor: pointer;
+}
+#profil .box .add button:hover::after {
+  content: "Search";
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 #profil .box #recentChats {
   margin-top: 10px;
@@ -316,7 +328,7 @@ body {
 #profil .box #recentChats p {
   font-size: 14px;
   background-color: #1a1a1a;
-  color: #fff;
+  color: #ffffff;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 5px;
@@ -336,10 +348,14 @@ body {
   color: #f70000;
 }
 #profil .box .btnbox {
+  display: flex;
   color: #ffffff;
-  margin: 10px;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5px;
 }
 #profil .box .btnbox .btn {
+  margin-left: 5px;
   border: 1px solid #a8a6a6;
   padding: 5px;
   background-color: #f70000;
@@ -350,6 +366,23 @@ body {
 }
 #profil .box .btnbox .btn h3:hover {
   cursor: pointer;
+}
+#profil .box .btnbox .settings-btn {
+  position: relative;
+  cursor: pointer;
+  margin-right: 5px;
+}
+#profil .box .btnbox .settings-btn:hover::after {
+  content: "Settings";
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 
 body.dark-mode {
@@ -376,9 +409,10 @@ body.dark-mode #profil .box .add input {
   border-color: #000000;
   color: #000000;
 }
-body.dark-mode #profil .box .add button {
-  background-color: #94a6e6;
+body.dark-mode #profil .box .add button:hover::after {
+  background-color: #000000;
   color: #ffffff;
+  border: 1px solid #ffffff;
 }
 body.dark-mode #profil #recentChats p {
   background-color: #f0f0f0;
@@ -389,6 +423,11 @@ body.dark-mode #profil #recentChats p:hover {
 }
 body.dark-mode #profil .btnbox .btn {
   border: 1px solid #000000;
+}
+body.dark-mode #profil .btnbox .settings-btn:hover::after {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }
 
 #bodyChat {
