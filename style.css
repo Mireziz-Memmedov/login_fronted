@@ -343,9 +343,22 @@ body {
   font-size: 8px;
 }
 #profil .box #recentChats p .remove {
+  position: relative;
   margin-left: auto;
   cursor: pointer;
   color: #f70000;
+}
+#profil .box #recentChats p .remove:hover::after {
+  content: "Remove";
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
 }
 #profil .box .btnbox {
   display: flex;
@@ -420,6 +433,11 @@ body.dark-mode #profil #recentChats p {
 }
 body.dark-mode #profil #recentChats p:hover {
   background-color: #cccccc;
+}
+body.dark-mode #profil #recentChats p .remove:hover::after {
+  background-color: #000000;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }
 body.dark-mode #profil .btnbox .btn {
   border: 1px solid #000000;
@@ -779,4 +797,30 @@ body.dark-mode #reset_password #themeToggle {
 body.dark-mode #reset_password .add input {
   background-color: #ffffff;
   border-color: #040404;
+}
+
+#bodySetting {
+  background-color: #ffffff;
+}
+#bodySetting #setting {
+  display: flex;
+  font-family: Arial, Helvetica, sans-serif;
+  justify-content: center;
+  margin-top: 50px;
+}
+#bodySetting #setting .textbox h1 {
+  font-weight: 500;
+  font-size: 30px;
+  cursor: default;
+}
+#bodySetting #setting .textbox #themeToggle {
+  margin: 5px 0 10px;
+}
+#bodySetting #setting .box .btn {
+  display: flex;
+  justify-content: space-between;
+}
+#bodySetting #setting .box .btn h3 {
+  margin-right: 10px;
+  cursor: text;
 }/*# sourceMappingURL=style.css.map */

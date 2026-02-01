@@ -84,9 +84,21 @@ body
                 .lastSeen
                     font-size: 8px
                 .remove
+                    position: relative
                     margin-left: auto
                     cursor: pointer
                     color: #f70000
+                    &:hover::after
+                        content: "Remove"
+                        position: absolute
+                        bottom: -25px
+                        right: 0
+                        background-color: #ffffff
+                        color: #000000
+                        font-size: 12px
+                        padding: 3px 6px
+                        border-radius: 4px
+                        white-space: nowrap
         .btnbox
             display: flex
             color: #ffffff
@@ -148,6 +160,10 @@ body.dark-mode
             color: #000000
             &:hover
                 background-color: #cccccc
+            .remove:hover::after
+                background-color: #000000
+                color: #ffffff
+                border: 1px solid #ffffff
         .btnbox
             .btn
                 border: 1px solid #000000

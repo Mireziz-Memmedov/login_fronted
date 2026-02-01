@@ -161,4 +161,9 @@ $(document).ready(function () {
 
     });
 
+    $('.settings-btn').click(function (e) {
+        e.preventDefault();
+        window.location.href = "./setting.html";
+    });
+
 });
