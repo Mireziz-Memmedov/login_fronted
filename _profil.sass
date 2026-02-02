@@ -131,6 +131,58 @@ body
                     padding: 3px 6px
                     border-radius: 4px
                     white-space: nowrap
+.modal
+    position: fixed
+    inset: 0
+    background: rgba(0, 0, 0, 0.6)
+    display: none
+    justify-content: center
+    align-items: center
+    z-index: 999
+
+    &.active
+        display: flex
+
+    .modal-box
+        background: #000000
+        border: 2px solid #a8a6a6
+        border-radius: 8px
+        padding: 25px
+        min-width: 300px
+        text-align: center
+
+    h3
+        color: #ffffff
+        margin-bottom: 20px
+        font-size: 18px
+
+    .actions
+        display: flex
+        justify-content: center
+        gap: 15px
+        background-color: #848282
+
+        button
+            padding: 8px 18px
+            border: none
+            border-radius: 5px
+            cursor: pointer
+            font-weight: 600
+            transition: 0.3s
+
+        #confirmDelete
+            background: #2ecc71
+            color: #ffffff
+
+            &:hover
+                background: #27ae60
+
+        #cancelDelete
+            background: #c0392b
+            color: #000000
+
+            &:hover
+                background: #e74c3c
 
 body.dark-mode
     background-color: #ffffff

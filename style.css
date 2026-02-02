@@ -398,6 +398,60 @@ body {
   white-space: nowrap;
 }
 
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal.active {
+  display: flex;
+}
+.modal .modal-box {
+  background: #000000;
+  border: 2px solid #a8a6a6;
+  border-radius: 8px;
+  padding: 25px;
+  min-width: 300px;
+  text-align: center;
+}
+.modal h3 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.modal .actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background-color: #848282;
+}
+.modal .actions button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.modal .actions #confirmDelete {
+  background: #2ecc71;
+  color: #ffffff;
+}
+.modal .actions #confirmDelete:hover {
+  background: #27ae60;
+}
+.modal .actions #cancelDelete {
+  background: #c0392b;
+  color: #000000;
+}
+.modal .actions #cancelDelete:hover {
+  background: #e74c3c;
+}
+
 body.dark-mode {
   background-color: #ffffff;
 }
@@ -801,26 +855,87 @@ body.dark-mode #reset_password .add input {
 
 #bodySetting {
   background-color: #ffffff;
-}
-#bodySetting #setting {
-  display: flex;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+#setting {
+  display: flex;
   justify-content: center;
   margin-top: 50px;
 }
-#bodySetting #setting .textbox h1 {
+#setting .textbox h1 {
   font-weight: 500;
   font-size: 30px;
   cursor: default;
 }
-#bodySetting #setting .textbox #themeToggle {
+#setting .textbox #themeToggle {
   margin: 5px 0 10px;
+  border: none;
+  background-color: #ffffff;
+  font-size: 20px;
 }
-#bodySetting #setting .box .btn {
+#setting .textbox #themeToggle:hover {
+  cursor: pointer;
+}
+#setting .box .btn {
   display: flex;
   justify-content: space-between;
 }
-#bodySetting #setting .box .btn h3 {
+#setting .box .btn h3 {
   margin-right: 10px;
   cursor: text;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.modal.active {
+  display: flex;
+}
+.modal .modal-box {
+  background: #000000;
+  border: 2px solid #a8a6a6;
+  border-radius: 8px;
+  padding: 25px;
+  min-width: 300px;
+  text-align: center;
+}
+.modal h3 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.modal .actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background-color: #848282;
+}
+.modal .actions button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.modal .actions #confirmDelete {
+  background: #2ecc71;
+  color: #ffffff;
+}
+.modal .actions #confirmDelete:hover {
+  background: #27ae60;
+}
+.modal .actions #cancelDelete {
+  background: #c0392b;
+  color: #000000;
+}
+.modal .actions #cancelDelete:hover {
+  background: #e74c3c;
 }/*# sourceMappingURL=style.css.map */

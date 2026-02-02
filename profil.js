@@ -63,7 +63,7 @@ $(document).ready(function () {
                                     <span class="username">${user}</span>
                                     <span class="statusIcon" style="background-color:${iconColor}; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
                                     <span class="lastSeen">${lastSeenText}</span>
-                                    <span class="remove">🗑️</span>
+                                    <span class="remove" data-username="${user}">🗑️</span>
                                 </p>
                             `);
 
@@ -75,7 +75,7 @@ $(document).ready(function () {
                                     <span class="username">${user}</span>
                                     <span class="statusIcon" style="background-color:red; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
                                     <span class="lastSeen"></span>
-                                    <span class="remove">🗑️</span>
+                                    <span class="remove" data-username="${user}">🗑️</span>
                                 </p>
                             `);
                             recentChatsEl.append(p);
@@ -134,10 +134,9 @@ $(document).ready(function () {
         window.location.href = "./index.html";
     });
 
-    $(document).on('click', '.remove', function (e) {
+    $(document).on('click', '#confirmDelete', function (e) {
         e.preventDefault();
-        const chatElement = $(this).closest('.userItem');
-        const username = chatElement.find('.username').text();
+        const username = $("#deleteModal").data("username");
 
         $.ajax({
             type: "POST",
@@ -149,7 +148,8 @@ $(document).ready(function () {
             }),
             success: function (response) {
                 if (response.success) {
-                    chatElement.remove();
+                    $(`.userItem .username:contains(${username})`).closest('.userItem').remove();
+                    $("#deleteModal").removeClass("active");
                 } else {
                     console.warn("Delete failed:", response.error);
                 }
@@ -165,5 +165,16 @@ $(document).ready(function () {
         e.preventDefault();
         window.location.href = "./setting.html";
     });
+
+    $(document).on("click", ".remove", function () {
+        const username = $(this).data("username");
+        $("#deleteModal").data("username", username).addClass("active");
+    });
+
+    $("#cancelDelete").on("click", function () {
+        $("#deleteModal").removeClass("active");
+    });
+
+
 
 });
