@@ -944,11 +944,11 @@ body.dark-mode #reset_password .add input {
   background: #e74c3c;
 }
 
-#delete_profile_confirm {
+#deleted_profile_forever {
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
 }
-#delete_profile_confirm .box {
+#deleted_profile_forever .box {
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -957,24 +957,24 @@ body.dark-mode #reset_password .add input {
   margin-bottom: 25px;
   width: auto;
 }
-#delete_profile_confirm .box .textbox button {
+#deleted_profile_forever .box .textbox button {
   margin: 10px 0;
   border: none;
   background-color: #000000;
   font-size: 20px;
 }
-#delete_profile_confirm .box .textbox h1 {
+#deleted_profile_forever .box .textbox h1 {
   margin: 50px 0 20px;
   color: #ffffff;
   font-weight: 500;
   font-size: 25px;
   cursor: text;
 }
-#delete_profile_confirm .box .add {
+#deleted_profile_forever .box .add {
   display: flex;
   flex-direction: column;
 }
-#delete_profile_confirm .box .add input {
+#deleted_profile_forever .box .add input {
   border-radius: 5px;
   margin: 10px 20px;
   padding: 10px;
@@ -982,7 +982,7 @@ body.dark-mode #reset_password .add input {
   border: 2px solid #a8a6a6;
   color: #ffffff;
 }
-#delete_profile_confirm .box .btn {
+#deleted_profile_forever .box .btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -993,32 +993,32 @@ body.dark-mode #reset_password .add input {
   max-width: 220px;
   width: 220px;
 }
-#delete_profile_confirm .box .btn h3 {
+#deleted_profile_forever .box .btn h3 {
   color: #cdcaca;
 }
-#delete_profile_confirm .box .btn h3:hover {
+#deleted_profile_forever .box .btn h3:hover {
   cursor: pointer;
 }
-#delete_profile_confirm .box p {
+#deleted_profile_forever .box p {
   margin-bottom: 10px;
 }
 
-body.dark-mode #delete_profile_confirm {
+body.dark-mode #deleted_profile_forever {
   background-color: #ffffff !important;
 }
-body.dark-mode #delete_profile_confirm .box {
+body.dark-mode #deleted_profile_forever .box {
   background-color: #ffffff;
   border-color: #000000;
 }
-body.dark-mode #delete_profile_confirm .textbox h1,
-body.dark-mode #delete_profile_confirm .add input,
-body.dark-mode #delete_profile_confirm .btn h3 {
+body.dark-mode #deleted_profile_forever .textbox h1,
+body.dark-mode #deleted_profile_forever .add input,
+body.dark-mode #deleted_profile_forever .btn h3 {
   color: #000000;
 }
-body.dark-mode #delete_profile_confirm #themeToggle {
+body.dark-mode #deleted_profile_forever #themeToggle {
   background-color: #ffffff;
 }
-body.dark-mode #delete_profile_confirm .add input {
+body.dark-mode #deleted_profile_forever .add input {
   background-color: #ffffff;
   border-color: #040404;
 }/*# sourceMappingURL=style.css.map */

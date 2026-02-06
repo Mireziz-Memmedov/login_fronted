@@ -9,7 +9,7 @@ $(document).ready(function () {
     });
 
     $("#confirmDelete").on("click", function () {
-        window.location.href = "./delete_profile_confirm.html";
+        window.location.href = "./deleted_profile_forever.html";
     });
 
 });
