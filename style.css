@@ -327,7 +327,7 @@ body {
 }
 #profil .box #recentChats p {
   font-size: 14px;
-  background-color: #1b2039;
+  background-color: #102384;
   color: #ffffff;
   padding: 10px;
   border-radius: 5px;
@@ -339,7 +339,6 @@ body {
 #profil .box #recentChats p .username {
   color: #000000;
   cursor: pointer;
-  border: 2px solid #ffffff;
   border-radius: 5px;
   padding: 3px;
   background-color: #94a6e6;
@@ -487,14 +486,11 @@ body.dark-mode #profil .box .add button:hover::after {
   border: 1px solid #ffffff;
 }
 body.dark-mode #profil #recentChats p {
-  background-color: #93cfff;
+  background-color: #f2ffc5;
   color: #000000;
 }
 body.dark-mode #profil #recentChats p:hover {
   background-color: #cccccc;
-}
-body.dark-mode #profil #recentChats p .username {
-  border: 2px solid #242424;
 }
 body.dark-mode #profil #recentChats p .remove:hover::after {
   background-color: #000000;
