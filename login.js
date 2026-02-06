@@ -23,7 +23,6 @@ $(document).ready(function () {
 
                 if (response.success) {
                     // localStorage-a yazırıq
-                    localStorage.setItem('token', response.token);
                     localStorage.setItem('currentUserId', response.user.id);
                     localStorage.setItem('currentUsername', response.user.username);
 
