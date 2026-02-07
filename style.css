@@ -861,33 +861,54 @@ body.dark-mode #reset_password .add input {
   background-color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
 }
-
-#setting {
+#bodySetting #setting {
   display: flex;
   justify-content: center;
   margin-top: 50px;
 }
-#setting .textbox h1 {
+#bodySetting #setting .textbox h1 {
   font-weight: 500;
   font-size: 30px;
   cursor: default;
+  color: #000000;
 }
-#setting .textbox #themeToggle {
+#bodySetting #setting .textbox #themeToggle {
   margin: 5px 0 10px;
   border: none;
   background-color: #ffffff;
   font-size: 20px;
 }
-#setting .textbox #themeToggle:hover {
+#bodySetting #setting .textbox #themeToggle:hover {
   cursor: pointer;
 }
-#setting .box .btn {
+#bodySetting #setting .box .btn {
   display: flex;
   justify-content: space-between;
 }
-#setting .box .btn h3 {
+#bodySetting #setting .box .btn h3 {
   margin-right: 10px;
   cursor: text;
+  color: #000000;
+}
+#bodySetting #setting .box .btn button {
+  border: none;
+  background-color: #ffffff;
+}
+
+#bodySetting.dark-mode {
+  background-color: #000000;
+}
+#bodySetting.dark-mode #setting .textbox h1 {
+  color: #ffffff;
+}
+#bodySetting.dark-mode #setting .box h3 {
+  color: #ffffff;
+}
+#bodySetting.dark-mode #setting .box button {
+  background-color: #000000;
+}
+#bodySetting.dark-mode #setting #themeToggle {
+  background-color: #000000;
 }
 
 .modal {

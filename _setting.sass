@@ -2,33 +2,54 @@
     background-color: #ffffff
     font-family: Arial, Helvetica, sans-serif
 
-#setting
-    display: flex
-    justify-content: center
-    margin-top: 50px
+    #setting
+        display: flex
+        justify-content: center
+        margin-top: 50px
 
-    .textbox
-        h1
-            font-weight: 500
-            font-size: 30px
-            cursor: default
+        .textbox
+            h1
+                font-weight: 500
+                font-size: 30px
+                cursor: default
+                color: #000000
+
+            #themeToggle
+                margin: 5px 0 10px
+                border: none
+                background-color: #ffffff
+                font-size: 20px
+                &:hover
+                    cursor: pointer
+
+        .box
+            .btn
+                display: flex
+                justify-content: space-between
+
+                h3
+                    margin-right: 10px
+                    cursor: text
+                    color: #000000
+                button
+                    border: none
+                    background-color: #ffffff
+
+#bodySetting.dark-mode
+    background-color: #000000
+    #setting
+
+        .textbox
+            h1
+                color: #ffffff
+        .box
+            h3
+                color: #ffffff
+            button
+                background-color: #000000
 
         #themeToggle
-            margin: 5px 0 10px
-            border: none
-            background-color: #ffffff
-            font-size: 20px
-            &:hover
-                cursor: pointer
-
-    .box
-        .btn
-            display: flex
-            justify-content: space-between
-
-            h3
-                margin-right: 10px
-                cursor: text
+            background-color: #000000
 
 .modal
     position: fixed

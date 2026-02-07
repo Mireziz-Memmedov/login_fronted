@@ -35,7 +35,7 @@ $(document).ready(function () {
 
         if (!username || !password) {
             errorMsg.css('color', 'red');
-            errorMsg.html('İstifadəçi adı və şifrə mütləqdir!');
+            errorMsg.html('Şifrəni daxil edin!');
             return;
         }
 
@@ -54,7 +54,7 @@ $(document).ready(function () {
                     window.location.href = "./index.html";
                 } else {
                     errorMsg.css('color', 'red');
-                    errorMsg.html(response.error || 'Şifrə yanlışdır!');
+                    errorMsg.html('Şifrə yanlışdır!');
                     $('#password').val('');
                     return;
                 }
@@ -67,6 +67,10 @@ $(document).ready(function () {
 
     $("#login-btn").on("click", function () {
         del_forever();
+    });
+
+    $(document).on('keypress', function (e) {
+        if (e.which === 13) del_forever();
     });
 
 });

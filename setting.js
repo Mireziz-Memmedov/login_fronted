@@ -1,5 +1,19 @@
 $(document).ready(function () {
 
+    $('#themeToggle').click(function () {
+        $('#bodySetting').toggleClass('dark-mode');
+
+        if ($('#bodySetting').hasClass('dark-mode')) {
+            localStorage.setItem('darkModeSetting', 'true')
+        } else {
+            localStorage.setItem('darkModeSetting', 'false')
+        }
+    });
+
+    if (localStorage.getItem('darkModeSetting') === 'true') {
+        $('#bodySetting').addClass('dark-mode');
+    }
+
     $(document).on("click", "#deleteBtn", function () {
         $("#deleteModal").addClass("active");
     });
@@ -10,6 +24,15 @@ $(document).ready(function () {
 
     $("#confirmDelete").on("click", function () {
         window.location.href = "./deleted_profile_forever.html";
+    });
+
+    $(document).on('keypress', function (e) {
+        if (e.which === 13) {
+            e.preventDefault();
+            if ($("#deleteModal").hasClass("active")) {
+                $("#confirmDelete").click();
+            }
+        }
     });
 
 });
