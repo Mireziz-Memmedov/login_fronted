@@ -240,11 +240,11 @@ body.dark-mode #signup p {
 
 body {
   background-color: #000000;
-  overflow: hidden;
 }
 
 #profil {
-  min-height: 100dvh;
+  height: 100svh;
+  max-height: 100svh;
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -258,6 +258,7 @@ body {
   margin-bottom: 25px;
   width: 100%;
   max-width: 400px;
+  height: 100%;
 }
 #profil .box .textbox {
   display: flex;
