@@ -518,14 +518,19 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 #bodyChat #chat {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 5px;
+  padding: 0;
 }
 #bodyChat #chat .header {
   margin: 10px 5px;
   display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
 }
 #bodyChat #chat .header .btn {
-  width: 25px;
+  position: absolute;
+  left: 10px;
   font-size: 25px;
   color: #000000;
 }
@@ -533,16 +538,18 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   cursor: pointer;
 }
 #bodyChat #chat .header .targetuser {
-  margin-left: 110px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
 }
 #bodyChat #chat .messageBox {
   background-color: #e8edff;
   border-radius: 15px;
   max-width: 600px;
-  width: 100%;
+  width: 600px;
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 720px;
 }
 #bodyChat #chat .messageBox .minibox {
   flex: 1;

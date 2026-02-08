@@ -5,28 +5,35 @@
     #chat
         display: flex
         justify-content: center
-        margin-top: 50px
+        margin-top: 5px
+        padding: 0
 
         .header
             margin: 10px 5px
             display: flex
+            position: relative
+            align-items: center
+            justify-content: center
             .btn
-                width: 25px
+                position: absolute
+                left: 10px
                 font-size: 25px
                 color: #000000
                 &:hover
                     cursor: pointer
             .targetuser
-                margin-left: 110px
+                font-weight: bold
+                font-size: 18px
+                text-align: center
 
         .messageBox
             background-color: #e8edff
             border-radius: 15px
             max-width: 600px
-            width: 100%
+            width: 600px
             display: flex
             flex-direction: column
-            height: 400px
+            height: 720px
 
             .minibox
                 flex: 1
