@@ -546,7 +546,7 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   background-color: #e8edff;
   border-radius: 15px;
   max-width: 600px;
-  width: 600px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   height: 720px;
