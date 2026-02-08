@@ -373,10 +373,9 @@ body {
   color: #ffffff;
   justify-content: space-between;
   width: 100%;
-  margin: 50px 5px 5px;
+  margin: 50px 0 5px;
 }
 #profil .btnbox .btn {
-  margin-left: 5px;
   border: 1px solid #a8a6a6;
   padding: 5px;
   background-color: #f70000;
@@ -391,7 +390,6 @@ body {
 #profil .btnbox .settings-btn {
   position: relative;
   cursor: pointer;
-  margin-right: 5px;
 }
 #profil .btnbox .settings-btn:hover::after {
   content: "Settings";
