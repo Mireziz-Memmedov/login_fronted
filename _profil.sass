@@ -2,11 +2,12 @@ body
     background-color: #000000
     // overflow: hidden
 #profil
-    min-height: 100dvh
+    // min-height: 100vh
     background-color: #000000
     font-family: Arial, Helvetica, sans-serif
     display: flex
     justify-content: center
+    padding: 0
     .box
         border-radius: 5px
         display: flex
@@ -68,12 +69,12 @@ body
                     border-radius: 4px
                     white-space: nowrap
         #recentChats
-            // background-color: #818181
+            background-image: url(Assets/Astro.jpg)
             margin-top: 10px
             // flex: 1
             width: 100%
             overflow-y: auto
-            height: 300px
+            height: 480px
             &::-webkit-scrollbar
                 display: none
             p
@@ -81,10 +82,10 @@ body
                 background-color: #071247
                 color: #ffffff
                 padding: 10px
-                border-radius: 5px
-                margin-bottom: 5px
+                border-radius: 15px
+                margin: 5px 2px
                 &:hover
-                    background-color: #333333
+                    background-color: #112798
                 .username
                     color: #000000
                     cursor: pointer
@@ -109,38 +110,38 @@ body
                         padding: 3px 6px
                         border-radius: 4px
                         white-space: nowrap
-        .btnbox
-            display: flex
-            color: #ffffff
-            justify-content: space-between
-            width: 100%
-            margin: 50px 5px 5px
-            .btn
-                margin-left: 5px
-                border: 1px solid #a8a6a6
-                padding: 5px
-                background-color: #f70000
+    .btnbox
+        display: flex
+        color: #ffffff
+        justify-content: space-between
+        width: 100%
+        margin: 50px 5px 5px
+        .btn
+            margin-left: 5px
+            border: 1px solid #a8a6a6
+            padding: 5px
+            background-color: #f70000
+            &:hover
+                cursor: pointer
+                background-color: #6d0404
+            h3
                 &:hover
                     cursor: pointer
-                    background-color: #6d0404
-                h3
-                    &:hover
-                        cursor: pointer
-            .settings-btn
-                position: relative
-                cursor: pointer
-                margin-right: 5px
-                &:hover::after
-                    content: "Settings"
-                    position: absolute
-                    bottom: -25px
-                    right: 0
-                    background-color: #ffffff
-                    color: #000000
-                    font-size: 12px
-                    padding: 3px 6px
-                    border-radius: 4px
-                    white-space: nowrap
+        .settings-btn
+            position: relative
+            cursor: pointer
+            margin-right: 5px
+            &:hover::after
+                content: "Settings"
+                position: absolute
+                top: -25px
+                right: 0
+                background-color: #ffffff
+                color: #000000
+                font-size: 12px
+                padding: 3px 6px
+                border-radius: 4px
+                white-space: nowrap
 .modal
     position: fixed
     inset: 0
@@ -220,7 +221,7 @@ body.dark-mode
             background-color: #ebfff0
             color: #000000
             &:hover
-                background-color: #cccccc
+                background-color: #94a6e6
             .username
                 background-color: #82eba1
             .remove:hover::after
