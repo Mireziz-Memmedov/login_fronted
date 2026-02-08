@@ -256,7 +256,7 @@ body {
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
   height: 550px;
-  width: 400px;
+  max-width: 400px;
 }
 #profil .box .textbox {
   display: flex;
@@ -294,7 +294,9 @@ body {
   border: 2px solid #a8a6a6;
   background-color: #000;
   color: #ffffff;
+  max-width: 310px;
   width: 310px;
+  min-width: none;
 }
 #profil .box .add button {
   position: relative;
