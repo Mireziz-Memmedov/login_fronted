@@ -13,7 +13,7 @@ $(document).ready(function () {
     }
 
     let offset = 0;
-    const limit = 19;
+    const limit = 17;
     let lastMessageId = 0;
 
     // Mesaj əlavə etmək funksiyası (append = aşağı, prepend = yuxarı)
