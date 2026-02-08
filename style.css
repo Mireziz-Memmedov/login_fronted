@@ -240,12 +240,9 @@ body.dark-mode #signup p {
 
 body {
   background-color: #000000;
-  height: 100%;
-  margin: 0;
 }
 
 #profil {
-  height: 100vh;
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -258,11 +255,10 @@ body {
   flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
-  height: calc(100vh - 20px);
-  max-height: calc(100vh - 20px);
   width: 100%;
   max-width: 420px;
   margin: 0 10px;
+  height: 550px;
 }
 #profil .box .textbox {
   display: flex;
@@ -330,6 +326,7 @@ body {
   flex: 1;
   width: 100%;
   overflow-y: auto;
+  height: 310px;
 }
 #profil .box #recentChats::-webkit-scrollbar {
   display: none;
