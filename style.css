@@ -243,8 +243,7 @@ body {
 }
 
 #profil {
-  height: 100svh;
-  max-height: 100svh;
+  min-height: 100dvh;
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
@@ -258,7 +257,6 @@ body {
   margin-bottom: 25px;
   width: 100%;
   max-width: 400px;
-  height: 100%;
 }
 #profil .box .textbox {
   display: flex;
