@@ -322,7 +322,7 @@ body {
   margin-top: 10px;
   width: 100%;
   overflow-y: auto;
-  height: 320px;
+  height: 300px;
 }
 #profil .box #recentChats::-webkit-scrollbar {
   display: none;
