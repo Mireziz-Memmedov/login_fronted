@@ -518,48 +518,15 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   justify-content: center;
   padding: 5px;
 }
-#bodyChat #chat .header {
-  margin: 10px 5px;
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-}
-#bodyChat #chat .header .btn {
-  position: absolute;
-  left: 10px;
-  font-size: 25px;
-  color: #ffffff;
-}
-#bodyChat #chat .header .btn:hover:hover::after {
-  z-index: 10;
-  content: "Back";
-  position: absolute;
-  bottom: -25px;
-  right: 0;
-  background-color: #ffffff;
-  color: #000000;
-  font-size: 12px;
-  padding: 3px 6px;
-  border-radius: 4px;
-  white-space: nowrap;
-  cursor: pointer;
-}
-#bodyChat #chat .header .targetuser {
-  color: #ffffff;
-  font-weight: bold;
-  font-size: 18px;
-  text-align: center;
-}
 #bodyChat #chat .messageBox {
   background-color: #2ecc71;
   border-radius: 15px;
-  width: 100%;
-  max-width: 700px;
-  min-width: 250px;
+  width: 90%;
+  max-width: 600px;
+  min-width: 400px;
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 660px;
 }
 #bodyChat #chat .messageBox .minibox {
   background-image: url(Assets/Astro.jpg);
@@ -624,11 +591,44 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   top: 20px;
   left: 0;
 }
+#bodyChat #chat .messageBox .header {
+  margin: 10px 5px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+#bodyChat #chat .messageBox .btn {
+  position: absolute;
+  left: 10px;
+  font-size: 25px;
+  color: #ffffff;
+}
+#bodyChat #chat .messageBox .btn:hover:hover::after {
+  z-index: 10;
+  content: "Back";
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+#bodyChat #chat .messageBox .targetuser {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+}
 #bodyChat #chat .text {
   display: flex;
   background-color: #2ecc71;
-  padding: 10px;
   border-radius: 0 0 15px 15px;
+  padding: 10px;
 }
 #bodyChat #chat .text input {
   flex: 1;
