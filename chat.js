@@ -71,7 +71,7 @@ $(document).ready(function () {
                     lastMessageId = Math.max(lastMessageId, msg.id);
                 });
 
-                offset += limit;
+                offset += res.messages.length;
             }
         });
     }
@@ -119,7 +119,7 @@ $(document).ready(function () {
                     lastMessageId = Math.max(lastMessageId, msg.id);
                 });
 
-                offset += limit;
+                offset += res.messages.length;
             }
         });
     }
