@@ -18,11 +18,6 @@ $(document).ready(function () {
 
     // Mesaj əlavə etmək funksiyası (append = aşağı, prepend = yuxarı)
     function addMessage(msg, prepend = false, scroll = false) {
-
-        if ($messagesBox.find(`[data-msg-id='${msg.id}']`).length > 0) {
-            return; // mesaj artıq mövcuddur
-        }
-
         const sender = msg.sender === currentUsername ? 'me' : 'other';
         const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
 
