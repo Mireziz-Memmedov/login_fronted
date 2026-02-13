@@ -512,11 +512,6 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 
 #bodyChat {
   background-image: url(Assets/Astro.jpg);
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 #bodyChat #chat {
   display: flex;
@@ -526,9 +521,12 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 #bodyChat #chat .messageBox {
   background-color: #2ecc71;
   border-radius: 15px;
+  width: 85%;
+  max-width: 600px;
+  min-width: 400px;
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 650px;
 }
 #bodyChat #chat .messageBox .minibox {
   background-image: url(Assets/Astro.jpg);
@@ -893,6 +891,11 @@ body.dark-mode #reset_password .add input {
   display: flex;
   justify-content: center;
   margin-top: 50px;
+}
+#bodySetting #setting .textbox {
+  display: flex;
+  margin-bottom: 25px;
+  justify-content: space-between;
 }
 #bodySetting #setting .textbox h1 {
   font-weight: 500;
