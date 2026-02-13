@@ -526,12 +526,9 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 #bodyChat #chat .messageBox {
   background-color: #2ecc71;
   border-radius: 15px;
-  width: 90%;
-  max-width: 600px;
-  min-width: 400px;
   display: flex;
   flex-direction: column;
-  height: 660px;
+  height: 90vh;
 }
 #bodyChat #chat .messageBox .minibox {
   background-image: url(Assets/Astro.jpg);
