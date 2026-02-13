@@ -84,8 +84,7 @@ $(document).ready(function () {
             data: {
                 user_id: currentUserId,
                 user: targetUser,
-                limit: 5,
-                offset: 0
+                last_id: lastMessageId
             },
             success: function (res) {
                 if (!res.messages || res.messages.length === 0) return;
