@@ -512,21 +512,22 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 
 #bodyChat {
   background-image: url(Assets/Astro.jpg);
-}
-#bodyChat #chat {
+  width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 5px;
+}
+#bodyChat #chat {
+  padding: 0;
+  max-width: 800px;
+  width: 100%;
 }
 #bodyChat #chat .messageBox {
   background-color: #2ecc71;
   border-radius: 15px;
-  width: 85%;
-  max-width: 600px;
-  min-width: 400px;
   display: flex;
   flex-direction: column;
-  height: 650px;
+  height: 92vh;
 }
 #bodyChat #chat .messageBox .minibox {
   background-image: url(Assets/Astro.jpg);
@@ -570,7 +571,7 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   padding: 5px 10px;
   border-radius: 20px;
   display: inline-block;
-  max-width: 250px;
+  max-width: 60%;
   word-break: break-word;
 }
 #bodyChat #chat .messageBox .minibox div.right h2 {
