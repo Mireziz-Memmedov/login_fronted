@@ -900,7 +900,6 @@ body.dark-mode #reset_password .add input {
 #bodySetting #setting .textbox {
   display: flex;
   margin-bottom: 25px;
-  justify-content: space-between;
 }
 #bodySetting #setting .textbox h1 {
   font-weight: 500;
@@ -929,6 +928,26 @@ body.dark-mode #reset_password .add input {
 #bodySetting #setting .box .btn button {
   border: none;
   background-color: #ffffff;
+}
+#bodySetting #setting .box .minibox {
+  display: flex;
+}
+#bodySetting #setting .box .minibox .exit {
+  margin-left: 12px;
+  border: 1px solid #a8a6a6;
+  padding: 5px;
+  background-color: #f70000;
+}
+#bodySetting #setting .box .minibox .exit:hover {
+  cursor: pointer;
+  background-color: #6d0404;
+}
+#bodySetting #setting .box .minibox .exit h3 {
+  color: #ffffff;
+}
+#bodySetting #setting .box .minibox .exit h3:hover {
+  cursor: pointer;
+  display: flex;
 }
 
 #bodySetting.dark-mode {
@@ -1076,6 +1095,107 @@ body.dark-mode #deleted_profile_forever #themeToggle {
   background-color: #ffffff;
 }
 body.dark-mode #deleted_profile_forever .add input {
+  background-color: #ffffff;
+  border-color: #040404;
+}
+
+#edit_profile {
+  background-color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#edit_profile .box {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #a8a6a6;
+  margin-bottom: 25px;
+  width: auto;
+}
+#edit_profile .box .textbox {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#edit_profile .box .textbox .exit {
+  margin-left: 5px;
+  border: 1px solid #a8a6a6;
+  padding: 5px;
+  background-color: #f70000;
+}
+#edit_profile .box .textbox .exit:hover {
+  cursor: pointer;
+  background-color: #6d0404;
+}
+#edit_profile .box .textbox .exit h3 {
+  color: #ffffff;
+}
+#edit_profile .box .textbox .exit h3:hover {
+  cursor: pointer;
+  display: flex;
+}
+#edit_profile .box .textbox button {
+  border: none;
+  background-color: #000000;
+  font-size: 20px;
+}
+#edit_profile .box h1 {
+  margin: 50px 0 20px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 25px;
+  cursor: text;
+}
+#edit_profile .box .add {
+  display: flex;
+  flex-direction: column;
+}
+#edit_profile .box .add input {
+  border-radius: 5px;
+  margin: 10px 20px;
+  padding: 10px;
+  background-color: #000000;
+  border: 2px solid #a8a6a6;
+  color: #ffffff;
+}
+#edit_profile .box .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c14ff;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 4px 20px;
+  max-width: 220px;
+  width: 220px;
+}
+#edit_profile .box .btn h3 {
+  color: #cdcaca;
+}
+#edit_profile .box .btn h3:hover {
+  cursor: pointer;
+}
+#edit_profile .box p {
+  margin-bottom: 10px;
+}
+
+body.dark-mode #edit_profile {
+  background-color: #ffffff !important;
+}
+body.dark-mode #edit_profile .box {
+  background-color: #ffffff;
+  border-color: #000000;
+}
+body.dark-mode #edit_profile .textbox, body.dark-mode #edit_profile h1,
+body.dark-mode #edit_profile .add input,
+body.dark-mode #edit_profile .btn h3 {
+  color: #000000;
+}
+body.dark-mode #edit_profile #themeToggle {
+  background-color: #ffffff;
+}
+body.dark-mode #edit_profile .add input {
   background-color: #ffffff;
   border-color: #040404;
 }/*# sourceMappingURL=style.css.map */

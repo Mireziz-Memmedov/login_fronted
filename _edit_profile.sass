@@ -1,0 +1,84 @@
+#edit_profile
+    background-color: #000000
+    font-family: Arial, Helvetica, sans-serif
+    .box
+        border-radius: 5px
+        display: flex
+        align-items: center
+        flex-direction: column
+        border: 2px solid #a8a6a6
+        margin-bottom: 25px
+        width: auto
+        .textbox
+            margin-top: 5px
+            width: 100%
+            display: flex
+            justify-content: space-between
+            .exit
+                margin-left: 5px
+                border: 1px solid #a8a6a6
+                padding: 5px
+                background-color: #f70000
+                &:hover
+                    cursor: pointer
+                    background-color: #6d0404
+                h3
+                    color: #ffffff
+                    &:hover
+                        cursor: pointer
+                        display: flex
+            button
+                border: none
+                background-color: #000000
+                font-size: 20px
+        h1
+            margin: 50px 0 20px
+            color: #ffffff
+            font-weight: 500
+            font-size: 25px
+            cursor: text
+        .add
+            display: flex
+            flex-direction: column
+            input
+                border-radius: 5px
+                margin: 10px 20px
+                padding: 10px
+                background-color: #000000
+                border: 2px solid #a8a6a6
+                color: #ffffff
+        .btn
+            display: flex
+            justify-content: center
+            align-items: center
+            background-color: #1c14ff
+            border-radius: 5px
+            margin: 20px 0
+            padding: 4px 20px
+            max-width: 220px
+            width: 220px
+            h3
+                color: #cdcaca
+                &:hover
+                    cursor: pointer
+        p
+            margin-bottom: 10px
+body.dark-mode
+    #edit_profile
+        background-color: #ffffff !important
+
+        .box
+            background-color: #ffffff
+            border-color: #000000
+
+        .textbox, h1,
+        .add input,
+        .btn h3
+            color: #000000
+
+        #themeToggle
+            background-color: #ffffff
+
+        .add input
+            background-color: #ffffff
+            border-color: #040404

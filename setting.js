@@ -35,4 +35,13 @@ $(document).ready(function () {
         }
     });
 
+    $("#edit").on("click", function () {
+        window.location.href = "./edit_profile.html";
+    });
+
+    //Exit xanasına click edəndə çıxış edir
+    $(".exit").on("click", function () {
+        window.location.href = "./profil.html";
+    });
+
 });
