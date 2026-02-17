@@ -512,22 +512,21 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 
 #bodyChat {
   background-image: url(Assets/Astro.jpg);
-  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
 }
 #bodyChat #chat {
   padding: 0;
-  max-width: 800px;
-  width: 100%;
+  margin: 0 auto;
 }
 #bodyChat #chat .messageBox {
   background-color: #2ecc71;
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  height: 93vh;
+  height: 100vh;
+  width: 360px;
 }
 #bodyChat #chat .messageBox .minibox {
   background-image: url(Assets/Astro.jpg);
@@ -571,7 +570,7 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   padding: 5px 10px;
   border-radius: 20px;
   display: inline-block;
-  max-width: 60%;
+  max-width: 80%;
   word-break: break-word;
 }
 #bodyChat #chat .messageBox .minibox div.right h2 {
@@ -625,23 +624,20 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   font-size: 18px;
   text-align: center;
 }
-#bodyChat #chat .text {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  max-width: 800px;
+#bodyChat #chat .messageBox .text {
+  flex-shrink: 0;
   display: flex;
   background-color: #2ecc71;
   border-radius: 0 0 15px 15px;
   padding: 10px 0;
 }
-#bodyChat #chat .text input {
+#bodyChat #chat .messageBox .text input {
   flex: 1;
   border-radius: 20px;
   padding: 7px 15px;
   border: 2px solid #94a6e6;
 }
-#bodyChat #chat .text button {
+#bodyChat #chat .messageBox .text button {
   border: none;
   background-color: #071247;
   color: #ffffff;
