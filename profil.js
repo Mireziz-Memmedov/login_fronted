@@ -129,11 +129,6 @@ $(document).ready(function () {
         window.location.href = `./chat.html?user=${encodeURIComponent(username)}`;
     });
 
-    $('.btn').click(function (e) {
-        e.preventDefault();
-        window.location.href = "./index.html";
-    });
-
     $(document).on('click', '#confirmDelete', function (e) {
         e.preventDefault();
         const username = $("#deleteModal").data("username");
@@ -175,6 +170,31 @@ $(document).ready(function () {
         $("#deleteModal").removeClass("active");
     });
 
+    //profilden cixis ucun
+    $('.btn').click(function (e) {
+        e.preventDefault();
 
+        $.ajax({
+            type: "POST",
+            url: "https://login-db-backend-three.vercel.app/api/logout/",
+            contentType: "application/json",
+            data: JSON.stringify({
+                user_id: currentUserId
+            }),
+            success: function (response) {
+                if (response.success) {
+                    localStorage.removeItem('currentUserId');
+                    localStorage.removeItem('currentUsername');
+                    window.location.href = "./index.html";
+                } else {
+                    alert("Çıxış alınmadı. Yenidən cəhd edin.");
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Server error:", error);
+            }
+        });
+
+    });
 
 });
