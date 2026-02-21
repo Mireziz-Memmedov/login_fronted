@@ -55,8 +55,10 @@ $(document).ready(function () {
                                 const hours = String(lastSeenDate.getHours()).padStart(2, '0');
                                 const minutes = String(lastSeenDate.getMinutes()).padStart(2, '0');
                                 const seconds = String(lastSeenDate.getSeconds()).padStart(2, '0');
-                                lastSeenText = `${day}.${month}.${year}, ${hours}:${minutes}:${seconds}`;
-                            }
+                                lastSeenText = `Son görülmə: ${day}.${month}.${year}, ${hours}:${minutes}:${seconds}`;
+                            } else {
+                                lastSeenText = 'Onlayn'
+                            };
 
                             const p = $(`
                                 <p class="userItem" style="display:flex; align-items:center; gap:10px;">
