@@ -95,7 +95,7 @@ $(document).ready(function () {
     loadRecentChats();
 
     //Backendə hər dəqiqədən bir sorğu göndərmək üçün
-    setInterval(loadRecentChats, 60000);
+    // setInterval(loadRecentChats, 60000);
 
     function searchUser() {
         const query = $('#usernameSearch').val().trim();
