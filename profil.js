@@ -26,6 +26,20 @@ $(document).ready(function () {
 
     welcomeEl.text(`Xoş gəlmisiniz, ${currentUsername}!`);
 
+    //onlayn olmagi yoxlamaq
+    function updateMyActivity() {
+        $.ajax({
+            url: "https://login-db-backend-three.vercel.app/api/update-activity/",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ username: currentUsername })
+        });
+    }
+
+    updateMyActivity();
+
+    setInterval(updateMyActivity, 60000);
+
     function loadRecentChats() {
         $.ajax({
             url: `https://login-db-backend-three.vercel.app/api/recent-chats/?user_id=${currentUserId}`,
@@ -93,9 +107,6 @@ $(document).ready(function () {
     }
 
     loadRecentChats();
-
-    //Backendə hər dəqiqədən bir sorğu göndərmək üçün
-    // setInterval(loadRecentChats, 60000);
 
     function searchUser() {
         const query = $('#usernameSearch').val().trim();
