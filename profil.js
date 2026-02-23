@@ -38,7 +38,8 @@ $(document).ready(function () {
 
     updateMyActivity();
 
-    setInterval(updateMyActivity, 60000);
+    let activityInterval = setInterval(updateMyActivity, 60000);
+    clearInterval(activityInterval);
 
     function loadRecentChats() {
         $.ajax({
