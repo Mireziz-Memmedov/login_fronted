@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    let activityInterval = setInterval(updateMyActivity, 60000);
+
     if (localStorage.getItem('darkModeProfil') === 'true') {
         $('body').addClass('dark-mode');
     }
@@ -37,9 +39,6 @@ $(document).ready(function () {
     }
 
     updateMyActivity();
-
-    let activityInterval = setInterval(updateMyActivity, 60000);
-    clearInterval(activityInterval);
 
     function loadRecentChats() {
         $.ajax({
@@ -190,6 +189,8 @@ $(document).ready(function () {
     //profilden cixis ucun
     $('.btn').click(function (e) {
         e.preventDefault();
+
+        clearInterval(activityInterval);
 
         $.ajax({
             type: "POST",
