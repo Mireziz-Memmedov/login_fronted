@@ -44,4 +44,9 @@ $(document).ready(function () {
         window.location.href = "./profil.html";
     });
 
+    //sekil secmek ucun pencere acilir
+    document.getElementById("img").onclick = function () {
+        document.getElementById("imageInput").click();
+    };
+
 });

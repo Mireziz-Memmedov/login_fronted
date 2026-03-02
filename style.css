@@ -340,15 +340,19 @@ body {
 #profil .box #recentChats p:hover {
   background-color: #112798;
 }
+#profil .box #recentChats p .imgbox img {
+  cursor: pointer;
+}
 #profil .box #recentChats p .username {
   color: #000000;
   cursor: pointer;
   border-radius: 5px;
   padding: 4px;
   background-color: #94a6e6;
+  font-size: 13px;
 }
 #profil .box #recentChats p .lastSeen {
-  font-size: 8px;
+  font-size: 7px;
 }
 #profil .box #recentChats p .remove {
   position: relative;
