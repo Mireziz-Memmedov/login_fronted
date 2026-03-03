@@ -44,9 +44,14 @@ $(document).ready(function () {
         window.location.href = "./profil.html";
     });
 
+    //sekil yuklemek ucun seyfeye kecid
+    $("#img").on("click", function () {
+        window.location.href = "./upload_image.html";
+    });
+
     //sekil secmek ucun pencere acilir
-    document.getElementById("img").onclick = function () {
-        document.getElementById("imageInput").click();
-    };
+    // document.getElementById("img").onclick = function () {
+    //     document.getElementById("imageInput").click();
+    // };
 
 });

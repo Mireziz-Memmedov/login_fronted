@@ -932,6 +932,7 @@ body.dark-mode #reset_password .add input {
   display: flex;
 }
 #bodySetting #setting .box .minibox .exit {
+  margin-top: 30px;
   margin-left: 12px;
   border: 1px solid #a8a6a6;
   padding: 5px;
@@ -1195,6 +1196,154 @@ body.dark-mode #edit_profile #themeToggle {
   background-color: #ffffff;
 }
 body.dark-mode #edit_profile .add input {
+  background-color: #ffffff;
+  border-color: #040404;
+}
+
+#upload_image {
+  background-color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+}
+#upload_image .box {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #a8a6a6;
+  margin-bottom: 25px;
+  width: 290px;
+  height: 400px;
+}
+#upload_image .box .textbox {
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#upload_image .box .textbox .exit {
+  margin-left: 5px;
+  border: 1px solid #a8a6a6;
+  padding: 5px;
+  background-color: #f70000;
+}
+#upload_image .box .textbox .exit:hover {
+  cursor: pointer;
+  background-color: #6d0404;
+}
+#upload_image .box .textbox .exit h3 {
+  color: #ffffff;
+}
+#upload_image .box .textbox .exit h3:hover {
+  cursor: pointer;
+  display: flex;
+}
+#upload_image .box .textbox button {
+  border: none;
+  background-color: #000000;
+  font-size: 20px;
+}
+#upload_image .box h1 {
+  margin: 20px 0 10px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 25px;
+  cursor: text;
+}
+#upload_image .box .btnbox .edit {
+  margin-right: 20px;
+  cursor: pointer;
+  position: relative;
+}
+#upload_image .box .btnbox .edit:hover::after {
+  content: "Edit";
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+#upload_image .box .btnbox .delete {
+  cursor: pointer;
+  position: relative;
+}
+#upload_image .box .btnbox .delete:hover::after {
+  content: "Delete";
+  position: absolute;
+  bottom: -25px;
+  right: 0;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+#upload_image .box .add {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+#upload_image .box .add .imgbox {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+#upload_image .box .add .imgbox img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+#upload_image .box .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c14ff;
+  border-radius: 5px;
+  margin: 20px 0;
+  padding: 4px 20px;
+  max-width: 220px;
+  width: 220px;
+}
+#upload_image .box .btn h3 {
+  color: #cdcaca;
+}
+#upload_image .box .btn h3:hover {
+  cursor: pointer;
+}
+#upload_image .box p {
+  margin-bottom: 10px;
+}
+
+body.dark-mode #upload_image {
+  background-color: #ffffff !important;
+}
+body.dark-mode #upload_image .box {
+  background-color: #ffffff;
+  border-color: #000000;
+}
+body.dark-mode #upload_image .box .btnbox .edit:hover::after {
+  background-color: #000000;
+  color: #ffffff;
+}
+body.dark-mode #upload_image .box .btnbox .delete:hover::after {
+  background-color: #000000;
+  color: #ffffff;
+}
+body.dark-mode #upload_image .textbox, body.dark-mode #upload_image h1,
+body.dark-mode #upload_image .add,
+body.dark-mode #upload_image .btn h3 {
+  color: #000000;
+}
+body.dark-mode #upload_image #themeToggle {
+  background-color: #ffffff;
+}
+body.dark-mode #upload_image .add input {
   background-color: #ffffff;
   border-color: #040404;
 }/*# sourceMappingURL=style.css.map */

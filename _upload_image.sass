@@ -1,0 +1,127 @@
+#upload_image
+    background-color: #000000
+    font-family: Arial, Helvetica, sans-serif
+    .box
+        border-radius: 5px
+        display: flex
+        align-items: center
+        flex-direction: column
+        border: 2px solid #a8a6a6
+        margin-bottom: 25px
+        width: 290px
+        height: 400px
+        .textbox
+            margin-top: 5px
+            width: 100%
+            display: flex
+            justify-content: space-between
+            .exit
+                margin-left: 5px
+                border: 1px solid #a8a6a6
+                padding: 5px
+                background-color: #f70000
+                &:hover
+                    cursor: pointer
+                    background-color: #6d0404
+                h3
+                    color: #ffffff
+                    &:hover
+                        cursor: pointer
+                        display: flex
+            button
+                border: none
+                background-color: #000000
+                font-size: 20px
+        h1
+            margin: 20px 0 10px
+            color: #ffffff
+            font-weight: 500
+            font-size: 25px
+            cursor: text
+        .btnbox
+            .edit
+                margin-right: 20px
+                cursor: pointer
+                position: relative
+                &:hover::after
+                    content: "Edit"
+                    position: absolute
+                    bottom: -25px
+                    right: 0
+                    background-color: #ffffff
+                    color: #000000
+                    font-size: 12px
+                    padding: 3px 6px
+                    border-radius: 4px
+                    white-space: nowrap
+            .delete
+                cursor: pointer
+                position: relative
+                &:hover::after
+                    content: "Delete"
+                    position: absolute
+                    bottom: -25px
+                    right: 0
+                    background-color: #ffffff
+                    color: #000000
+                    font-size: 12px
+                    padding: 3px 6px
+                    border-radius: 4px
+                    white-space: nowrap
+        .add
+            margin-top: 30px
+            display: flex
+            flex-direction: column
+            .imgbox
+                width: 150px
+                height: 150px
+                border-radius: 50%
+                overflow: hidden
+                img
+                    width: 100%
+                    height: 100%
+                    object-fit: cover
+        .btn
+            display: flex
+            justify-content: center
+            align-items: center
+            background-color: #1c14ff
+            border-radius: 5px
+            margin: 20px 0
+            padding: 4px 20px
+            max-width: 220px
+            width: 220px
+            h3
+                color: #cdcaca
+                &:hover
+                    cursor: pointer
+        p
+            margin-bottom: 10px
+body.dark-mode
+    #upload_image
+        background-color: #ffffff !important
+
+        .box
+            background-color: #ffffff
+            border-color: #000000
+            .btnbox
+
+                .edit:hover::after
+                    background-color: #000000
+                    color: #ffffff
+
+                .delete:hover::after
+                    background-color: #000000
+                    color: #ffffff
+
+        .textbox, h1,
+        .add,
+        .btn h3
+            color: #000000
+
+        #themeToggle
+            background-color: #ffffff
+
+        .add input
+            background-color: #ffffff
+            border-color: #040404
