@@ -24,7 +24,7 @@ $(document).ready(function () {
     $('.edit').on('click', function () {
         $('#imageInput').click();
     });
-    
+
     //sekili imbgox daxilinde vizual gostermek ucun
     $('#imageInput').on('change', function (e) {
         const file = e.target.files[0];
@@ -36,6 +36,46 @@ $(document).ready(function () {
             };
             reader.readAsDataURL(file);
         }
+    });
+
+    const currentUserId = localStorage.getItem('currentUserId');
+    const errorMsg = $('#error-msg');
+    const fileInput = $('#imageInput')[0];
+
+    //backende Post etmek
+    function upload_image() {
+        const file = fileInput.files[0]; // seçilmiş fayl
+        if (!file) {
+            errorMsg.text('Şəkil seçilməyib!');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('user_id', currentUserId);
+        formData.append('profile_image', file); // faylı FormData-ya əlavə edirem
+
+        $.ajax({
+            type: "POST",
+            url: "https://login-db-backend-three.vercel.app/api/update-profile-image/",
+            data: formData,
+            processData: false, // FormData olduğu üçün false
+            contentType: false, // FormData olduğu üçün false
+            success: function (response) {
+                if (response.success) {
+                    $('.imgbox img').attr('src', response.profile_image_url);
+                    errorMsg.text('');
+                } else {
+                    errorMsg.text(response.error);
+                }
+            },
+            error: function (err) {
+                errorMsg.text('Serverdə xəta baş verdi!');
+            }
+        });
+    }
+
+    $("#login-btn").on("click", function () {
+        upload_image();
     });
 
 });
