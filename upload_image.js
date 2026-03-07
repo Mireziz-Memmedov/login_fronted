@@ -42,6 +42,11 @@ $(document).ready(function () {
     const errorMsg = $('#error-msg');
     const fileInput = $('#imageInput')[0];
 
+    if (!currentUserId) {
+        console.log("User ID tapılmadı");
+        return;
+    }
+
     //backende Post etmek
     function upload_image() {
         const file = fileInput.files[0]; // seçilmiş fayl
@@ -62,6 +67,7 @@ $(document).ready(function () {
             contentType: false, // FormData olduğu üçün false
             success: function (response) {
                 if (response.success) {
+                    alert('Şəkil uğurla dəyişdirildi!');
                     $('.imgbox img').attr('src', response.profile_image_url);
                     errorMsg.text('');
                 } else {
@@ -77,5 +83,23 @@ $(document).ready(function () {
     $("#login-btn").on("click", function () {
         upload_image();
     });
+
+    //backendden profil seklini getirir
+    function loadProfileImage() {
+        $.ajax({
+            type: "GET",
+            url: "https://login-db-backend-three.vercel.app/api/get-profile-image/",
+            data: {
+                user_id: currentUserId
+            },
+            success: function (response) {
+                if (response.profile_image_url) {
+                    $('.imgbox img').attr('src', response.profile_image_url);
+                }
+            }
+        });
+    }
+
+    loadProfileImage();
 
 });
