@@ -53,6 +53,7 @@ $(document).ready(function () {
                 }
 
                 res.users.forEach(user => {
+                    // AJAX-lə hər istifadəçinin statusu və profil şəkli alınır
                     $.ajax({
                         url: `https://login-db-backend-three.vercel.app/api/user_status/?username=${encodeURIComponent(user)}`,
                         method: "GET",
@@ -74,10 +75,13 @@ $(document).ready(function () {
                                 lastSeenText = 'Onlayn'
                             };
 
+                            // Profil şəkli URL-i backend-dən alınır, əgər yoxdursa default
+                            const profileImage = statusRes.profile_image_url || "Assets/profile.png";
+
                             const p = $(`
                                 <p class="userItem" style="display:flex; align-items:center; gap:10px;">
                                     <span class="imgbox">
-                                        <img src="Assets/profile.png" 
+                                        <img src="${profileImage}" 
                                             alt="profile" 
                                             style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
                                     </span>
