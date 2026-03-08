@@ -82,7 +82,7 @@ $(document).ready(function () {
                                 <p class="userItem" style="display:flex; align-items:center; gap:10px;">
                                     <span class="imgbox">
                                         <img src="${profileImage}" 
-                                            alt="profile" 
+                                            alt="" 
                                             style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
                                     </span>
                                     <span class="username">${user}</span>
