@@ -76,13 +76,13 @@ $(document).ready(function () {
                             };
 
                             // Profil şəkli URL-i backend-dən alınır, əgər yoxdursa default
-                            const profileImage = statusRes.profile_image_url || "Assets/profile.png";
+                            const profileImage = statusRes.profile_image_url;
 
                             const p = $(`
                                 <p class="userItem" style="display:flex; align-items:center; gap:10px;">
                                     <span class="imgbox">
                                         <img src="${profileImage}" 
-                                            alt="" 
+                                            alt="profile" 
                                             style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
                                     </span>
                                     <span class="username">${user}</span>
@@ -98,7 +98,7 @@ $(document).ready(function () {
                             const p = $(`
                                 <p class="userItem" data-username="${user}" style="display:flex; align-items:center; gap:10px;">
                                     <span class="imgbox">
-                                        <img src="Assets/profile.png" 
+                                        <img src="${profileImage}" 
                                             alt="profile" 
                                             style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
                                     </span>
