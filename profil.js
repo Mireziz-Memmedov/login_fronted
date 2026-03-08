@@ -77,8 +77,8 @@ $(document).ready(function () {
                             const p = $(`
                                 <p class="userItem" style="display:flex; align-items:center; gap:10px;">
                                     <span class="imgbox">
-                                        <img src="" 
-                                            alt="" 
+                                        <img src="Assets/profile.png" 
+                                            alt="profile" 
                                             style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
                                     </span>
                                     <span class="username">${user}</span>
@@ -94,8 +94,8 @@ $(document).ready(function () {
                             const p = $(`
                                 <p class="userItem" data-username="${user}" style="display:flex; align-items:center; gap:10px;">
                                     <span class="imgbox">
-                                        <img src="" 
-                                            alt="" 
+                                        <img src="Assets/profile.png" 
+                                            alt="profile" 
                                             style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
                                     </span>
                                     <span class="username">${user}</span>
