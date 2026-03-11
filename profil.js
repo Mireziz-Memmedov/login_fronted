@@ -191,6 +191,8 @@ $(document).ready(function () {
         window.location.href = "./setting.html";
     });
 
+    // delete modal istifade etmek ucun
+
     $(document).on("click", ".remove", function () {
         const username = $(this).data("username");
         $("#deleteModal").data("username", username).addClass("active");
@@ -198,6 +200,20 @@ $(document).ready(function () {
 
     $("#cancelDelete").on("click", function () {
         $("#deleteModal").removeClass("active");
+    });
+
+    //picture modal
+    $(document).on("click", ".imgbox img", function () {
+
+        const profileImage = $(this).attr("src");
+
+        $("#pictureModal img").attr("src", profileImage);
+        $("#pictureModal").addClass("active");
+
+    });
+
+    $("#cancel").on("click", function () {
+        $("#pictureModal").removeClass("active");
     });
 
     //profilden cixis ucun

@@ -408,7 +408,7 @@ body {
   white-space: nowrap;
 }
 
-.modal {
+#deleteModal {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -417,10 +417,10 @@ body {
   align-items: center;
   z-index: 999;
 }
-.modal.active {
+#deleteModal.active {
   display: flex;
 }
-.modal .modal-box {
+#deleteModal .modal-box {
   background: #000000;
   border: 2px solid #a8a6a6;
   border-radius: 8px;
@@ -428,18 +428,18 @@ body {
   min-width: 300px;
   text-align: center;
 }
-.modal h3 {
+#deleteModal h3 {
   color: #ffffff;
   margin-bottom: 20px;
   font-size: 18px;
 }
-.modal .actions {
+#deleteModal .actions {
   display: flex;
   justify-content: center;
   gap: 15px;
   background-color: #848282;
 }
-.modal .actions button {
+#deleteModal .actions button {
   padding: 8px 18px;
   border: none;
   border-radius: 5px;
@@ -447,19 +447,61 @@ body {
   font-weight: 600;
   transition: 0.3s;
 }
-.modal .actions #confirmDelete {
+#deleteModal .actions #confirmDelete {
   background: #2ecc71;
   color: #ffffff;
 }
-.modal .actions #confirmDelete:hover {
+#deleteModal .actions #confirmDelete:hover {
   background: #27ae60;
 }
-.modal .actions #cancelDelete {
+#deleteModal .actions #cancelDelete {
   background: #c0392b;
   color: #000000;
 }
-.modal .actions #cancelDelete:hover {
+#deleteModal .actions #cancelDelete:hover {
   background: #e74c3c;
+}
+
+#pictureModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+#pictureModal.active {
+  display: flex;
+}
+#pictureModal .modal-box {
+  border: 4px solid #00de1e;
+  border-radius: 8px;
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+#pictureModal .modal-box #cancel {
+  background-color: #ffffff;
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+  top: 0.5px;
+  right: 0.5px;
+}
+#pictureModal .modal-box #cancel:hover {
+  background-color: #909090;
+}
+#pictureModal .modal-box .imgbox img {
+  width: 300px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 body.dark-mode {

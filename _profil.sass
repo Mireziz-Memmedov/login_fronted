@@ -144,7 +144,7 @@ body
                 padding: 3px 6px
                 border-radius: 4px
                 white-space: nowrap
-.modal
+#deleteModal
     position: fixed
     inset: 0
     background: rgba(0, 0, 0, 0.6)
@@ -196,6 +196,46 @@ body
 
             &:hover
                 background: #e74c3c
+#pictureModal
+    position: fixed
+    inset: 0
+    background: rgba(0, 0, 0, 0.6)
+    display: none
+    justify-content: center
+    align-items: center
+    z-index: 999
+
+    &.active
+        display: flex
+
+    .modal-box
+        border: 4px solid #00de1e
+        border-radius: 8px
+        width: 300px
+        height: 300px
+        text-align: center
+        overflow: hidden
+        position: relative
+
+        #cancel
+            background-color: #ffffff
+            padding: 2px
+            border: none
+            border-radius: 5px
+            cursor: pointer
+            transition: 0.3s
+            position: absolute
+            top: 0.5px
+            right: 0.5px
+
+            &:hover
+                background-color: #909090
+
+        .imgbox
+            img
+                width: 300px
+                height: 300px
+                object-fit: cover
 
 body.dark-mode
     background-color: #ffffff
