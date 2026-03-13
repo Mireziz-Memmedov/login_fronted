@@ -102,4 +102,40 @@ $(document).ready(function () {
 
     loadProfileImage();
 
+    //profil seklini silmek funksiyasi
+    function delete_profil_image() {
+        const profile_image = $('.imgbox img').attr('src')
+
+        if (profile_image.includes('default_vcxic3')) {
+            errorMsg.text('Şəkil yoxdur!');
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: "https://login-db-backend-three.vercel.app/api/delete-profile-image/",
+            data: {
+                user_id: currentUserId
+            },
+            success: function (response) {
+                if (response.success) {
+                    alert('Profil şəkli silindi!');
+                    $('.imgbox img').attr(
+                        'src',
+                        'https://res.cloudinary.com/douy6goys/image/upload/v1690000000/default_vcxic3.png'
+                    );
+                    errorMsg.text('');
+                } else {
+                    errorMsg.text(response.error);
+                }
+            }, error: function (err) {
+                errorMsg.text('Serverdə xəta baş verdi!');
+            }
+        });
+    }
+
+    $('.delete').click(function (e) {
+        e.preventDefault();
+        delete_profil_image();
+    });
+
 });
