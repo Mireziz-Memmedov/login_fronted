@@ -3,26 +3,52 @@
     font-family: Arial, Helvetica, sans-serif
     .box
         border-radius: 5px
-        display: flex
-        align-items: center
-        flex-direction: column
+        // display: flex
+        // align-items: center
+        // flex-direction: column
         border: 2px solid #a8a6a6
         margin-bottom: 25px
         width: 90%
         max-width: 264px
         min-width: 264px
         .textbox
+            display: flex
+            justify-content: space-between
             button
-                margin: 11px 0
+                margin: 11px 5px
                 border: none
                 background-color: #000000
                 font-size: 20px
-            h1
-                margin: 50px 0 20px
-                color: #ffffff
-                font-weight: 500
-                font-size: 30px
-                cursor: text
+
+        .lang-selector
+            position: relative
+            display: inline-block
+
+            #lang-menu
+                position: absolute
+                top: 35px
+                left: 9.5px
+                list-style: none
+                padding: 0
+                margin: 0
+
+                li
+                    margin-bottom: 1px
+                    border: 2px solid #ffffff
+                    padding: 3px
+                    font-weight: 700
+                    background-color: #27ae60
+                    border-radius: 5px
+
+            .hidden
+                display: none
+
+        h1
+            margin: 50px 0 20px
+            color: #ffffff
+            font-weight: 500
+            font-size: 30px
+            cursor: text
         .add
             display: flex
             flex-direction: column
@@ -33,6 +59,9 @@
                 background-color: #000000
                 border: 2px solid #a8a6a6
                 color: #ffffff
+        .logbox
+            display: flex
+            justify-content: center
         .btn
             display: flex
             justify-content: center
@@ -103,13 +132,19 @@ body.dark-mode
             background-color: #ffffff
             border-color: #000000
 
-        .textbox h1,
+        .textbox,
+        h1,
         .add input,
         .btn h3
             color: #000000
 
-        #themeToggle
+        #themeToggle, #lang
             background-color: #ffffff
+
+        .lang-selector
+            #lang-menu
+                li
+                    border: 2px solid #000000
 
         .add input
             background-color: #ffffff

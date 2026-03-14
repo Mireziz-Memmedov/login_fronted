@@ -21,22 +21,46 @@ section {
 }
 #login .box {
   border-radius: 5px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
   width: 90%;
   max-width: 264px;
   min-width: 264px;
 }
+#login .box .textbox {
+  display: flex;
+  justify-content: space-between;
+}
 #login .box .textbox button {
-  margin: 11px 0;
+  margin: 11px 5px;
   border: none;
   background-color: #000000;
   font-size: 20px;
 }
-#login .box .textbox h1 {
+#login .box .lang-selector {
+  position: relative;
+  display: inline-block;
+}
+#login .box .lang-selector #lang-menu {
+  position: absolute;
+  top: 35px;
+  left: 9.5px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#login .box .lang-selector #lang-menu li {
+  margin-bottom: 1px;
+  border: 2px solid #ffffff;
+  padding: 3px;
+  font-weight: 700;
+  background-color: #27ae60;
+  border-radius: 5px;
+}
+#login .box .lang-selector .hidden {
+  display: none;
+}
+#login .box h1 {
   margin: 50px 0 20px;
   color: #ffffff;
   font-weight: 500;
@@ -54,6 +78,10 @@ section {
   background-color: #000000;
   border: 2px solid #a8a6a6;
   color: #ffffff;
+}
+#login .box .logbox {
+  display: flex;
+  justify-content: center;
 }
 #login .box .btn {
   display: flex;
@@ -110,13 +138,17 @@ body.dark-mode #login .box {
   background-color: #ffffff;
   border-color: #000000;
 }
-body.dark-mode #login .textbox h1,
+body.dark-mode #login .textbox,
+body.dark-mode #login h1,
 body.dark-mode #login .add input,
 body.dark-mode #login .btn h3 {
   color: #000000;
 }
-body.dark-mode #login #themeToggle {
+body.dark-mode #login #themeToggle, body.dark-mode #login #lang {
   background-color: #ffffff;
+}
+body.dark-mode #login .lang-selector #lang-menu li {
+  border: 2px solid #000000;
 }
 body.dark-mode #login .add input {
   background-color: #ffffff;

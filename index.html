@@ -29,8 +29,18 @@
                         <div class="box text-center">
                             <div class="textbox">
                                 <button id="themeToggle">🌙</button>
-                                <h1>AstroPing</h1>
+                                <div class="lang-selector">
+                                    <button id="lang">🌐</button>
+                                    <ul id="lang-menu" class="hidden">
+                                        <li data-lang="az">AZ</li>
+                                        <li data-lang="ru">TR</li>
+                                        <li data-lang="ru">RU</li>
+                                        <li data-lang="en">EN</li>
+                                    </ul>
+                                </div>
+
                             </div>
+                            <h1>AstroPing</h1>
                             <div class="add">
                                 <input type="text" id="username" placeholder="İstifadəçi adı">
                                 <div class="password-box" style="position: relative;">
@@ -39,9 +49,12 @@
                                         style="color:#cdcaca; position: absolute; right: 30px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                                 </div>
                             </div>
-                            <button id="login-btn" class="btn">
-                                <h3>Daxil ol</h3>
-                            </button>
+                            <div class="logbox">
+                                <button id="login-btn" class="btn">
+                                    <h3>Daxil ol</h3>
+                                </button>
+                            </div>
+
                             <p id="error-msg" style="color:red; font-weight:bold;"></p>
                             <!-- <div class="divider">
                                 <span>OR</span>
