@@ -33,7 +33,7 @@ $(document).ready(function () {
                     'text-align': 'right',
                     'margin-top': '2px'
                 });
-                if (msg.is_read) seenSpan.text('✔ Seen');
+                if (msg.is_read) seenSpan.text('✔ Oxundu');
                 div.append(seenSpan);
             }
         }
@@ -171,8 +171,8 @@ $(document).ready(function () {
         $('.menu').remove();
 
         const menu = $('<div>').addClass('menu');
-        const del = $('<div>').addClass('delete').text('Delete');
-        const unsend = $('<div>').addClass('unsend').text('Unsend');
+        const del = $('<div>').addClass('delete').text('Sil');
+        const unsend = $('<div>').addClass('unsend').text('Geri al');
 
         menu.append(del);
 

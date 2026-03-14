@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font-family: "Dosis", sans-serif;
   font-weight: 500;
@@ -58,7 +59,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c14ff;
+  background-color: #27ae60;
   border-radius: 5px;
   margin: 20px 0;
   padding: 4px 20px;
@@ -94,7 +95,7 @@ section {
   padding: 30px 16.9px;
 }
 #login .minibox a {
-  color: #1c14ff;
+  color: #27ae60;
   cursor: pointer;
 }
 #login .minibox p {
@@ -176,7 +177,7 @@ body.dark-mode #login p {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c14ff;
+  background-color: #27ae60;
   border-radius: 5px;
   margin: 20px 0;
   padding: 4px 20px;
@@ -203,7 +204,7 @@ body.dark-mode #login p {
   padding: 30px 0;
 }
 #signup .minibox a {
-  color: #1c14ff;
+  color: #27ae60;
   cursor: pointer;
 }
 #signup .minibox p {
@@ -308,7 +309,7 @@ body {
   cursor: pointer;
 }
 #profil .box .add button:hover::after {
-  content: "Search";
+  content: "Axtar";
   position: absolute;
   bottom: -25px;
   right: 0;
@@ -362,7 +363,7 @@ body {
   color: #f70000;
 }
 #profil .box #recentChats p .remove:hover::after {
-  content: "Remove";
+  content: "Sil";
   position: absolute;
   bottom: -25px;
   right: 0;
@@ -397,7 +398,7 @@ body {
   cursor: pointer;
 }
 #profil .btnbox .settings-btn:hover::after {
-  content: "Settings";
+  content: "Ayarlar";
   position: absolute;
   top: -25px;
   right: 0;
@@ -652,7 +653,7 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 }
 #bodyChat #chat .messageBox .btn:hover:hover::after {
   z-index: 10;
-  content: "Back";
+  content: "Geri";
   position: absolute;
   bottom: -25px;
   right: 0;
@@ -738,7 +739,7 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c14ff;
+  background-color: #27ae60;
   border-radius: 5px;
   margin: 20px 0;
   padding: 4px 20px;
@@ -817,7 +818,7 @@ body.dark-mode #forgot .add input {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c14ff;
+  background-color: #27ae60;
   border-radius: 5px;
   margin: 20px 0;
   padding: 4px 20px;
@@ -862,7 +863,7 @@ body.dark-mode #verify-code .add input {
   flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
-  width: auto;
+  width: 280px;
 }
 #reset_password .box .textbox button {
   margin: 10px 0;
@@ -893,7 +894,7 @@ body.dark-mode #verify-code .add input {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c14ff;
+  background-color: #27ae60;
   border-radius: 5px;
   margin: 20px 0;
   padding: 4px 20px;
@@ -1105,7 +1106,7 @@ body.dark-mode #reset_password .add input {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c14ff;
+  background-color: #27ae60;
   border-radius: 5px;
   margin: 20px 0;
   padding: 4px 20px;
@@ -1206,7 +1207,7 @@ body.dark-mode #deleted_profile_forever .add input {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c14ff;
+  background-color: #27ae60;
   border-radius: 5px;
   margin: 20px 0;
   padding: 4px 20px;
@@ -1298,7 +1299,7 @@ body.dark-mode #edit_profile .add input {
   position: relative;
 }
 #upload_image .box .btnbox .edit:hover::after {
-  content: "Edit";
+  content: "Redaktə et";
   position: absolute;
   bottom: -25px;
   right: 0;
@@ -1314,7 +1315,7 @@ body.dark-mode #edit_profile .add input {
   position: relative;
 }
 #upload_image .box .btnbox .delete:hover::after {
-  content: "Delete";
+  content: "Sil";
   position: absolute;
   bottom: -25px;
   right: 0;
@@ -1346,7 +1347,7 @@ body.dark-mode #edit_profile .add input {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #1c14ff;
+  background-color: #27ae60;
   border-radius: 5px;
   margin: 20px 0;
   padding: 4px 20px;
