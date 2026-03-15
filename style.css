@@ -48,19 +48,23 @@ section {
 #login .box .lang-selector #lang-menu {
   position: absolute;
   top: 45px;
-  left: 14.4px;
+  left: 17.3px;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 #login .box .lang-selector #lang-menu li {
-  margin-bottom: 1px;
-  border: 2px solid #ffffff;
-  padding: 3px;
-  font-weight: 700;
-  background-color: #27ae60;
-  border-radius: 5px;
+  margin-bottom: 2px;
   cursor: pointer;
+}
+#login .box .lang-selector #lang-menu .fi {
+  width: 27px;
+  height: 20px;
+  cursor: pointer;
+  border: 2px solid black;
+  background-size: cover;
+  background-position: center;
+  border-radius: 2px;
 }
 #login .box .lang-selector .hidden {
   display: none;
@@ -151,9 +155,6 @@ body.dark-mode #login .btn h3 {
 }
 body.dark-mode #login #themeToggle, body.dark-mode #login #lang {
   background-color: #ffffff;
-}
-body.dark-mode #login .lang-selector #lang-menu li {
-  border: 2px solid #000000;
 }
 body.dark-mode #login .add input {
   background-color: #ffffff;
