@@ -91,6 +91,7 @@ section {
 #login .box .logbox {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 #login .box .btn {
   display: flex;
