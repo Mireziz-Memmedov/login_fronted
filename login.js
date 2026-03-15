@@ -130,7 +130,6 @@ $(document).ready(function () {
 
     //şərt yazırıq ki əgər klick olunan yer dil menusunun hər hansı bir hissəsi deyilsə bağlanır.
     $(document).click(function (e) {
-        e.preventDefault();
         if (!$(e.target).closest('#lang').length && !$(e.target).closest('#lang-menu').length) {
             $('#lang-menu').slideUp();
         }
