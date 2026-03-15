@@ -21,6 +21,9 @@ section {
 }
 #login .box {
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
   width: 90%;
@@ -30,12 +33,13 @@ section {
 #login .box .textbox {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 #login .box .textbox button {
   margin: 11px 5px;
   border: none;
   background-color: #000000;
-  font-size: 20px;
+  font-size: 30px;
 }
 #login .box .lang-selector {
   position: relative;
@@ -43,8 +47,8 @@ section {
 }
 #login .box .lang-selector #lang-menu {
   position: absolute;
-  top: 35px;
-  left: 9.5px;
+  top: 45px;
+  left: 14.4px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -56,6 +60,7 @@ section {
   font-weight: 700;
   background-color: #27ae60;
   border-radius: 5px;
+  cursor: pointer;
 }
 #login .box .lang-selector .hidden {
   display: none;
