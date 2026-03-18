@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="login.js" defer></script>
+    <script src="translate.js" defer></script>
     <script src="https://kit.fontawesome.com/51d2f8b0de.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
@@ -33,10 +34,10 @@
                                 <div class="lang-selector">
                                     <button id="lang">🌐</button>
                                     <ul id="lang-menu" class="hidden">
-                                        <li data-lang="az"><span class="fi fi-az"></span></li>
-                                        <li data-lang="tr"><span class="fi fi-tr"></span></li>
-                                        <li data-lang="ru"><span class="fi fi-ru"></span></li>
-                                        <li data-lang="en"><span class="fi fi-gb"></span></li>
+                                        <li data-lang="AZ"><span class="fi fi-az"></span></li>
+                                        <li data-lang="TR"><span class="fi fi-tr"></span></li>
+                                        <li data-lang="RU"><span class="fi fi-ru"></span></li>
+                                        <li data-lang="EN"><span class="fi fi-gb"></span></li>
                                     </ul>
                                 </div>
 
@@ -51,8 +52,8 @@
                                 </div>
                             </div>
                             <div class="logbox">
-                                <button id="login-btn" class="btn">
-                                    <h3>Daxil ol</h3>
+                                <button id="login-btn" class="btn" data-key="login">
+                                    <h3>Login</h3>
                                 </button>
                             </div>
 
