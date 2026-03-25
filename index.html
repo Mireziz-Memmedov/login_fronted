@@ -44,9 +44,9 @@
                             </div>
                             <h1>AstroPing</h1>
                             <div class="add">
-                                <input type="text" id="username" placeholder="İstifadəçi adı">
+                                <input type="text" id="username" placeholder="Username" data-key="username">
                                 <div class="password-box" style="position: relative;">
-                                    <input type="password" id="password" placeholder="Şifrə">
+                                    <input type="password" id="password" placeholder="Password" data-key="password">
                                     <i class="fa-solid fa-eye-slash" id="toggle-password"
                                         style="color:#cdcaca; position: absolute; right: 30px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                                 </div>
@@ -62,15 +62,16 @@
                                 <span>OR</span>
                             </div> -->
                             <div class="forgot">
-                                <a href="./forgot.html">Şifrəni unutmusunuz?</a>
+                                <a data-key="forgot_password" href="./forgot.html">Forgot password?</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 d-flex justify-content-center">
-                        <div class="minibox">
-                            <p>Hesabınız yoxdur? <a href="signup.html">Qeydiyyat</a></p>
+                        <div class="minibox d-flex">
+                            <p data-key="no_account">Don't have an account?</p>
+                            <a href="signup.html" data-key="signup">Sign up</a>
                         </div>
                     </div>
                 </div>

@@ -122,17 +122,4 @@ $(document).ready(function () {
         }
     });
 
-    //Dil üçün seçimlerin açılması üçün
-    $('#lang').click(function (e) {
-        e.preventDefault();
-        $(this).next('#lang-menu').slideToggle();
-    });
-
-    //şərt yazırıq ki əgər klick olunan yer dil menusunun hər hansı bir hissəsi deyilsə bağlanır.
-    $(document).click(function (e) {
-        if (!$(e.target).closest('#lang').length && !$(e.target).closest('#lang-menu').length) {
-            $('#lang-menu').slideUp();
-        }
-    });
-
 });

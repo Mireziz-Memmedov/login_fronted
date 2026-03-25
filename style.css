@@ -139,6 +139,7 @@ section {
 #login .minibox p {
   color: #ffffff;
   cursor: text;
+  margin-right: 5px;
 }
 
 body.dark-mode #login {
