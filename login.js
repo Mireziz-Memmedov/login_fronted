@@ -1,13 +1,19 @@
 $(document).ready(function () {
 
+    if (window.getTranslation) window.getTranslation();
+
     function login() {
+
         const username = $('#username').val().trim();
         const password = $('#password').val().trim();
         const errorMsg = $('#error-msg');
 
         if (!username || !password) {
             errorMsg.css("color", "red");
-            errorMsg.html("Zəhmət olmasa istifadəçi<br>adını və şifrəni daxil edin");
+            errorMsg
+                .attr("data-key", "enter_username_password")
+                .css("text-align", "center");
+            if (window.getTranslation) window.getTranslation();
             return;
         }
 

@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    window.getTranslation = getTranslation;
+
     //Dil üçün seçimlerin açılması üçün
     $('#lang').click(function (e) {
         e.preventDefault();

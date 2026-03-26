@@ -246,6 +246,7 @@ body.dark-mode #login p {
 #signup .minibox a {
   color: #27ae60;
   cursor: pointer;
+  margin-left: 5px;
 }
 #signup .minibox p {
   text-align: center;
