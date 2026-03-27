@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="upload_image.js" defer></script>
+    <script src="translate.js" defer></script>
     <script src="https://kit.fontawesome.com/51d2f8b0de.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <title>Şəkil yüklə və ya dəyiş</title>
+    <title data-key="change_photo">Add or change profile picture</title>
 </head>
 
 <body>
@@ -29,11 +30,11 @@
                         <div class="box text-center">
                             <div class="textbox">
                                 <div class="exit">
-                                    <h3>Çıxış</h3>
+                                    <h3 data-key="logout">Exit</h3>
                                 </div>
                                 <button id="themeToggle">🌙</button>
                             </div>
-                            <h1>Profil şəkli əlavə<br>et və ya dəyiş</h1>
+                            <h1 data-key="change_photo">Add or change profile picture</h1>
                             <div class="btnbox d-flex">
                                 <div class="edit">✏️</div>
                                 <div class="delete">🗑️</div>
@@ -45,7 +46,7 @@
                                 </div>
                             </div>
                             <div id="login-btn" class="btn">
-                                <h3>Yadda saxla</h3>
+                                <h3 data-key="save">Save</h3>
                             </div>
                             <p id="error-msg" style="color:red; font-weight:bold;"></p>
                         </div>

@@ -32,12 +32,8 @@ $(document).ready(function () {
                     localStorage.setItem('currentUserId', response.user.id);
                     localStorage.setItem('currentUsername', response.user.username);
 
-                    errorMsg.css("color", "lightgreen");
-                    errorMsg.text("Giriş uğurlu! Yönləndirilir...");
                     $('#username, #password').val('');
-                    setTimeout(() => {
-                        window.location.href = "./profil.html";
-                    }, 1000);
+                    window.location.href = "./profil.html";
                 } else {
                     errorMsg.css("color", "red");
 

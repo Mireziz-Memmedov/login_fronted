@@ -825,7 +825,7 @@ body.dark-mode #forgot .add input {
   flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
-  width: auto;
+  width: 270px;
 }
 #verify-code .box .textbox button {
   margin: 11px 0;
@@ -1068,7 +1068,7 @@ body.dark-mode #reset_password .add input {
   border: 2px solid #a8a6a6;
   border-radius: 8px;
   padding: 25px;
-  min-width: 300px;
+  width: 270px;
   text-align: center;
 }
 .modal h3 {
@@ -1195,7 +1195,7 @@ body.dark-mode #deleted_profile_forever .add input {
   flex-direction: column;
   border: 2px solid #a8a6a6;
   margin-bottom: 25px;
-  width: auto;
+  width: 270px;
 }
 #edit_profile .box .textbox {
   margin-top: 5px;

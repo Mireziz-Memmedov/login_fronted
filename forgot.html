@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="forgot.js" defer></script>
+    <script src="translate.js" defer></script>
     <script src="https://kit.fontawesome.com/51d2f8b0de.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <title>Şifrəni unutdunuz?</title>
+    <title data-key="forgot_password">Forgot password?</title>
 </head>
 
 <body>
@@ -29,14 +30,14 @@
                         <div class="box text-center">
                             <div class="textbox">
                                 <button id="themeToggle">🌙</button>
-                                <h2>Hesabınızı tapın</h2>
+                                <h2 data-key="find_account">Find your account</h2>
                             </div>
                             <div class="add">
-                                <input type="text" id="username_or_email" placeholder="İstifadəçi adı və ya email">
+                                <input type="text" id="username_or_email" placeholder="Username or email" data-key="username_or_email">
                             </div>
                             <p id="error-msg" style="color:red; font-weight:bold;"></p>
                             <div id="login-btn" class="btn">  
-                                <h3>Davam et</h3>
+                                <h3 data-key="continue">Continue</h3>
                             </div>
                         </div>
                     </div>
