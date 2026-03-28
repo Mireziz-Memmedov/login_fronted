@@ -621,8 +621,9 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 #bodyChat #chat .messageBox {
   width: 90vw;
   max-width: 500px;
-  min-width: 200px;
-  height: 100vh;
+  min-width: 300px;
+  height: 100%;
+  min-height: 100vh;
   background-color: #2ecc71;
   border-radius: 15px;
   display: flex;
