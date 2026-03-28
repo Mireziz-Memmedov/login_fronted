@@ -175,7 +175,7 @@ body.dark-mode #login p {
 #signup {
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
-  height: 750px;
+  height: 600px;
 }
 #signup .box {
   border-radius: 5px;
@@ -195,7 +195,7 @@ body.dark-mode #login p {
   font-size: 20px;
 }
 #signup .box .textbox h1 {
-  margin: 50px 0 20px;
+  margin: 25px 0 20px;
   color: #ffffff;
   font-weight: 500;
   font-size: 25px;
