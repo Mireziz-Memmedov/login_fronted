@@ -285,10 +285,13 @@ body {
 }
 
 #profil {
+  position: relative;
+  min-height: 100vh;
   background-color: #000000;
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0;
 }
 #profil .box {
@@ -299,6 +302,7 @@ body {
   margin-bottom: 25px;
   width: 100%;
   max-width: 400px;
+  flex: 1 1 auto;
 }
 #profil .box .textbox {
   display: flex;
@@ -362,12 +366,12 @@ body {
   white-space: nowrap;
 }
 #profil .box #recentChats {
+  max-height: calc(100vh - 220px);
   background-image: url(Assets/Astro.jpg);
   margin-top: 10px;
   border-radius: 10px;
   width: 100%;
   overflow-y: auto;
-  height: 505px;
 }
 #profil .box #recentChats::-webkit-scrollbar {
   display: none;
@@ -416,15 +420,19 @@ body {
   white-space: nowrap;
 }
 #profil .btnbox {
+  position: absolute;
+  bottom: 0;
   display: flex;
   color: #ffffff;
   justify-content: space-between;
+  margin: 5px 0;
   width: 100%;
-  margin: 5px 0 5px;
+  max-width: 336px;
 }
 #profil .btnbox .btn {
   border: 1px solid #a8a6a6;
   padding: 5px;
+  border-radius: 5px;
   background-color: #f70000;
 }
 #profil .btnbox .btn:hover {
@@ -437,6 +445,8 @@ body {
 #profil .btnbox .settings-btn {
   position: relative;
   cursor: pointer;
+  border-radius: 5px;
+  border: none;
 }
 #profil .btnbox .settings-btn:hover::after {
   content: "Ayarlar";
