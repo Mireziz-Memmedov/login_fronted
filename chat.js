@@ -38,7 +38,10 @@ $(document).ready(function () {
             }
         }
 
-        div.attr('data-msg-id', msg.id);
+        div
+            .attr('data-msg-id', msg.id)
+            .attr("translate", "no")
+            .addClass("notranslate");
 
         if (prepend) {
             // Yuxarıdan əlavə edəndə scroll mövqeyini saxla
@@ -164,7 +167,10 @@ $(document).ready(function () {
         window.history.back();
     });
 
-    $('.targetuser').text(targetUser);
+    $('.targetuser')
+        .text(targetUser)
+        .attr("translate", "no")
+        .addClass("notranslate");
 
     function new_slide_box(h2) {
 

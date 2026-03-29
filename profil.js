@@ -26,7 +26,7 @@ $(document).ready(function () {
         return;
     }
 
-    welcomeEl.text(`Xoş gəlmisiniz, ${currentUsername}!`);
+    $('#username').text(currentUsername);
 
     //onlayn olmagi yoxlamaq
     function updateMyActivity() {
@@ -85,7 +85,7 @@ $(document).ready(function () {
                                             alt="profile" 
                                             style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
                                     </span>
-                                    <span class="username">${user}</span>
+                                    <span class="username" translate="no" class="notranslate">${user}</span>
                                     <span class="statusIcon" style="background-color:${iconColor}; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
                                     <span class="lastSeen">${lastSeenText}</span>
                                     <span class="remove" data-username="${user}">🗑️</span>
@@ -102,7 +102,7 @@ $(document).ready(function () {
                                             alt="profile" 
                                             style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
                                     </span>
-                                    <span class="username">${user}</span>
+                                    <span class="username" translate="no" class="notranslate">${user}</span>
                                     <span class="statusIcon" style="background-color:red; border-radius:50%; width:12px; height:12px; display:inline-block;"></span>
                                     <span class="lastSeen"></span>
                                     <span class="remove" data-username="${user}">🗑️</span>
