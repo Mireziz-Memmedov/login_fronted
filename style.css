@@ -610,7 +610,6 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 }
 
 #bodyChat {
-  height: 100vh;
   display: flex;
   justify-content: center;
 }
