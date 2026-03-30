@@ -610,7 +610,7 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
 }
 
 #bodyChat {
-  height: 100dvh;
+  height: 100vh;
   display: flex;
   justify-content: center;
 }
@@ -623,7 +623,7 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   max-width: 500px;
   min-width: 300px;
   height: 100%;
-  min-height: 100dvh;
+  min-height: 100vh;
   background-color: #2ecc71;
   border-radius: 15px;
   display: flex;
