@@ -70,16 +70,18 @@ $(document).ready(function () {
                                 const hours = String(lastSeenDate.getHours()).padStart(2, '0');
                                 const minutes = String(lastSeenDate.getMinutes()).padStart(2, '0');
                                 const seconds = String(lastSeenDate.getSeconds()).padStart(2, '0');
-                                lastSeenText = `Son görülmə: ${day}.${month}.${year}, ${hours}:${minutes}:${seconds}`;
+                                lastSeenText = `<span data-key="last_seen"></span>: ${day}.${month}.${year}, ${hours}:${minutes}:${seconds}`;
                             } else {
-                                lastSeenText = 'Onlayn'
+                                lastSeenText = '<span data-key="online"></span>'
                             };
+                            console.log("lastSeenText:", lastSeenText);
+
 
                             // Profil şəkli URL-i backend-dən alınır, əgər yoxdursa default
                             const profileImage = statusRes.profile_image_url;
 
                             const p = $(`
-                                <p class="userItem" style="display:flex; align-items:center; gap:10px;">
+                                <p class="userItem" style="display:flex; align-items:center; gap:5px;">
                                     <span class="imgbox">
                                         <img src="${profileImage}" 
                                             alt="profile" 
@@ -93,6 +95,8 @@ $(document).ready(function () {
                             `);
 
                             recentChatsEl.append(p);
+                            //tercume funksiyasini translate jsden cagirirq
+                            window.getTranslation()
                         },
                         error: function () {
                             const p = $(`

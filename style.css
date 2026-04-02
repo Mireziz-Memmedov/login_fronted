@@ -1006,7 +1006,7 @@ body.dark-mode #reset_password .add input {
   color: #000000;
 }
 #bodySetting #setting .textbox #themeToggle {
-  margin: 5px 0 10px;
+  margin: 5px 0 10px 80px;
   border: none;
   background-color: #ffffff;
   font-size: 20px;
@@ -1014,14 +1014,19 @@ body.dark-mode #reset_password .add input {
 #bodySetting #setting .textbox #themeToggle:hover {
   cursor: pointer;
 }
+#bodySetting #setting .box {
+  width: 100dvw;
+  max-width: 500px;
+  min-width: 300px;
+}
 #bodySetting #setting .box .btn {
   display: flex;
   justify-content: space-between;
+  text-align: start;
 }
 #bodySetting #setting .box .btn h3 {
-  margin-right: 10px;
-  cursor: text;
   color: #000000;
+  cursor: text;
 }
 #bodySetting #setting .box .btn button {
   border: none;
