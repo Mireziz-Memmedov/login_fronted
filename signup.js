@@ -4,13 +4,29 @@ $(document).ready(function () {
         $('body').addClass('dark-mode');
     }
 
-    $('#themeToggle').click(function () {
-        $('body').toggleClass('dark-mode');
+    // 🌙 / 🌞 və dark-mode setup
+    const body = $('body');
+    const btn = $('#themeToggle');
 
-        if ($('body').hasClass('dark-mode')) {
+    // Səhifə açılarkən localStorage yoxla
+    if (localStorage.getItem('darkModeSignup') === 'true') {
+        body.addClass('dark-mode');
+        btn.text('🌙'); // dark mod aktiv → günəş
+    } else {
+        body.removeClass('dark-mode');
+        btn.text('🌞'); // light mod → ay
+    }
+
+    // Klik ilə toggle
+    btn.click(function () {
+        body.toggleClass('dark-mode');
+
+        if (body.hasClass('dark-mode')) {
             localStorage.setItem('darkModeSignup', 'true');
+            btn.text('🌙'); // dark mod aktiv → günəş
         } else {
             localStorage.setItem('darkModeSignup', 'false');
+            btn.text('🌞'); // light mod → ay
         }
     });
 
