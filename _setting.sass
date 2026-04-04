@@ -9,20 +9,12 @@
 
         .textbox
             display: flex
-            margin-bottom: 25px
+            margin-bottom: 55px
             h1
                 font-weight: 500
                 font-size: 30px
                 cursor: default
                 color: #000000
-
-            #themeToggle
-                margin: 5px 0 10px 80px
-                border: none
-                background-color: #ffffff
-                font-size: 20px
-                &:hover
-                    cursor: pointer
 
         .box
             width: 100dvw
@@ -38,10 +30,42 @@
                 button
                     border: none
                     background-color: #ffffff
+
+                .lang-selector
+                    width: 100%
+                    position: relative
+                    display: inline-block
+                    display: flex
+                    justify-content: space-between
+                    text-align: start
+
+                    #lang-menu
+                        position: absolute
+                        top: 25px
+                        right: 7px
+                        list-style: none
+                        padding: 0
+                        margin: 0
+
+                        li
+                            margin-bottom: -7px
+                            cursor: pointer
+                        .fi
+                            width: 20px
+                            height: 16px
+                            cursor: pointer
+                            border: 2px solid black
+                            background-size: cover
+                            background-position: center
+                            border-radius: 2px
+
+                    .hidden
+                        display: none
+
             .minibox
                 display: flex
                 .exit
-                    margin-top: 30px
+                    margin-top: 60px
                     margin-left: 12px
                     border: 1px solid #a8a6a6
                     padding: 5px

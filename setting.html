@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <title data-key="settings">Settings</title>
@@ -29,13 +30,17 @@
                     <div class="col-md-12 d-flex justify-content-center">
                         <div class="textbox text-center">
                             <h1>AstroPing</h1>
-                            <button id="themeToggle">🌙</button>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 d-flex justify-content-center">
                         <div class="box">
+                            <div class="btn">
+                                <h3 data-key="themeToggle">Dark mode / Light mode</h3>
+                                <button id="themeToggle">🌙</button>
+                            </div>
+                            <!-- 🌞 -->
                             <div class="btn">
                                 <h3 data-key="delete_account">Delete account</h3>
                                 <button id="deleteBtn">🗑️</button>
@@ -47,6 +52,18 @@
                             <div class="btn">
                                 <h3 data-key="change_photo">Add or change profile picture</h3>
                                 <button id="img">📸</button>
+                            </div>
+                            <div class="btn">
+                                <div class="lang-selector">
+                                    <h3 data-key="language">Language</h3>
+                                    <button id="lang">🌐</button>
+                                    <ul id="lang-menu" class="hidden">
+                                        <li data-lang="AZ"><span class="fi fi-az"></span></li>
+                                        <li data-lang="TR"><span class="fi fi-tr"></span></li>
+                                        <li data-lang="RU"><span class="fi fi-ru"></span></li>
+                                        <li data-lang="EN"><span class="fi fi-gb"></span></li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="minibox">
                                 <div class="exit">
