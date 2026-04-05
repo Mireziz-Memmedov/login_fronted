@@ -7,10 +7,10 @@ $(document).ready(function () {
     // Səhifə açılarkən localStorage yoxla
     if (localStorage.getItem('darkModeSetting') === 'true') {
         body.addClass('dark-mode');
-        btn.text('🌙'); // dark mod aktiv → günəş
+        btn.text('🌞'); // dark mod aktiv → günəş
     } else {
         body.removeClass('dark-mode');
-        btn.text('🌞'); // light mod → ay
+        btn.text('🌙'); // light mod → ay
     }
 
     // Klik ilə toggle
@@ -19,10 +19,10 @@ $(document).ready(function () {
 
         if (body.hasClass('dark-mode')) {
             localStorage.setItem('darkModeSetting', 'true');
-            btn.text('🌙'); // dark mod aktiv → günəş
+            btn.text('🌞'); // dark mod aktiv → günəş
         } else {
             localStorage.setItem('darkModeSetting', 'false');
-            btn.text('🌞'); // light mod → ay
+            btn.text('🌙'); // light mod → ay
         }
     });
 

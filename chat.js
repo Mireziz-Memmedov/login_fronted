@@ -277,5 +277,10 @@ $(document).ready(function () {
         if (msg_id) unsend(msg_id);
     });
 
+    //sekil secmek ucun pencere acilir
+    $('#img').on('click', function () {
+        $('#imageInput').click();
+    });
+
 
 });
