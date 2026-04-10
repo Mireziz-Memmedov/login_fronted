@@ -282,5 +282,28 @@ $(document).ready(function () {
         $('#imageInput').click();
     });
 
+    //secilmis sekli modalda gostermek ucun
+    $('#imageInput').on('change', function (e) {
+        const file = e.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (event) {
+                $('#previewImage')
+                    .attr('src', event.target.result)
+                    .show();
+            };
+
+            $('#pictureModal').addClass('active');
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    //modaldan cixmaq ucun
+    $("#cancel").on("click", function () {
+        $("#pictureModal").removeClass("active");
+    });
 
 });
