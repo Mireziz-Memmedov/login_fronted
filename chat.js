@@ -24,6 +24,18 @@ $(document).ready(function () {
         const h2 = $('<h2></h2>').text(msg.text);
         div.append(h2);
 
+        // if (msg.image) {
+        //     const img = $('<img>')
+        //         .attr('src', msg.image)
+        //         .css({
+        //             width: '150px',
+        //             borderRadius: '10px',
+        //             marginTop: '5px'
+        //         });
+
+        //     div.append(img);
+        // }
+
         if (sender === 'me') {
             if (msg.is_read) {
                 $messagesBox.find('.right .seenText').remove();
@@ -304,6 +316,57 @@ $(document).ready(function () {
     //modaldan cixmaq ucun
     $("#cancel").on("click", function () {
         $("#pictureModal").removeClass("active");
+    });
+
+    // şəkil göndərmək üçün funksiya
+    function send_image() {
+        const errorMsg = $('#error-msg');
+        const fileInput = $('#imageInput')[0];
+        const file = fileInput.files[0];
+
+        if (!file) {
+            errorMsg.text('Şəkil yoxdur!');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('sender_id', Number(localStorage.getItem('currentUserId')));
+        formData.append('to', targetUser);
+        formData.append('text', '');
+        formData.append('image', file);
+
+        console.log([...formData.entries()]); // debug (istəsən sil)
+
+        $.ajax({
+            type: "POST",
+            url: "https://login-db-backend-three.vercel.app/api/send-message/",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    errorMsg.text('');
+
+                    // input reset (vacib!)
+                    $('#imageInput').val('');
+
+                    // modal bağla (əgər istifadə edirsən)
+                    $('#pictureModal').removeClass('active');
+
+                } else {
+                    errorMsg.text(response.error);
+                }
+            },
+            error: function () {
+                errorMsg.text('Serverdə xəta baş verdi!');
+            }
+        });
+    }
+
+    // send button click
+    $(document).on('click', '#send', function (e) {
+        e.preventDefault();
+        send_image();
     });
 
 });
