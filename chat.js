@@ -20,8 +20,7 @@ $(document).ready(function () {
     function addMessage(msg, prepend = false, scroll = false) {
         const sender = msg.sender === currentUsername ? 'me' : 'other';
         const div = $('<div></div>')
-            .addClass(sender === 'me' ? 'right' : 'left')
-            .attr('data-msg-id', msg.id);
+            .addClass(sender === 'me' ? 'right' : 'left');
 
         if (msg.text) {
             const h2 = $('<h2></h2>').text(msg.text);
@@ -29,8 +28,11 @@ $(document).ready(function () {
         }
 
         if (msg.image) {
+
+            let imageUrl = msg.image;
+
             const img = $('<img>')
-                .attr('src', msg.image)
+                .attr('src', imageUrl)
                 .css({
                     width: '150px',
                     borderRadius: '10px',
@@ -351,17 +353,9 @@ $(document).ready(function () {
                 if (response.success) {
                     errorMsg.text('');
 
-                    // 🔥 şəkli dərhal göstər
-                    addMessage({
-                        id: Date.now(),
-                        sender: currentUsername,
-                        text: '',
-                        image: URL.createObjectURL(file),
-                        is_read: false
-                    }, false, true);
-
                     $('#imageInput').val('');
                     $('#pictureModal').removeClass('active');
+                    $messagesBox.scrollTop($messagesBox[0].scrollHeight);
                 } else {
                     errorMsg.text(response.error);
                 }
