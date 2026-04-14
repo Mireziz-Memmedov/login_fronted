@@ -684,6 +684,18 @@ body.dark-mode #profil .btnbox .settings-btn:hover::after {
   color: #ffffff;
   align-self: flex-start;
 }
+#bodyChat #chat .messageBox .minibox div.right img {
+  color: #ffffff;
+  align-self: flex-end;
+  max-width: 200px;
+  border-radius: 10px;
+}
+#bodyChat #chat .messageBox .minibox div.left img {
+  color: #ffffff;
+  align-self: flex-start;
+  max-width: 200px;
+  border-radius: 10px;
+}
 #bodyChat #chat .messageBox .minibox div.right .menu {
   top: 20px;
   right: 0;

@@ -19,22 +19,26 @@ $(document).ready(function () {
     // Mesaj əlavə etmək funksiyası (append = aşağı, prepend = yuxarı)
     function addMessage(msg, prepend = false, scroll = false) {
         const sender = msg.sender === currentUsername ? 'me' : 'other';
-        const div = $('<div></div>').addClass(sender === 'me' ? 'right' : 'left');
+        const div = $('<div></div>')
+            .addClass(sender === 'me' ? 'right' : 'left')
+            .attr('data-msg-id', msg.id);
 
-        const h2 = $('<h2></h2>').text(msg.text);
-        div.append(h2);
+        if (msg.text) {
+            const h2 = $('<h2></h2>').text(msg.text);
+            div.append(h2);
+        }
 
-        // if (msg.image) {
-        //     const img = $('<img>')
-        //         .attr('src', msg.image)
-        //         .css({
-        //             width: '150px',
-        //             borderRadius: '10px',
-        //             marginTop: '5px'
-        //         });
+        if (msg.image) {
+            const img = $('<img>')
+                .attr('src', msg.image)
+                .css({
+                    width: '150px',
+                    borderRadius: '10px',
+                    marginTop: '5px'
+                });
 
-        //     div.append(img);
-        // }
+            div.append(img);
+        }
 
         if (sender === 'me') {
             if (msg.is_read) {
@@ -201,13 +205,13 @@ $(document).ready(function () {
         $(h2).parent().append(menu);
     }
 
-    $(document).on('click', 'h2', function (e) {
+    $(document).on('click', 'h2, img', function (e) {
         e.preventDefault();
         new_slide_box(this);
     });
 
     $(document).click(function (e) {
-        if (!$(e.target).closest('.menu, h2').length) {
+        if (!$(e.target).closest('.menu, h2, img').length) {
             $('.menu').slideUp();
         }
     });
@@ -347,12 +351,17 @@ $(document).ready(function () {
                 if (response.success) {
                     errorMsg.text('');
 
-                    // input reset (vacib!)
+                    // 🔥 şəkli dərhal göstər
+                    addMessage({
+                        id: Date.now(),
+                        sender: currentUsername,
+                        text: '',
+                        image: URL.createObjectURL(file),
+                        is_read: false
+                    }, false, true);
+
                     $('#imageInput').val('');
-
-                    // modal bağla (əgər istifadə edirsən)
                     $('#pictureModal').removeClass('active');
-
                 } else {
                     errorMsg.text(response.error);
                 }
