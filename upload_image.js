@@ -70,28 +70,31 @@ $(document).ready(function () {
             return;
         }
 
-        const formData = new FormData();
-        formData.append('user_id', currentUserId);
-        formData.append('profile_image', file); // faylı FormData-ya əlavə edirem
+        resizeImage(file, function (smallFile) {
+            const userId = localStorage.getItem('currentUserId');
+            const formData = new FormData();
+            formData.append('user_id', userId);
+            formData.append('profile_image', smallFile); // faylı FormData-ya əlavə edirem
 
-        $.ajax({
-            type: "POST",
-            url: "https://login-db-backend-three.vercel.app/api/update-profile-image/",
-            data: formData,
-            processData: false, // FormData olduğu üçün false
-            contentType: false, // FormData olduğu üçün false
-            success: function (response) {
-                if (response.success) {
-                    alert('Şəkil uğurla dəyişdirildi!');
-                    $('.imgbox img').attr('src', response.profile_image_url);
-                    errorMsg.text('');
-                } else {
-                    errorMsg.text(response.error);
+            $.ajax({
+                type: "POST",
+                url: "https://login-db-backend-three.vercel.app/api/update-profile-image/",
+                data: formData,
+                processData: false, // FormData olduğu üçün false
+                contentType: false, // FormData olduğu üçün false
+                success: function (response) {
+                    if (response.success) {
+                        alert('Şəkil uğurla dəyişdirildi!');
+                        $('.imgbox img').attr('src', response.profile_image_url);
+                        errorMsg.text('');
+                    } else {
+                        errorMsg.text(response.error);
+                    }
+                },
+                error: function (err) {
+                    errorMsg.text('Serverdə xəta baş verdi!');
                 }
-            },
-            error: function (err) {
-                errorMsg.text('Serverdə xəta baş verdi!');
-            }
+            });
         });
     }
 
@@ -152,5 +155,35 @@ $(document).ready(function () {
         e.preventDefault();
         delete_profil_image();
     });
+
+    //sekil olcusunu kiciltmek ucun funksiya
+    function resizeImage(file, callback) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const img = new Image();
+
+            img.onload = function () {
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+
+                const maxWidth = 500; // profil üçün daha kiçik
+                const scale = maxWidth / img.width;
+
+                canvas.width = maxWidth;
+                canvas.height = img.height * scale;
+
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                canvas.toBlob(function (blob) {
+                    callback(blob);
+                }, "image/jpeg", 0.6);
+            };
+
+            img.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
 
 });

@@ -334,42 +334,76 @@ $(document).ready(function () {
             errorMsg.text('Şəkil yoxdur!');
             return;
         }
+        resizeImage(file, function (smallFile) {
+            const formData = new FormData();
+            formData.append('sender_id', Number(localStorage.getItem('currentUserId')));
+            formData.append('to', targetUser);
+            formData.append('text', '');
+            formData.append('image', smallFile);
 
-        const formData = new FormData();
-        formData.append('sender_id', Number(localStorage.getItem('currentUserId')));
-        formData.append('to', targetUser);
-        formData.append('text', '');
-        formData.append('image', file);
+            console.log([...formData.entries()]); // debug (istəsən sil)
 
-        console.log([...formData.entries()]); // debug (istəsən sil)
+            $.ajax({
+                type: "POST",
+                url: "https://login-db-backend-three.vercel.app/api/send-message/",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.success) {
+                        errorMsg.text('');
 
-        $.ajax({
-            type: "POST",
-            url: "https://login-db-backend-three.vercel.app/api/send-message/",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                if (response.success) {
-                    errorMsg.text('');
-
-                    $('#imageInput').val('');
-                    $('#pictureModal').removeClass('active');
-                    $messagesBox.scrollTop($messagesBox[0].scrollHeight);
-                } else {
-                    errorMsg.text(response.error);
+                        $('#imageInput').val('');
+                        $('#pictureModal').removeClass('active');
+                        $messagesBox.scrollTop($messagesBox[0].scrollHeight);
+                    } else {
+                        errorMsg.text(response.error);
+                    }
+                },
+                error: function () {
+                    errorMsg.text('Serverdə xəta baş verdi!');
                 }
-            },
-            error: function () {
-                errorMsg.text('Serverdə xəta baş verdi!');
-            }
+            });
         });
     }
+
 
     // send button click
     $(document).on('click', '#send', function (e) {
         e.preventDefault();
         send_image();
     });
+    //sekil olcusunu kiciltmek
+    function resizeImage(file, callback) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const img = new Image();
+
+            img.onload = function () {
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+
+                const maxWidth = 600; // 🔥 şəkili kicildir
+                const scale = maxWidth / img.width;
+
+                canvas.width = maxWidth;
+                canvas.height = img.height * scale;
+
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+                canvas.toBlob(function (blob) {
+                    callback(blob);
+                }, "image/jpeg", 0.6); // 🔥 keyfiyyət də azaldılır
+            };
+
+            img.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    };
 
 });
+
+
+
