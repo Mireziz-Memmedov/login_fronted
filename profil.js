@@ -34,7 +34,6 @@ $(document).ready(function () {
 
     const currentUserId = parseInt(localStorage.getItem('currentUserId'));
     const currentUsername = localStorage.getItem('currentUsername');
-    const welcomeEl = $('#welcomeUser');
     const recentChatsEl = $('#recentChats');
 
     if (!currentUserId || !currentUsername) {
@@ -69,7 +68,9 @@ $(document).ready(function () {
                     return;
                 }
 
-                res.users.forEach(user => {
+                res.users.forEach((user, index) => {
+                    const holder = $('<div class="chat-holder"></div>');
+                    recentChatsEl.append(holder);
                     // AJAX-lə hər istifadəçinin statusu və profil şəkli alınır
                     $.ajax({
                         url: `https://login-db-backend-three.vercel.app/api/user_status/?username=${encodeURIComponent(user)}`,
@@ -111,7 +112,8 @@ $(document).ready(function () {
                                 </p>
                             `);
 
-                            recentChatsEl.append(p);
+                            holder.html(p);
+
                             //tercume funksiyasini translate jsden cagirirq
                             window.getTranslation()
                         },
@@ -129,7 +131,7 @@ $(document).ready(function () {
                                     <span class="remove" data-username="${user}">🗑️</span>
                                 </p>
                             `);
-                            recentChatsEl.append(p);
+                            holder.html(p);
                         }
                     });
                 });
